@@ -1,0 +1,338 @@
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>In-Depth Fellowship Syllabus | Stanford Effective Altruism</title>
+<link rel="icon" type="image/png" href="SEALogoBlueSquare.png">
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<!-- Tailwind & Icons -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+fontFamily: {
+sans: ['Inter', 'sans-serif'],
+serif: ['Source Serif Pro', 'serif'],
+mono: ['JetBrains Mono', 'monospace'],
+},
+colors: {
+bg: '#F8FAFC',
+cardinal: '#8C1515',
+eablue: '#0C87C9',
+eateal: '#1A9B9B',
+slate: '#334155',
+dark: '#0F172A'
+}
+}
+}
+}
+</script>
+<style>
+body { margin: 0; background-color: #F8FAFC; color: #0F172A; overflow-x: hidden; }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+.glass-nav {
+background: rgba(255, 255, 255, 0.7);
+backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+::selection { background: #0C87C9; color: white; }
+/* Logo color grading to match eablue */
+.logo-blue {
+    filter: brightness(0) saturate(100%) invert(41%) sepia(98%) saturate(456%) hue-rotate(166deg) brightness(93%) contrast(96%);
+}
+</style></head>
+
+<body class="antialiased font-sans bg-bg min-h-screen">
+
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3 cursor-pointer">
+                <img src="SEAlogo.png" alt="Stanford EA" class="h-10 w-auto logo-blue">
+                <div class="flex flex-col leading-none">
+                    <span class="font-serif text-base font-semibold text-slate-900">Stanford</span>
+                    <span class="font-sans text-[10px] font-medium tracking-widest uppercase text-eablue">Effective Altruism</span>
+                </div>
+            </a>
+
+            <!-- Back to Home -->
+            <a href="index.html#fellowships" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-slate-600 hover:text-cardinal hover:bg-slate-100/50 transition-all">
+                <iconify-icon icon="solar:arrow-left-linear" class="w-4 h-4"></iconify-icon>
+                Back to Fellowships
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-20 px-6">
+        <div class="max-w-4xl mx-auto">
+
+            <!-- Header -->
+            <div class="mb-12">
+                <span class="bg-cardinal/10 text-cardinal px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Advanced</span>
+                <h1 class="font-serif text-4xl md:text-5xl text-slate-900 mt-4 mb-4">In-Depth Fellowship</h1>
+                <p class="text-lg text-slate-600">A 10-week deep dive into specific cause areas with a capstone project.</p>
+                <div class="flex flex-wrap items-center gap-4 mt-6 text-sm text-slate-500">
+                    <div class="flex items-center gap-2">
+                        <iconify-icon icon="solar:clock-circle-linear" class="w-4 h-4"></iconify-icon>
+                        10 Weeks
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <iconify-icon icon="solar:widget-linear" class="w-4 h-4"></iconify-icon>
+                        Capstone Project
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <iconify-icon icon="solar:calendar-linear" class="w-4 h-4"></iconify-icon>
+                        2 hours/week
+                    </div>
+                </div>
+            </div>
+
+            <!--
+            =====================================================
+            TODO: Fill in syllabus content for each stream
+            This fellowship has 3 specialized streams:
+            1. AI Safety & Alignment
+            2. Biosecurity & Pandemic Prep
+            3. Animal Welfare & Alternatives
+
+            Structure for each stream:
+            - Stream overview
+            - Week-by-week breakdown (10 weeks)
+            - Capstone project requirements
+            - Required and optional readings per week
+            =====================================================
+            -->
+
+            <!-- Stream Selector -->
+            <div class="mb-10">
+                <h2 class="font-serif text-xl text-slate-900 mb-4">Choose Your Stream</h2>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <!-- AI Safety Stream -->
+                    <button onclick="showStream('ai')" id="btn-ai" class="stream-btn active p-4 rounded-xl border-2 border-eablue bg-blue-50 text-left transition-all">
+                        <div class="w-10 h-10 rounded-full bg-eablue/20 text-eablue flex items-center justify-center mb-3">
+                            <iconify-icon icon="solar:cpu-linear" class="w-5 h-5"></iconify-icon>
+                        </div>
+                        <h3 class="font-semibold text-slate-900 mb-1">AI Safety & Alignment</h3>
+                        <p class="text-xs text-slate-500">Technical and governance approaches to safe AI</p>
+                    </button>
+
+                    <!-- Biosecurity Stream -->
+                    <button onclick="showStream('bio')" id="btn-bio" class="stream-btn p-4 rounded-xl border-2 border-slate-200 hover:border-emerald-500 text-left transition-all">
+                        <div class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mb-3">
+                            <iconify-icon icon="solar:test-tube-linear" class="w-5 h-5"></iconify-icon>
+                        </div>
+                        <h3 class="font-semibold text-slate-900 mb-1">Biosecurity & Pandemic Prep</h3>
+                        <p class="text-xs text-slate-500">Preventing and preparing for biological risks</p>
+                    </button>
+
+                    <!-- Animal Welfare Stream -->
+                    <button onclick="showStream('animal')" id="btn-animal" class="stream-btn p-4 rounded-xl border-2 border-slate-200 hover:border-amber-500 text-left transition-all">
+                        <div class="w-10 h-10 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center mb-3">
+                            <iconify-icon icon="solar:cat-linear" class="w-5 h-5"></iconify-icon>
+                        </div>
+                        <h3 class="font-semibold text-slate-900 mb-1">Animal Welfare & Alternatives</h3>
+                        <p class="text-xs text-slate-500">Reducing animal suffering at scale</p>
+                    </button>
+                </div>
+            </div>
+
+            <!-- AI Safety Stream Content -->
+            <div id="stream-ai" class="stream-content">
+                <div class="space-y-6">
+                    <!-- Week 1 -->
+                    <div class="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-eablue/10 text-eablue flex items-center justify-center font-semibold shrink-0">1</div>
+                            <div class="flex-1">
+                                <h3 class="font-serif text-xl text-slate-900 mb-2">[Week 1 Title - AI Safety Foundations]</h3>
+                                <p class="text-sm text-slate-600 mb-4">[Week 1 description]</p>
+                                <div>
+                                    <h4 class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Required Reading</h4>
+                                    <ul class="text-sm text-slate-600 space-y-1">
+                                        <li class="flex items-center gap-2">
+                                            <iconify-icon icon="solar:document-text-linear" class="w-4 h-4 text-eablue"></iconify-icon>
+                                            <a href="#" class="hover:text-eablue transition-colors">[Reading title here]</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Weeks 2-9 placeholder -->
+                    <div class="bg-slate-50 rounded-2xl border border-dashed border-slate-300 p-8 text-center">
+                        <iconify-icon icon="solar:document-add-linear" class="w-12 h-12 text-slate-400 mx-auto mb-3"></iconify-icon>
+                        <p class="text-slate-500">Weeks 2-9 content to be added</p>
+                        <p class="text-xs text-slate-400 mt-1">Each week follows the same structure as Week 1</p>
+                    </div>
+
+                    <!-- Week 10 -->
+                    <div class="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-eablue/10 text-eablue flex items-center justify-center font-semibold shrink-0">10</div>
+                            <div class="flex-1">
+                                <h3 class="font-serif text-xl text-slate-900 mb-2">Capstone Presentations</h3>
+                                <p class="text-sm text-slate-600 mb-4">Present your capstone project to the cohort and receive feedback.</p>
+                                <div class="bg-eablue/5 rounded-xl p-4">
+                                    <h4 class="text-xs font-semibold text-eablue uppercase tracking-wide mb-2">Capstone Requirements</h4>
+                                    <ul class="text-sm text-slate-600 space-y-1">
+                                        <li>- Research paper, blog post, or policy memo</li>
+                                        <li>- 15-minute presentation</li>
+                                        <li>- Peer review of one other project</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Biosecurity Stream Content -->
+            <div id="stream-bio" class="stream-content hidden">
+                <div class="space-y-6">
+                    <!-- Week 1 -->
+                    <div class="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center font-semibold shrink-0">1</div>
+                            <div class="flex-1">
+                                <h3 class="font-serif text-xl text-slate-900 mb-2">[Week 1 Title - Biosecurity Overview]</h3>
+                                <p class="text-sm text-slate-600 mb-4">[Week 1 description]</p>
+                                <div>
+                                    <h4 class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Required Reading</h4>
+                                    <ul class="text-sm text-slate-600 space-y-1">
+                                        <li class="flex items-center gap-2">
+                                            <iconify-icon icon="solar:document-text-linear" class="w-4 h-4 text-emerald-600"></iconify-icon>
+                                            <a href="#" class="hover:text-emerald-600 transition-colors">[Reading title here]</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Weeks 2-9 placeholder -->
+                    <div class="bg-slate-50 rounded-2xl border border-dashed border-slate-300 p-8 text-center">
+                        <iconify-icon icon="solar:document-add-linear" class="w-12 h-12 text-slate-400 mx-auto mb-3"></iconify-icon>
+                        <p class="text-slate-500">Weeks 2-9 content to be added</p>
+                        <p class="text-xs text-slate-400 mt-1">Each week follows the same structure as Week 1</p>
+                    </div>
+
+                    <!-- Week 10 -->
+                    <div class="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center font-semibold shrink-0">10</div>
+                            <div class="flex-1">
+                                <h3 class="font-serif text-xl text-slate-900 mb-2">Capstone Presentations</h3>
+                                <p class="text-sm text-slate-600 mb-4">Present your capstone project to the cohort and receive feedback.</p>
+                                <div class="bg-emerald-50 rounded-xl p-4">
+                                    <h4 class="text-xs font-semibold text-emerald-600 uppercase tracking-wide mb-2">Capstone Requirements</h4>
+                                    <ul class="text-sm text-slate-600 space-y-1">
+                                        <li>- Research paper, policy brief, or case study</li>
+                                        <li>- 15-minute presentation</li>
+                                        <li>- Peer review of one other project</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Animal Welfare Stream Content -->
+            <div id="stream-animal" class="stream-content hidden">
+                <div class="space-y-6">
+                    <!-- Week 1 -->
+                    <div class="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center font-semibold shrink-0">1</div>
+                            <div class="flex-1">
+                                <h3 class="font-serif text-xl text-slate-900 mb-2">[Week 1 Title - Animal Welfare Landscape]</h3>
+                                <p class="text-sm text-slate-600 mb-4">[Week 1 description]</p>
+                                <div>
+                                    <h4 class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Required Reading</h4>
+                                    <ul class="text-sm text-slate-600 space-y-1">
+                                        <li class="flex items-center gap-2">
+                                            <iconify-icon icon="solar:document-text-linear" class="w-4 h-4 text-amber-600"></iconify-icon>
+                                            <a href="#" class="hover:text-amber-600 transition-colors">[Reading title here]</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Weeks 2-9 placeholder -->
+                    <div class="bg-slate-50 rounded-2xl border border-dashed border-slate-300 p-8 text-center">
+                        <iconify-icon icon="solar:document-add-linear" class="w-12 h-12 text-slate-400 mx-auto mb-3"></iconify-icon>
+                        <p class="text-slate-500">Weeks 2-9 content to be added</p>
+                        <p class="text-xs text-slate-400 mt-1">Each week follows the same structure as Week 1</p>
+                    </div>
+
+                    <!-- Week 10 -->
+                    <div class="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center font-semibold shrink-0">10</div>
+                            <div class="flex-1">
+                                <h3 class="font-serif text-xl text-slate-900 mb-2">Capstone Presentations</h3>
+                                <p class="text-sm text-slate-600 mb-4">Present your capstone project to the cohort and receive feedback.</p>
+                                <div class="bg-amber-50 rounded-xl p-4">
+                                    <h4 class="text-xs font-semibold text-amber-600 uppercase tracking-wide mb-2">Capstone Requirements</h4>
+                                    <ul class="text-sm text-slate-600 space-y-1">
+                                        <li>- Research paper, advocacy plan, or intervention analysis</li>
+                                        <li>- 15-minute presentation</li>
+                                        <li>- Peer review of one other project</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Apply CTA -->
+            <div class="mt-12 p-8 rounded-2xl bg-gradient-to-r from-slate-900 to-slate-800 text-white text-center">
+                <h3 class="font-serif text-2xl mb-2">Ready to go deeper?</h3>
+                <p class="text-white/70 mb-6">Applications are open for the upcoming cohort. Prior EA experience recommended.</p>
+                <!-- TODO: Link to Tally form when ready -->
+                <a href="#" class="inline-flex items-center gap-2 bg-white text-slate-900 px-6 py-3 rounded-xl font-semibold hover:bg-slate-100 transition-colors">
+                    Apply
+                    <iconify-icon icon="solar:arrow-right-linear" class="w-4 h-4"></iconify-icon>
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+    function showStream(stream) {
+        // Hide all stream content
+        document.querySelectorAll('.stream-content').forEach(el => el.classList.add('hidden'));
+        // Show selected stream
+        document.getElementById('stream-' + stream).classList.remove('hidden');
+
+        // Update button styles
+        document.querySelectorAll('.stream-btn').forEach(btn => {
+            btn.classList.remove('border-eablue', 'border-emerald-500', 'border-amber-500', 'bg-blue-50', 'bg-emerald-50', 'bg-amber-50');
+            btn.classList.add('border-slate-200');
+        });
+
+        const activeBtn = document.getElementById('btn-' + stream);
+        activeBtn.classList.remove('border-slate-200');
+        if (stream === 'ai') {
+            activeBtn.classList.add('border-eablue', 'bg-blue-50');
+        } else if (stream === 'bio') {
+            activeBtn.classList.add('border-emerald-500', 'bg-emerald-50');
+        } else if (stream === 'animal') {
+            activeBtn.classList.add('border-amber-500', 'bg-amber-50');
+        }
+    }
+    </script>
+
+</body></html>

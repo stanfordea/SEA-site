@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Stanford EA Manifesto | Stanford Effective Altruism</title>
+    <link rel="icon" type="image/png" href="SEALogoBlueSquare.png">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Tailwind & Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                fontFamily: {
+                    sans: ['Inter', 'sans-serif'],
+                    serif: ['Source Serif Pro', 'serif'],
+                    mono: ['JetBrains Mono', 'monospace'],
+                },
+                colors: {
+                    bg: '#F8FAFC',
+                    cardinal: '#8C1515',
+                    eablue: '#0C87C9',
+                    slate: '#334155',
+                    dark: '#0F172A'
+                }
+            }
+        }
+    }
+    </script>
+    <style>
+        body { margin: 0; background-color: #F8FAFC; color: #0F172A; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .logo-blue {
+            filter: brightness(0) saturate(100%) invert(41%) sepia(98%) saturate(456%) hue-rotate(166deg) brightness(93%) contrast(96%);
+        }
+        ::selection { background: #0C87C9; color: white; }
+
+        /* Manifesto Typography */
+        .manifesto-body {
+            font-family: 'Source Serif Pro', serif;
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: #1e293b;
+        }
+        .manifesto-body h2 {
+            font-family: 'Source Serif Pro', serif;
+            font-weight: 700;
+            font-size: 1.75rem;
+            color: #0f172a;
+            margin-top: 3rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .manifesto-body p {
+            margin-bottom: 1.25rem;
+        }
+        .manifesto-body ul {
+            margin-bottom: 1.5rem;
+            padding-left: 0;
+            list-style: none;
+        }
+        .manifesto-body li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .manifesto-body li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.7rem;
+            width: 6px;
+            height: 6px;
+            background: #0C87C9;
+            border-radius: 50%;
+        }
+        .manifesto-body strong {
+            font-weight: 600;
+            color: #0f172a;
+        }
+        .manifesto-body a {
+            color: #0C87C9;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            transition: color 0.2s;
+        }
+        .manifesto-body a:hover {
+            color: #8C1515;
+        }
+        .manifesto-body em {
+            font-style: italic;
+        }
+
+        /* Footnote superscripts */
+        .footnote-ref {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #0C87C9;
+            text-decoration: none;
+            vertical-align: super;
+            margin-left: 1px;
+            padding: 0 2px;
+            border-radius: 2px;
+            transition: all 0.2s;
+        }
+        .footnote-ref:hover {
+            background: #0C87C9;
+            color: white;
+        }
+
+        /* Footnotes section */
+        .footnotes {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            line-height: 1.6;
+            color: #64748b;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 2rem;
+            margin-top: 3rem;
+        }
+        .footnotes h3 {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #334155;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .footnote-item {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            transition: background 0.2s;
+        }
+        .footnote-item:hover {
+            background: #f1f5f9;
+        }
+        .footnote-item:target {
+            background: #dbeafe;
+        }
+        .footnote-num {
+            font-weight: 600;
+            color: #0C87C9;
+            min-width: 1.5rem;
+        }
+        .footnote-item a {
+            color: #64748b;
+            word-break: break-all;
+            text-decoration: none;
+        }
+        .footnote-item a:hover {
+            color: #0C87C9;
+            text-decoration: underline;
+        }
+
+        /* Pull quote */
+        .pull-quote {
+            font-family: 'Source Serif Pro', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #334155;
+            border-left: 4px solid #0C87C9;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            background: linear-gradient(135deg, rgba(12, 135, 201, 0.05), rgba(140, 21, 21, 0.03));
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+    </style>
+</head>
+
+<body class="antialiased font-sans bg-bg min-h-screen">
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="SEAlogo.png" alt="Stanford EA" class="h-10 w-auto logo-blue">
+                <div class="flex flex-col leading-none">
+                    <span class="font-serif text-base font-semibold text-slate-900">Stanford</span>
+                    <span class="font-sans text-[10px] font-medium tracking-widest uppercase text-eablue">Effective Altruism</span>
+                </div>
+            </a>
+            <a href="index.html" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-slate-600 hover:text-cardinal hover:bg-slate-100/50 transition-all">
+                <iconify-icon icon="solar:arrow-left-linear" class="w-4 h-4"></iconify-icon>
+                <span>Back to Home</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-20">
+        <article class="max-w-3xl mx-auto px-6">
+            <!-- Title -->
+            <header class="mb-12 text-center">
+                <h1 class="font-serif text-4xl md:text-5xl font-bold text-dark mb-4">The Stanford EA Manifesto</h1>
+                <p class="text-slate-500 font-sans text-sm">Stanford Effective Altruism</p>
+            </header>
+
+            <!-- Body -->
+            <div class="manifesto-body">
+
+                <h2>I. The Pivotal Moment</h2>
+                <p>We are living through a hinge of history. The technologies being built today, in labs down the road, in offices across the Bay, will reshape what it means to be human. You can feel it in the air: something unprecedented is happening.</p>
+
+                <ul>
+                    <li><strong>AI capabilities accelerating fast</strong><a href="https://epoch.ai/data-insights/ai-capabilities-progress-has-sped-up" target="_blank" class="footnote-ref">1</a><a href="https://hai.stanford.edu/ai-index/2025-ai-index-report" target="_blank" class="footnote-ref">2</a>, foundation models<a href="https://hai.stanford.edu/ai-index/2025-ai-index-report" target="_blank" class="footnote-ref">2</a>, autonomous agents<a href="https://www.ibm.com/think/news/ai-tech-trends-predictions-2026" target="_blank" class="footnote-ref">3</a>, scientific AI solving problems that stumped researchers for decades<a href="https://www.nobelprize.org/prizes/chemistry/2024/press-release/" target="_blank" class="footnote-ref">4</a><a href="https://www.nature.com/articles/s41586-021-03819-2" target="_blank" class="footnote-ref">5</a><a href="https://deepmind.google/blog/alphafold-five-years-of-impact/" target="_blank" class="footnote-ref">6</a></li>
+                    <li><strong>Biotechnology entering a new era</strong><a href="https://setr.stanford.edu/technology/biotechnology-synthetic-biology/2025" target="_blank" class="footnote-ref">7</a>, gene editing<a href="https://innovativegenomics.org/news/crispr-clinical-trials-2025/" target="_blank" class="footnote-ref">8</a><a href="https://crisprmedicinenews.com/clinical-trials/" target="_blank" class="footnote-ref">9</a><a href="https://newsroom.heart.org/news/first-in-human-trial-of-crispr-gene-editing-therapy-safely-lowered-cholesterol-triglycerides" target="_blank" class="footnote-ref">10</a>, synthetic biology<a href="https://www.startus-insights.com/innovators-guide/synthetic-biology-trends/" target="_blank" class="footnote-ref">11</a><a href="https://www.synbiobeta.com/read/the-synthetic-revolution-you-didnt-see-coming-a-glimpse-at-2024s-most-game-changing-biotech-inventions" target="_blank" class="footnote-ref">12</a>, the first real shots at aging itself<a href="https://www.elysiumhealth.com/blogs/aging101/top-10-longevity-studies-of-2024" target="_blank" class="footnote-ref">13</a><a href="https://www.timeline.com/blog/2025-breakthroughs-in-longevity-research" target="_blank" class="footnote-ref">14</a><a href="https://www.afar.org/top-breakthroughs-in-aging" target="_blank" class="footnote-ref">15</a><a href="https://www.gethealthspan.com/research/article/top-ten-longevity-anti-aging-breakthroughs-of-2025" target="_blank" class="footnote-ref">16</a></li>
+                    <li><strong>Space is becoming accessible</strong><a href="https://www.spacefoundation.org/2025/07/22/the-space-report-2025-q2/" target="_blank" class="footnote-ref">17</a>, private launch<a href="https://spacexstock.com/private-space-market-trends/" target="_blank" class="footnote-ref">18</a><a href="https://sacra.com/c/spacex/" target="_blank" class="footnote-ref">19</a><a href="https://spacexstock.com/spacex-vs-competitors-launch-market-share-2025/" target="_blank" class="footnote-ref">20</a>, satellite constellations<a href="https://sacra.com/c/spacex/" target="_blank" class="footnote-ref">19</a>, the early infrastructure for a multiplanetary species<a href="https://www.space.com/space-exploration/private-spaceflight/will-2025-be-the-year-of-starship-spacex-megarocket-is-growing-up" target="_blank" class="footnote-ref">21</a><a href="https://en.wikipedia.org/wiki/SpaceX" target="_blank" class="footnote-ref">22</a></li>
+                    <li><strong>Energy transformation is underway</strong><a href="https://about.bnef.com/insights/clean-energy/global-cost-of-renewables-to-continue-falling-in-2025-as-china-extends-manufacturing-lead-bloombergnef/" target="_blank" class="footnote-ref">23</a>, solar cost curves decreasing<a href="https://ourworldindata.org/data-insights/solar-panel-prices-have-fallen-by-around-20-every-time-global-capacity-doubled" target="_blank" class="footnote-ref">24</a><a href="https://www.visualcapitalist.com/the-plummeting-cost-of-renewable-energy/" target="_blank" class="footnote-ref">25</a><a href="https://www.energysage.com/news/solar-prices-hit-all-time-lows-in-2024/" target="_blank" class="footnote-ref">26</a>, nuclear renaissance with tech giants investing billions<a href="https://www.cnbc.com/2024/12/28/why-microsoft-amazon-google-and-meta-are-betting-on-nuclear-power.html" target="_blank" class="footnote-ref">27</a><a href="https://fortune.com/2024/10/16/google-amazon-microsoft-nuclear-energy-ai-data-centers/" target="_blank" class="footnote-ref">28</a><a href="https://finance.yahoo.com/news/meta-signs-multi-gigawatt-nuclear-112234780.html" target="_blank" class="footnote-ref">29</a>, fusion attracting unprecedented private investment<a href="https://www.fusionindustryassociation.org/over-2-5-billion-invested-in-fusion-industry-in-past-year/" target="_blank" class="footnote-ref">30</a><a href="https://techcrunch.com/2025/12/31/every-fusion-startup-that-has-raised-over-100m/" target="_blank" class="footnote-ref">31</a><a href="https://energy.mit.edu/news/funding-the-fusion-revolution/" target="_blank" class="footnote-ref">32</a>, the possibility of abundance<a href="https://www.iea.org/reports/the-path-to-a-new-era-for-nuclear-energy/executive-summary" target="_blank" class="footnote-ref">33</a></li>
+                </ul>
+
+                <p class="pull-quote">This decade may matter more than any that came before it.</p>
+
+                <h2>II. Peril and Promise</h2>
+                <p>The future is radically uncertain. What comes next could be a renaissance of human flourishing unlike anything in history, or it could be catastrophe. The difference lies in choices being made right now, by people alive today.</p>
+
+                <ul>
+                    <li><strong>If we navigate wisely:</strong> abundance, diseases cured, suffering reduced, human potential unlocked at scale (<a href="https://newsletter.rootsofprogress.org/p/the-unlimited-horizon-part-1" target="_blank">Roots of Progress</a>, <a href="https://www.darioamodei.com/essay/machines-of-loving-grace" target="_blank">Machines of Loving Grace</a>)</li>
+                    <li><strong>If we fumble in the transition:</strong> loss of human agency<a href="https://intelligence-curse.ai/" target="_blank" class="footnote-ref">34</a>, geopolitical destabilization<a href="https://www.rand.org/topics/geopolitical-strategic-competition.html" target="_blank" class="footnote-ref">35</a>, catastrophic or even existential risks<a href="https://safe.ai/ai-risk" target="_blank" class="footnote-ref">36</a> realized</li>
+                    <li>We aren't content to "muddle through" &mdash; we want the future to go <em>as well as possible</em></li>
+                    <li>The window for shaping these trajectories is limited. Decisions that matter are being made now.</li>
+                </ul>
+
+                <h2>III. Techno-Humanism: A Third Way</h2>
+                <p>We reject both blind techno-optimism and fearful retreat. We have entered an age where powerful technologies bring tremendous benefits and corrosive effects in equal measure, social media connecting billions while fragmenting attention and eroding truth, AI augmenting human capability while concentrating power and displacing workers. The path forward demands wisdom, not nuanceless ideology.</p>
+
+                <ul>
+                    <li><strong>Technology as a tool, not a destiny</strong> &mdash; outcomes depend on how we build, deploy, and govern</li>
+                    <li><strong>Differential acceleration:</strong> speed up what helps humanity<a href="https://vitalik.eth.limo/general/2023/11/27/techno_optimism.html" target="_blank" class="footnote-ref">37</a>, forecast and address negative externalities</li>
+                    <li><strong>Philosophy, ethics, and empirical rigor must guide this generation of development</strong> &mdash; not just what we <em>can</em> build, but what <em>should</em> we</li>
+                </ul>
+
+                <h2>IV. Our Stance: Moral Ambition</h2>
+                <p>We aim to build for a tomorrow that leverages innovation and technology to genuinely improve human wellbeing. We take seriously that there are unprecedented challenges and opportunities.</p>
+
+                <ul>
+                    <li><strong>High agency:</strong> We are young but capable, adapting quickly, leveraging new tools. We aim to <a href="https://paulgraham.com/greatwork.html" target="_blank">do great work</a>. We are resourceful and we don't give up</li>
+                    <li><strong>Reject complacency:</strong> waiting is itself a choice, often with catastrophic consequences</li>
+                    <li><strong>Scope sensitivity:</strong> billions of lives hang in the balance of decisions being made today, across the globe, in factory farms, and in future generations</li>
+                    <li><strong>Ambition tempered by humility:</strong> it's a confusing time of polarized media and rapid change. We could be wrong, we try to reason carefully, account for our biases, and update on evidence. In failing we strive to admit when we made a bad call then get up to try again</li>
+                </ul>
+
+                <h2>V. Standing on Shoulders</h2>
+                <p>We inherit a movement that has already changed the world and is not slowing down. The previous generation of effective altruists built the intellectual frameworks and institutional infrastructure we now deploy at scale.</p>
+
+                <ul>
+                    <li><strong>Doing Charity Better:</strong> organizations like <a href="https://www.givewell.org/" target="_blank">GiveWell</a>, <a href="https://www.openphilanthropy.org/" target="_blank">Coefficient Giving</a>, and <a href="https://www.givingwhatwecan.org/" target="_blank">Giving What We Can</a> have directed billions of dollars to evidence-backed interventions, saving hundreds of thousands of lives, and shifted philanthropic culture toward rigorous accountability and effectiveness<a href="#fn38" class="footnote-ref">38</a></li>
+                    <li><strong>AI Safety:</strong> taken from a fringe academic concern to mainstream research priority at every major lab</li>
+                    <li><strong>Biosecurity:</strong> prescient warnings about pandemic preparedness, vindicated, with work ongoing</li>
+                    <li><strong>80,000 Hours:</strong> career capital as leverage, making high-impact paths legible and achievable</li>
+                </ul>
+
+                <h2>VI. Who We Are</h2>
+                <p><strong>Stanford EA's own track record speaks for itself:</strong> We founded <a href="https://seri.stanford.edu/" target="_blank">SERI</a> (Stanford Existential Risks Initiative). We incubated <a href="https://www.matsprogram.org/" target="_blank">MATS</a> (ML Alignment Theory Scholars), now one of the premier alignment research programs. We launched <a href="https://www.effectivealtruism.org/virtual-programs" target="_blank">EA Virtual Programs</a>, reaching thousands globally. We built the <a href="https://www.stanfordaltprotein.com/" target="_blank">Stanford Alt Protein Project</a>. Our alumni now work at top AI labs, lead nonprofits, and help shape policy.</p>
+
+                <p>We are the next generation of high-agency, impact-oriented leaders. Stanford gives us unparalleled access: technical depth, proximity to the builders and funders, and the urgency that comes from being at ground zero of the transformation.</p>
+
+                <ul>
+                    <li>Moving quickly in what may be decisive years for human history</li>
+                    <li>Diverse backgrounds united by commitment to impact</li>
+                    <li>Students, researchers, future founders and future policymakers, building skills that compound</li>
+                </ul>
+
+                <h2>VII. What We Work On</h2>
+                <p>At Stanford and in the EA community writ large we aim to identify pressing global problems on the pareto frontier of: large in scope, where progress is tractable, neglected or underserved by others. Some examples:</p>
+
+                <ul>
+                    <li><strong>AI Safety & Governance:</strong> alignment research, interpretability, policy frameworks, dangerous capability evaluations</li>
+                    <li><strong>Biosecurity & Pandemic Preparedness:</strong> preventing the next catastrophe, whether natural or engineered</li>
+                    <li><strong>Global Catastrophic Risk:</strong> nuclear security, climate tail risks, war & geopolitics, emerging technological threats</li>
+                    <li><strong>Global Health & Development:</strong> saving lives through access to medicine and improving wellbeing through global development, proven interventions that remain tragically neglected</li>
+                    <li><strong>Animal Welfare:</strong> such as the vast scale of factory farming, and cruel treatment of tens of billions of animals annually</li>
+                    <li><strong>Long-term Institutional Design:</strong> building structures that can govern wisely across decades and centuries</li>
+                </ul>
+
+                <p class="pull-quote">Technology as a force multiplier. The answer is not to retreat from progress but to help steer it.</p>
+
+                <h2>VIII. Our Approach</h2>
+                <p>Effective altruism is a question, not an ideology: <em>"How can we do the most good?"</em> The answer requires evidence, reasoning, and the willingness to change course when we're wrong.</p>
+
+                <ul>
+                    <li><strong>Cause prioritization over cause loyalty:</strong> we go where we can help most, not where it feels comfortable</li>
+                    <li><strong>Scout mindset:</strong> seek the ground truth, update on evidence, hold beliefs provisionally, small identities, big empathy</li>
+                    <li><strong>Careers as leverage:</strong> your 80,000 working hours are your single biggest resource for impact, we plan and test career plans, we motivate and connect each other</li>
+                    <li><strong>Community as infrastructure:</strong> ambitious action requires coordination, support, and shared knowledge</li>
+                    <li><strong>Bias toward action, tempered by epistemic humility:</strong> move fast be courageous in trying to do good, but realize the world is complicated, well meaning interventions can backfire, know what you don't know, anchor your identity in trying hard to be less wrong</li>
+                </ul>
+
+                <h2>IX. Join Us</h2>
+                <p>The work is urgent. The problems are hard. And there is room for many more hands.</p>
+
+                <p class="pull-quote">The future is not yet written. Let's write it unreasonably well.</p>
+
+                <div class="mt-12 p-6 bg-slate-50 rounded-xl border border-slate-200">
+                    <h3 class="font-sans font-semibold text-lg text-dark mb-4">Resources & Links</h3>
+                    <ul class="space-y-2 list-none p-0">
+                        <li class="p-0 m-0" style="padding-left: 0;"><li style="padding-left: 0;"><a href="community.html" class="flex items-center gap-2 text-eablue hover:text-cardinal"><iconify-icon icon="solar:users-group-rounded-linear"></iconify-icon> Join our community</a></li></li>
+                        <li class="p-0 m-0" style="padding-left: 0;"><a href="https://80000hours.org/career-guide/" target="_blank" class="flex items-center gap-2 text-eablue hover:text-cardinal"><iconify-icon icon="solar:compass-linear"></iconify-icon> 80,000 Hours Career Guide</a></li>
+                        <li class="p-0 m-0" style="padding-left: 0;"><a href="https://forum.effectivealtruism.org/" target="_blank" class="flex items-center gap-2 text-eablue hover:text-cardinal"><iconify-icon icon="solar:chat-round-dots-linear"></iconify-icon> Effective Altruism Forum</a></li>
+                        <li class="p-0 m-0" style="padding-left: 0;"><a href="mailto:stanfordea.ops@gmail.com" class="flex items-center gap-2 text-eablue hover:text-cardinal"><iconify-icon icon="solar:letter-linear"></iconify-icon> Contact us: stanfordea.ops@gmail.com</a></li>
+                    </ul>
+                </div>
+
+                <!-- Footnotes -->
+                <div class="footnotes" id="footnotes">
+                    <h3>References</h3>
+
+                    <div id="fn1" class="footnote-item"><span class="footnote-num">1.</span><a href="https://epoch.ai/data-insights/ai-capabilities-progress-has-sped-up" target="_blank">epoch.ai/data-insights/ai-capabilities-progress-has-sped-up</a></div>
+                    <div id="fn2" class="footnote-item"><span class="footnote-num">2.</span><a href="https://hai.stanford.edu/ai-index/2025-ai-index-report" target="_blank">hai.stanford.edu/ai-index/2025-ai-index-report</a></div>
+                    <div id="fn3" class="footnote-item"><span class="footnote-num">3.</span><a href="https://www.ibm.com/think/news/ai-tech-trends-predictions-2026" target="_blank">ibm.com/think/news/ai-tech-trends-predictions-2026</a></div>
+                    <div id="fn4" class="footnote-item"><span class="footnote-num">4.</span><a href="https://www.nobelprize.org/prizes/chemistry/2024/press-release/" target="_blank">nobelprize.org/prizes/chemistry/2024/press-release</a></div>
+                    <div id="fn5" class="footnote-item"><span class="footnote-num">5.</span><a href="https://www.nature.com/articles/s41586-021-03819-2" target="_blank">nature.com/articles/s41586-021-03819-2</a></div>
+                    <div id="fn6" class="footnote-item"><span class="footnote-num">6.</span><a href="https://deepmind.google/blog/alphafold-five-years-of-impact/" target="_blank">deepmind.google/blog/alphafold-five-years-of-impact</a></div>
+                    <div id="fn7" class="footnote-item"><span class="footnote-num">7.</span><a href="https://setr.stanford.edu/technology/biotechnology-synthetic-biology/2025" target="_blank">setr.stanford.edu/technology/biotechnology-synthetic-biology/2025</a></div>
+                    <div id="fn8" class="footnote-item"><span class="footnote-num">8.</span><a href="https://innovativegenomics.org/news/crispr-clinical-trials-2025/" target="_blank">innovativegenomics.org/news/crispr-clinical-trials-2025</a></div>
+                    <div id="fn9" class="footnote-item"><span class="footnote-num">9.</span><a href="https://crisprmedicinenews.com/clinical-trials/" target="_blank">crisprmedicinenews.com/clinical-trials</a></div>
+                    <div id="fn10" class="footnote-item"><span class="footnote-num">10.</span><a href="https://newsroom.heart.org/news/first-in-human-trial-of-crispr-gene-editing-therapy-safely-lowered-cholesterol-triglycerides" target="_blank">newsroom.heart.org/.../first-in-human-trial-of-crispr-gene-editing-therapy</a></div>
+                    <div id="fn11" class="footnote-item"><span class="footnote-num">11.</span><a href="https://www.startus-insights.com/innovators-guide/synthetic-biology-trends/" target="_blank">startus-insights.com/innovators-guide/synthetic-biology-trends</a></div>
+                    <div id="fn12" class="footnote-item"><span class="footnote-num">12.</span><a href="https://www.synbiobeta.com/read/the-synthetic-revolution-you-didnt-see-coming-a-glimpse-at-2024s-most-game-changing-biotech-inventions" target="_blank">synbiobeta.com/.../the-synthetic-revolution-you-didnt-see-coming</a></div>
+                    <div id="fn13" class="footnote-item"><span class="footnote-num">13.</span><a href="https://www.elysiumhealth.com/blogs/aging101/top-10-longevity-studies-of-2024" target="_blank">elysiumhealth.com/blogs/aging101/top-10-longevity-studies-of-2024</a></div>
+                    <div id="fn14" class="footnote-item"><span class="footnote-num">14.</span><a href="https://www.timeline.com/blog/2025-breakthroughs-in-longevity-research" target="_blank">timeline.com/blog/2025-breakthroughs-in-longevity-research</a></div>
+                    <div id="fn15" class="footnote-item"><span class="footnote-num">15.</span><a href="https://www.afar.org/top-breakthroughs-in-aging" target="_blank">afar.org/top-breakthroughs-in-aging</a></div>
+                    <div id="fn16" class="footnote-item"><span class="footnote-num">16.</span><a href="https://www.gethealthspan.com/research/article/top-ten-longevity-anti-aging-breakthroughs-of-2025" target="_blank">gethealthspan.com/.../top-ten-longevity-anti-aging-breakthroughs-of-2025</a></div>
+                    <div id="fn17" class="footnote-item"><span class="footnote-num">17.</span><a href="https://www.spacefoundation.org/2025/07/22/the-space-report-2025-q2/" target="_blank">spacefoundation.org/.../the-space-report-2025-q2</a></div>
+                    <div id="fn18" class="footnote-item"><span class="footnote-num">18.</span><a href="https://spacexstock.com/private-space-market-trends/" target="_blank">spacexstock.com/private-space-market-trends</a></div>
+                    <div id="fn19" class="footnote-item"><span class="footnote-num">19.</span><a href="https://sacra.com/c/spacex/" target="_blank">sacra.com/c/spacex</a></div>
+                    <div id="fn20" class="footnote-item"><span class="footnote-num">20.</span><a href="https://spacexstock.com/spacex-vs-competitors-launch-market-share-2025/" target="_blank">spacexstock.com/spacex-vs-competitors-launch-market-share-2025</a></div>
+                    <div id="fn21" class="footnote-item"><span class="footnote-num">21.</span><a href="https://www.space.com/space-exploration/private-spaceflight/will-2025-be-the-year-of-starship-spacex-megarocket-is-growing-up" target="_blank">space.com/.../will-2025-be-the-year-of-starship</a></div>
+                    <div id="fn22" class="footnote-item"><span class="footnote-num">22.</span><a href="https://en.wikipedia.org/wiki/SpaceX" target="_blank">en.wikipedia.org/wiki/SpaceX</a></div>
+                    <div id="fn23" class="footnote-item"><span class="footnote-num">23.</span><a href="https://about.bnef.com/insights/clean-energy/global-cost-of-renewables-to-continue-falling-in-2025-as-china-extends-manufacturing-lead-bloombergnef/" target="_blank">about.bnef.com/.../global-cost-of-renewables-to-continue-falling-in-2025</a></div>
+                    <div id="fn24" class="footnote-item"><span class="footnote-num">24.</span><a href="https://ourworldindata.org/data-insights/solar-panel-prices-have-fallen-by-around-20-every-time-global-capacity-doubled" target="_blank">ourworldindata.org/.../solar-panel-prices-have-fallen</a></div>
+                    <div id="fn25" class="footnote-item"><span class="footnote-num">25.</span><a href="https://www.visualcapitalist.com/the-plummeting-cost-of-renewable-energy/" target="_blank">visualcapitalist.com/the-plummeting-cost-of-renewable-energy</a></div>
+                    <div id="fn26" class="footnote-item"><span class="footnote-num">26.</span><a href="https://www.energysage.com/news/solar-prices-hit-all-time-lows-in-2024/" target="_blank">energysage.com/news/solar-prices-hit-all-time-lows-in-2024</a></div>
+                    <div id="fn27" class="footnote-item"><span class="footnote-num">27.</span><a href="https://www.cnbc.com/2024/12/28/why-microsoft-amazon-google-and-meta-are-betting-on-nuclear-power.html" target="_blank">cnbc.com/.../why-microsoft-amazon-google-and-meta-are-betting-on-nuclear-power</a></div>
+                    <div id="fn28" class="footnote-item"><span class="footnote-num">28.</span><a href="https://fortune.com/2024/10/16/google-amazon-microsoft-nuclear-energy-ai-data-centers/" target="_blank">fortune.com/.../google-amazon-microsoft-nuclear-energy-ai-data-centers</a></div>
+                    <div id="fn29" class="footnote-item"><span class="footnote-num">29.</span><a href="https://finance.yahoo.com/news/meta-signs-multi-gigawatt-nuclear-112234780.html" target="_blank">finance.yahoo.com/.../meta-signs-multi-gigawatt-nuclear</a></div>
+                    <div id="fn30" class="footnote-item"><span class="footnote-num">30.</span><a href="https://www.fusionindustryassociation.org/over-2-5-billion-invested-in-fusion-industry-in-past-year/" target="_blank">fusionindustryassociation.org/.../over-2-5-billion-invested-in-fusion</a></div>
+                    <div id="fn31" class="footnote-item"><span class="footnote-num">31.</span><a href="https://techcrunch.com/2025/12/31/every-fusion-startup-that-has-raised-over-100m/" target="_blank">techcrunch.com/.../every-fusion-startup-that-has-raised-over-100m</a></div>
+                    <div id="fn32" class="footnote-item"><span class="footnote-num">32.</span><a href="https://energy.mit.edu/news/funding-the-fusion-revolution/" target="_blank">energy.mit.edu/news/funding-the-fusion-revolution</a></div>
+                    <div id="fn33" class="footnote-item"><span class="footnote-num">33.</span><a href="https://www.iea.org/reports/the-path-to-a-new-era-for-nuclear-energy/executive-summary" target="_blank">iea.org/reports/the-path-to-a-new-era-for-nuclear-energy</a></div>
+                    <div id="fn34" class="footnote-item"><span class="footnote-num">34.</span><a href="https://intelligence-curse.ai/" target="_blank">intelligence-curse.ai</a></div>
+                    <div id="fn35" class="footnote-item"><span class="footnote-num">35.</span><a href="https://www.rand.org/topics/geopolitical-strategic-competition.html" target="_blank">rand.org/topics/geopolitical-strategic-competition</a></div>
+                    <div id="fn36" class="footnote-item"><span class="footnote-num">36.</span><a href="https://safe.ai/ai-risk" target="_blank">safe.ai/ai-risk</a></div>
+                    <div id="fn37" class="footnote-item"><span class="footnote-num">37.</span><a href="https://vitalik.eth.limo/general/2023/11/27/techno_optimism.html" target="_blank">vitalik.eth.limo/.../techno_optimism</a></div>
+                    <div id="fn38" class="footnote-item"><span class="footnote-num">38.</span>GiveWell has moved $2.6 billion to evidence-backed interventions, averting an estimated 340,000 deaths. Giving What We Can has secured over $2.5 billion in lifetime pledges from 10,000+ members across 95 countries. Coefficient Giving (formerly Open Philanthropy) has deployed $4+ billion since 2014 across global health, AI safety, biosecurity, and animal welfare.</div>
+                </div>
+
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 py-8">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+            <p class="text-sm text-slate-500">&copy; 2025 Stanford Effective Altruism. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

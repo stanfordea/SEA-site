@@ -1,0 +1,205 @@
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Incubator | Stanford Effective Altruism</title>
+<link rel="icon" type="image/png" href="SEALogoBlueSquare.png">
+<!-- Prefetch other pages for faster navigation -->
+<link rel="prefetch" href="index.html">
+<link rel="prefetch" href="ea.html">
+<link rel="prefetch" href="community.html">
+<link rel="prefetch" href="career-accelerator.html">
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<!-- Tailwind & Icons -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+fontFamily: {
+sans: ['Inter', 'sans-serif'],
+serif: ['Source Serif Pro', 'serif'],
+mono: ['JetBrains Mono', 'monospace'],
+},
+colors: {
+bg: '#F8FAFC',
+cardinal: '#8C1515',
+eablue: '#0C87C9',
+slate: '#334155',
+dark: '#0F172A'
+}
+}
+}
+}
+</script>
+<style>
+body { margin: 0; background-color: #F8FAFC; color: #0F172A; overflow-x: hidden; }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+.glass-nav {
+background: rgba(255, 255, 255, 0.7);
+backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+::selection { background: #0C87C9; color: white; }
+.logo-blue {
+    filter: brightness(0) saturate(100%) invert(41%) sepia(98%) saturate(456%) hue-rotate(166deg) brightness(93%) contrast(96%);
+}
+</style></head>
+
+<body class="antialiased font-sans bg-bg min-h-screen">
+
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3 cursor-pointer">
+                <img src="SEAlogo.png" alt="Stanford EA" class="h-10 w-auto logo-blue">
+                <div class="flex flex-col leading-none">
+                    <span class="font-serif text-base font-semibold text-slate-900">Stanford</span>
+                    <span class="font-sans text-[10px] font-medium tracking-widest uppercase text-eablue">Effective Altruism</span>
+                </div>
+            </a>
+
+            <!-- Back to Programs -->
+            <a href="index.html#fellowships" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-slate-600 hover:text-cardinal hover:bg-slate-100/50 transition-all">
+                <iconify-icon icon="solar:arrow-left-linear" class="w-4 h-4"></iconify-icon>
+                Back to Programs
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-20 px-6">
+        <div class="max-w-3xl mx-auto">
+
+            <!-- Header -->
+            <div class="mb-12">
+                <span class="bg-cardinal/10 text-cardinal px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Advanced</span>
+                <h1 class="font-serif text-4xl md:text-5xl text-slate-900 mt-4 mb-4">Project Incubator</h1>
+                <p class="text-lg text-slate-600">Join or pitch. We run high-impact projects, match-make teams, provide mentorship, resources, and a community of builders tackling the world's most pressing problems.</p>
+                <div class="flex items-center gap-4 mt-6 text-sm text-slate-500">
+                    <div class="flex items-center gap-2">
+                        <iconify-icon icon="solar:clock-circle-linear" class="w-4 h-4"></iconify-icon>
+                        Quarterly
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <iconify-icon icon="solar:users-group-rounded-linear" class="w-4 h-4"></iconify-icon>
+                        Project teams
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <iconify-icon icon="solar:hand-shake-linear" class="w-4 h-4"></iconify-icon>
+                        Mentorship & funding
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Sections -->
+            <div class="space-y-10">
+
+                <!-- Possible Project Types -->
+                <div class="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center text-center">
+                            <iconify-icon icon="solar:lightbulb-bolt-linear" width="20" height="20"></iconify-icon>
+                        </div>
+                        <h2 class="font-serif text-2xl text-slate-900">Possible Project Types</h2>
+                    </div>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-4">We're generally excited about:</p>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3 text-sm text-slate-600">
+                            <iconify-icon icon="solar:document-text-linear" class="w-5 h-5 text-purple-500 shrink-0 mt-0.5"></iconify-icon>
+                            <span><strong>Independent essays or research reports</strong> which we publish on the Stanford EA substack and EA forum.</span>
+                        </div>
+                        <div class="flex items-start gap-3 text-sm text-slate-600">
+                            <iconify-icon icon="solar:atom-linear" class="w-5 h-5 text-purple-500 shrink-0 mt-0.5"></iconify-icon>
+                            <span><strong>Research publications</strong> related to pressing global problems e.g. pandemic prevention, nuclear security, global health and development. <a href="https://80000hours.org/problem-profiles/" target="_blank" class="text-eablue hover:underline">See more examples</a>.</span>
+                        </div>
+                        <div class="flex items-start gap-3 text-sm text-slate-600">
+                            <iconify-icon icon="solar:map-linear" class="w-5 h-5 text-purple-500 shrink-0 mt-0.5"></iconify-icon>
+                            <div>
+                                <span><strong>Field maps and sense-making.</strong> The world is complex with billions of people, tens of thousands of organizations, and nearly 200 nations. We especially love projects that try to make sense of our world and make it legible. <span class="relative group inline-block"><span class="text-eablue cursor-help border-b border-dashed border-eablue">Why?</span><span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 p-3 bg-white text-slate-700 text-xs rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10 shadow-lg border border-slate-200">You're preparing to be a leader in your field. You need in-depth expertise, and a research output that synergizes well with that need is distillation, so we think these can be especially good projects for a wide variety of students.</span></span></span>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 text-sm text-slate-600">
+                            <iconify-icon icon="solar:pen-new-square-linear" class="w-5 h-5 text-purple-500 shrink-0 mt-0.5"></iconify-icon>
+                            <div>
+                                <span><strong>Propose your own.</strong> Have an idea that doesn't fit the categories above? We're open to creative proposals. For projects we're excited about, we can help obtain funding and connect you with collaborators.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Past Projects -->
+                <div class="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-blue-50 text-eablue flex items-center justify-center text-center">
+                            <iconify-icon icon="solar:folder-open-linear" width="20" height="20"></iconify-icon>
+                        </div>
+                        <h2 class="font-serif text-2xl text-slate-900">Past Projects</h2>
+                    </div>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Stanford EA launched <a href="https://seri.stanford.edu/" target="_blank" class="text-eablue hover:underline font-medium">SERI</a>, incubated <a href="https://www.matsprogram.org/" target="_blank" class="text-eablue hover:underline font-medium">MATS</a>, <a href="https://www.effectivealtruism.org/courses" target="_blank" class="text-eablue hover:underline font-medium">EA Virtual Programs</a>, and the <a href="https://gfi.org/directory/the-stanford-alt-protein-project/" target="_blank" class="text-eablue hover:underline font-medium">Stanford Alt Protein Project</a>.
+                    </p>
+                    <p class="text-sm text-slate-600 leading-relaxed mt-4">
+                        For examples of additional projects, find us on <a href="https://stanfordeffectivealtruism.substack.com/" target="_blank" class="text-eablue hover:underline font-medium">Substack</a> and the <a href="https://forum.effectivealtruism.org/users/stanford-ea" target="_blank" class="text-eablue hover:underline font-medium">EA Forum</a>.
+                    </p>
+                </div>
+
+                <!-- What you get -->
+                <div class="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-cardinal/10 text-cardinal flex items-center justify-center text-center">
+                            <iconify-icon icon="solar:gift-linear" width="20" height="20"></iconify-icon>
+                        </div>
+                        <h2 class="font-serif text-2xl text-slate-900">What you get</h2>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3 text-sm text-slate-600">
+                            <iconify-icon icon="solar:check-circle-linear" class="w-5 h-5 text-cardinal shrink-0 mt-0.5"></iconify-icon>
+                            <span><strong>Team matching</strong> — we'll help connect you with collaborators who share your interests and complement your skills.</span>
+                        </div>
+                        <div class="flex items-start gap-3 text-sm text-slate-600">
+                            <iconify-icon icon="solar:check-circle-linear" class="w-5 h-5 text-cardinal shrink-0 mt-0.5"></iconify-icon>
+                            <span><strong>Structured support</strong> to develop and validate your ideas.</span>
+                        </div>
+                        <div class="flex items-start gap-3 text-sm text-slate-600">
+                            <iconify-icon icon="solar:check-circle-linear" class="w-5 h-5 text-cardinal shrink-0 mt-0.5"></iconify-icon>
+                            <span><strong>A community of builders</strong> working on high-impact projects alongside you.</span>
+                        </div>
+                        <div class="flex items-start gap-3 text-sm text-slate-600">
+                            <iconify-icon icon="solar:check-circle-linear" class="w-5 h-5 text-cardinal shrink-0 mt-0.5"></iconify-icon>
+                            <span><strong>Publishing support</strong> to share your work on the Stanford EA substack and EA forum.</span>
+                        </div>
+                        <div class="flex items-start gap-3 text-sm text-slate-600">
+                            <iconify-icon icon="solar:check-circle-linear" class="w-5 h-5 text-cardinal shrink-0 mt-0.5"></iconify-icon>
+                            <span><strong>Potential funding</strong> and connections to collaborators for projects we're excited about.</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Apply CTA -->
+            <div class="mt-12 text-center">
+                <h3 class="font-serif text-2xl mb-2 text-slate-900">Ready to build something impactful?</h3>
+                <p class="text-slate-600 mb-6">Applications are rolling. Questions? Reach out to us.</p>
+                <div class="flex items-center justify-center gap-4">
+                    <a href="https://forms.gle/XJ6JMWBmb7jA68Tr6" target="_blank" class="inline-flex items-center gap-2 bg-cardinal text-white px-6 py-3 rounded-xl font-semibold hover:bg-cardinal/90 transition-colors">
+                        <iconify-icon icon="solar:arrow-left-up-linear" class="w-4 h-4"></iconify-icon>
+                        Pitch a Project
+                    </a>
+                    <a href="https://forms.gle/Xzk5ZiiSL6QeUmGLA" target="_blank" class="inline-flex items-center gap-2 border-2 border-cardinal/40 text-cardinal px-6 py-3 rounded-xl font-semibold hover:bg-cardinal/5 transition-colors">
+                        Join a Project
+                        <iconify-icon icon="solar:arrow-right-up-linear" class="w-4 h-4"></iconify-icon>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</body></html>

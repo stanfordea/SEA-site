@@ -1,0 +1,1760 @@
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stanford Effective Altruism | Evidence &amp; Reason</title>
+<link rel="icon" type="image/png" href="SEALogoBlueSquare.png">
+<!-- Prefetch other pages for faster navigation -->
+<link rel="prefetch" href="ea.html">
+<link rel="prefetch" href="community.html">
+<link rel="prefetch" href="career-accelerator.html">
+<link rel="prefetch" href="project-incubator.html">
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<!-- Tailwind & Icons -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+fontFamily: {
+sans: ['Inter', 'sans-serif'],
+serif: ['Source Serif Pro', 'serif'],
+mono: ['JetBrains Mono', 'monospace'],
+},
+colors: {
+bg: '#F8FAFC',
+cardinal: '#8C1515',
+eablue: '#0C87C9',
+slate: '#334155',
+dark: '#0F172A'
+},
+animation: {
+'fade-in': 'fadeIn 1.2s ease-out forwards',
+'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+},
+keyframes: {
+fadeIn: {
+'0%': { opacity: '0', transform: 'translateY(10px)' },
+'100%': { opacity: '1', transform: 'translateY(0)' },
+},
+slideUp: {
+'0%': { opacity: '0', transform: 'translateY(40px)' },
+'100%': { opacity: '1', transform: 'translateY(0)' },
+}
+}
+}
+}
+}
+</script>
+<style>
+body { margin: 0; background-color: #F8FAFC; color: #0F172A; overflow-x: hidden; }
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+/* Custom Range Slider */
+input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
+input[type=range]::-webkit-slider-thumb {
+-webkit-appearance: none; height: 14px; width: 14px;
+background: #0F172A; border: 2px solid white; border-radius: 50%;
+box-shadow: 0 2px 5px rgba(0,0,0,0.2); cursor: pointer; margin-top: -6px;
+transition: transform 0.2s ease;
+}
+input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.1); }
+input[type=range]::-webkit-slider-runnable-track {
+width: 100%; height: 2px; cursor: pointer; background: #CBD5E1; border-radius: 2px;
+}
+input[type=range]:focus { outline: none; }
+/* Custom Toggle */
+.toggle-checkbox:checked { right: 0; border-color: currentColor; }
+.toggle-checkbox:checked + .toggle-label { background-color: currentColor; }
+/* Glass Components */
+.glass-panel {
+background: rgba(255, 255, 255, 0.85);
+backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+border: 1px solid rgba(255, 255, 255, 0.6);
+box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
+}
+.glass-nav {
+background: rgba(255, 255, 255, 0.7);
+backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+::selection { background: #0C87C9; color: white; }
+/* Logo color grading to match eablue */
+.logo-blue {
+    filter: brightness(0) saturate(100%) invert(41%) sepia(98%) saturate(456%) hue-rotate(166deg) brightness(93%) contrast(96%);
+}
+/* Geometric patterns for Fellowship Cards */
+.geo-pattern-1 {
+background-image: radial-gradient(#8C1515 1px, transparent 1px);
+background-size: 10px 10px;
+}
+.geo-pattern-2 {
+background-image: repeating-linear-gradient(45deg, #0C87C9 0, #0C87C9 1px, transparent 0, transparent 50%);
+background-size: 10px 10px;
+}
+/* Hide scrollbar but allow scrolling */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+</style></head>
+
+<body class="antialiased font-sans bg-bg min-h-screen relative selection:bg-cardinal selection:text-white">
+
+    <!-- Canvas Container (Fixed Background) -->
+    <div id="canvas-container" class="fixed inset-0 z-0 pointer-events-none"></div>
+
+    <!-- Navigation (Sticky) -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <img src="SEAlogo.png" alt="Stanford EA" class="h-10 w-auto logo-blue">
+                <div class="flex flex-col leading-none">
+                    <span class="font-serif text-base font-semibold text-slate-900">Stanford</span>
+                    <span class="font-sans text-[10px] font-medium tracking-widest uppercase text-eablue">Effective Altruism</span>
+                </div>
+            </div>
+
+            <!-- Navigation Islands -->
+            <div class="hidden md:flex items-center gap-3">
+                <!-- Island 1: About Us (Link) - LEFT -->
+                <a href="community.html" class="flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium text-slate-500 hover:text-cardinal hover:bg-slate-100/50 transition-all">
+                    <iconify-icon icon="solar:arrow-left-linear" class="w-3 h-3"></iconify-icon>
+                    <span>About Us</span>
+                </a>
+
+                <!-- Island Separator -->
+                <div class="w-px h-6 bg-slate-200"></div>
+
+                <!-- Island 2: Stanford EA (Active) - CENTER -->
+                <nav class="flex items-center gap-1 bg-slate-100/50 p-1 rounded-full border border-slate-200/50 relative">
+                    <div id="nav-indicator" class="absolute h-[calc(100%-8px)] bg-white rounded-full shadow-sm transition-all duration-300 ease-out" style="left: 4px; width: 54px;"></div>
+                    <a href="#hero" data-nav="hero" class="nav-link px-4 py-1.5 rounded-full text-xs font-medium text-slate-600 hover:text-cardinal transition-all relative z-10">Start</a>
+                    <a href="#fellowships" data-nav="fellowships" class="nav-link px-4 py-1.5 rounded-full text-xs font-medium text-slate-600 hover:text-cardinal transition-all relative z-10">Fellowships</a>
+                    <a href="#projects" data-nav="projects" class="nav-link px-4 py-1.5 rounded-full text-xs font-medium text-slate-600 hover:text-cardinal transition-all relative z-10">Projects</a>
+                    <a href="#events" data-nav="events" class="nav-link px-4 py-1.5 rounded-full text-xs font-medium text-slate-600 hover:text-cardinal transition-all relative z-10">Events</a>
+                </nav>
+
+                <!-- Island Separator -->
+                <div class="w-px h-6 bg-slate-200"></div>
+
+                <!-- Island 3: Effective Altruism (Link) - RIGHT -->
+                <a href="ea.html" class="flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium text-slate-500 hover:text-eablue hover:bg-slate-100/50 transition-all">
+                    <span>Effective Altruism</span>
+                    <iconify-icon icon="solar:arrow-right-linear" class="w-3 h-3"></iconify-icon>
+                </a>
+            </div>
+
+            <a href="https://forms.gle/rzgbSgyfRM6f6Ncd8" target="_blank" class="hidden sm:block bg-white text-slate-900 border border-slate-200 px-4 py-2 rounded-full text-xs font-medium tracking-wide hover:bg-cardinal hover:text-white hover:border-cardinal transition-colors shadow-lg shadow-slate-900/10">
+                Join Newsletter
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden flex items-center justify-center w-10 h-10 rounded-full bg-slate-100/50 border border-slate-200/50 text-slate-600 hover:text-cardinal transition-colors">
+                <iconify-icon id="menu-icon" icon="solar:hamburger-menu-linear" class="text-xl"></iconify-icon>
+            </button>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-lg border-b border-slate-200 shadow-lg">
+            <nav class="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-2">
+                <a href="index.html" class="px-4 py-3 rounded-xl text-sm font-medium text-cardinal bg-cardinal/5">Home</a>
+                <a href="community.html" class="px-4 py-3 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors">Meet the Team</a>
+                <a href="ea.html" class="px-4 py-3 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors">Effective Altruism</a>
+                <a href="manifesto.html" class="px-4 py-3 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors">Manifesto</a>
+                <div class="border-t border-slate-100 my-2"></div>
+                <a href="https://forms.gle/rzgbSgyfRM6f6Ncd8" target="_blank" class="px-4 py-3 rounded-xl text-sm font-medium text-white bg-cardinal hover:bg-cardinal/90 transition-colors text-center">Join Newsletter</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Scrollable Content Wrapper -->
+    <main class="relative z-10 w-full">
+        
+        <!-- SECTION 1: HERO -->
+        <section id="hero" class="min-h-screen w-full flex flex-col justify-center px-6 md:px-12 pt-20 relative">
+            
+            <div class="max-w-4xl animate-fade-in" style="animation-delay: 0.1s;">
+                <div class="inline-flex items-center gap-2 mb-6 px-3 py-1 rounded-full border border-eablue/20 bg-eablue/5 backdrop-blur-sm hover:scale-105 hover:shadow-md hover:shadow-eablue/20 transition-all duration-200 cursor-pointer">
+                    <div class="w-1.5 h-1.5 rounded-full bg-eablue animate-pulse shrink-0"></div>
+                    <div class="overflow-hidden h-[16px] relative w-[185px]">
+                        <div id="rotating-tags" class="transition-transform duration-500 ease-out">
+                            <span class="font-mono text-[10px] text-eablue font-medium tracking-wide uppercase block h-[16px] leading-[16px]">Moral Ambition at Stanford</span>
+                            <span class="font-mono text-[10px] text-eablue font-medium tracking-wide uppercase block h-[16px] leading-[16px]">Pre-Professional Upskilling</span>
+                            <span class="font-mono text-[10px] text-eablue font-medium tracking-wide uppercase block h-[16px] leading-[16px]">Evidence-Driven Impact</span>
+                            <span class="font-mono text-[10px] text-eablue font-medium tracking-wide uppercase block h-[16px] leading-[16px]">Kickstarting Careers</span>
+                            <span class="font-mono text-[10px] text-eablue font-medium tracking-wide uppercase block h-[16px] leading-[16px]">Building for the Long Term</span>
+                            <span class="font-mono text-[10px] text-eablue font-medium tracking-wide uppercase block h-[16px] leading-[16px]">Networking and Mentorship</span>
+                            <span class="font-mono text-[10px] text-eablue font-medium tracking-wide uppercase block h-[16px] leading-[16px]">Careers That Matter</span>
+                            <span class="font-mono text-[10px] text-eablue font-medium tracking-wide uppercase block h-[16px] leading-[16px]">Aiming Higher</span>
+                            <span class="font-mono text-[10px] text-eablue font-medium tracking-wide uppercase block h-[16px] leading-[16px]">Moral Ambition at Stanford</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-slate-900 leading-[0.95] tracking-tight mb-8">
+                    Doing Good <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cardinal to-eablue italic pr-4">Better.</span>
+                </h1>
+                
+                <p class="max-w-lg font-sans text-sm md:text-base text-slate-600 leading-relaxed mb-10">
+                    We're the next generation of leaders, researchers, and founders. <a href="https://www.moralambition.org/book" target="_blank" class="text-slate-900 hover:underline">Morally ambitious</a>. Analytically rigorous. Impact-oriented. Tackling today's most <a href="https://80000hours.org/problem-profiles/" target="_blank" class="text-slate-900 hover:underline">pressing problems</a>. Building for the <a href="https://www.effectivealtruism.org/articles/cause-profile-long-run-future" target="_blank" class="text-slate-900 hover:underline">long tomorrow</a>.
+                </p>
+
+                <div class="flex items-center gap-4">
+                    <a href="#fellowships" class="group relative overflow-hidden bg-cardinal text-white px-7 py-3 rounded-full shadow-lg shadow-cardinal/20 hover:shadow-cardinal/40 transition-all duration-300">
+                        <span class="relative z-10 flex items-center gap-2 font-medium text-sm">
+                            Explore Fellowships
+                            <iconify-icon icon="solar:arrow-down-linear" class="w-4 h-4"></iconify-icon>
+                        </span>
+                    </a>
+                    <a href="manifesto.html" class="px-6 py-3 rounded-full border border-slate-200 hover:border-eablue hover:text-eablue transition-colors bg-white/50 backdrop-blur-sm text-sm font-medium text-slate-600">
+                        Read Manifesto
+                    </a>
+                </div>
+            </div>
+
+            <!-- Bottom Rotating Statement -->
+            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-center hidden md:block">
+                <!-- Rotating Career x Challenge -->
+                <div class="flex items-center justify-center gap-2 text-base text-slate-600 mb-4 italic">
+                    <span class="font-serif">We become</span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-eablue/30 bg-eablue/10 backdrop-blur-sm shadow-sm hover:scale-105 hover:shadow-md hover:shadow-eablue/20 transition-all duration-200 cursor-pointer">
+                        <span class="w-1.5 h-1.5 rounded-full bg-eablue animate-pulse shrink-0"></span>
+                        <span class="overflow-hidden h-[16px] relative w-[125px] text-left">
+                            <div id="rotating-careers" class="transition-transform duration-500 ease-out">
+                                <span class="font-mono text-[10px] text-eablue font-medium tracking-wide uppercase block h-[16px] leading-[16px]">founders</span>
+                                <span class="font-mono text-[10px] text-eablue font-medium tracking-wide uppercase block h-[16px] leading-[16px]">policy advisors</span>
+                                <span class="font-mono text-[10px] text-eablue font-medium tracking-wide uppercase block h-[16px] leading-[16px]">grantmakers</span>
+                                <span class="font-mono text-[10px] text-eablue font-medium tracking-wide uppercase block h-[16px] leading-[16px]">research scientists</span>
+                                <span class="font-mono text-[10px] text-eablue font-medium tracking-wide uppercase block h-[16px] leading-[16px]">think tank fellows</span>
+                                <span class="font-mono text-[10px] text-eablue font-medium tracking-wide uppercase block h-[16px] leading-[16px]">government advisors</span>
+                                <span class="font-mono text-[10px] text-eablue font-medium tracking-wide uppercase block h-[16px] leading-[16px]">operations leaders</span>
+                                <span class="font-mono text-[10px] text-eablue font-medium tracking-wide uppercase block h-[16px] leading-[16px]">nonprofit executives</span>
+                                <span class="font-mono text-[10px] text-eablue font-medium tracking-wide uppercase block h-[16px] leading-[16px]">journalists</span>
+                                <span class="font-mono text-[10px] text-eablue font-medium tracking-wide uppercase block h-[16px] leading-[16px]">founders</span>
+                            </div>
+                        </span>
+                    </span>
+                    <span class="font-serif">to take on global challenges in</span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cardinal/30 bg-cardinal/10 backdrop-blur-sm shadow-sm hover:scale-105 hover:shadow-md hover:shadow-cardinal/20 transition-all duration-200 cursor-pointer">
+                        <span class="w-1.5 h-1.5 rounded-full bg-cardinal animate-pulse shrink-0"></span>
+                        <span class="overflow-hidden h-[16px] relative w-[160px] text-left">
+                            <div id="rotating-challenges" class="transition-transform duration-500 ease-out">
+                                <span class="font-mono text-[10px] text-cardinal font-medium tracking-wide uppercase block h-[16px] leading-[16px]">AI safety</span>
+                                <span class="font-mono text-[10px] text-cardinal font-medium tracking-wide uppercase block h-[16px] leading-[16px]">space governance</span>
+                                <span class="font-mono text-[10px] text-cardinal font-medium tracking-wide uppercase block h-[16px] leading-[16px]">climate change</span>
+                                <span class="font-mono text-[10px] text-cardinal font-medium tracking-wide uppercase block h-[16px] leading-[16px]">biosecurity</span>
+                                <span class="font-mono text-[10px] text-cardinal font-medium tracking-wide uppercase block h-[16px] leading-[16px]">governance futurism</span>
+                                <span class="font-mono text-[10px] text-cardinal font-medium tracking-wide uppercase block h-[16px] leading-[16px]">nuclear security</span>
+                                <span class="font-mono text-[10px] text-cardinal font-medium tracking-wide uppercase block h-[16px] leading-[16px]">global health</span>
+                                <span class="font-mono text-[10px] text-cardinal font-medium tracking-wide uppercase block h-[16px] leading-[16px]">global development</span>
+                                <span class="font-mono text-[10px] text-cardinal font-medium tracking-wide uppercase block h-[16px] leading-[16px]">great power competition</span>
+                                <span class="font-mono text-[10px] text-cardinal font-medium tracking-wide uppercase block h-[16px] leading-[16px]">digital minds</span>
+                                <span class="font-mono text-[10px] text-cardinal font-medium tracking-wide uppercase block h-[16px] leading-[16px]">animal welfare</span>
+                                <span class="font-mono text-[10px] text-cardinal font-medium tracking-wide uppercase block h-[16px] leading-[16px]">AI safety</span>
+                            </div>
+                        </span>
+                    </span>
+                </div>
+                <!-- Scroll Indicator -->
+                <div class="animate-bounce opacity-50">
+                    <iconify-icon icon="solar:arrow-down-linear" class="w-5 h-5 text-slate-400"></iconify-icon>
+                </div>
+            </div>
+
+            <!-- Visualization Controls (Pinned to hero section) -->
+            <div id="vis-controls" class="absolute bottom-8 right-6 md:right-12 w-[260px] glass-panel rounded-xl p-5 animate-fade-in opacity-0 z-50 hidden lg:block" style="animation-delay: 0.5s;">
+                <div class="flex justify-between items-center mb-4 border-b border-slate-200 pb-2">
+                    <span class="font-mono text-[10px] uppercase tracking-widest text-slate-500">Vis Control</span>
+                    <iconify-icon icon="solar:pulse-2-linear" class="w-3 h-3 text-slate-400"></iconify-icon>
+                </div>
+                <div class="space-y-4">
+                    <div class="space-y-1">
+                        <div class="flex justify-between text-[10px] font-medium text-slate-600"><span>Dot Size</span><span id="val-size">4.5</span></div>
+                        <input type="range" id="input-size" min="1.0" max="8.0" step="0.5" value="4.5">
+                    </div>
+                    <div class="space-y-1">
+                        <div class="flex justify-between text-[10px] font-medium text-slate-600"><span>Distortion</span><span id="val-amp">1.0</span></div>
+                        <input type="range" id="input-amp" min="0.0" max="1.5" step="0.1" value="1.0">
+                    </div>
+                    <div class="space-y-1">
+                        <div class="flex justify-between text-[10px] font-medium text-slate-600"><span>Density</span><span id="val-detail">High</span></div>
+                        <input type="range" id="input-detail" min="0" max="30" step="10" value="30">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: FELLOWSHIPS -->
+        <section id="fellowships" class="min-h-screen w-full bg-slate-50/90 border-t border-slate-200 py-24 px-6 md:px-12 relative">
+            <div class="max-w-7xl mx-auto">
+                
+                <!-- Section Header -->
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                    <div>
+                        <span class="text-cardinal font-mono text-xs uppercase tracking-widest mb-3 block">02 — Programs</span>
+                        <h2 class="font-serif text-4xl md:text-5xl text-slate-900 tracking-tight mb-4">Our Programs</h2>
+                        <p class="text-slate-500 max-w-xl text-sm leading-relaxed">
+                            Explore our reading groups, career accelerator, and mentorship programs. We run cohort-based programs every quarter to help students navigate high-impact careers and complex global problems.
+                        </p>
+                    </div>
+                    <div class="flex gap-2">
+                        <span id="current-quarter" class="px-3 py-1 rounded-full bg-white border border-slate-200 text-[10px] uppercase tracking-wide font-medium text-slate-500"></span>
+                        <span class="px-3 py-1 rounded-full bg-white border border-slate-200 text-[10px] uppercase tracking-wide font-medium text-slate-500">Applications Open</span>
+                    </div>
+                </div>
+
+                <!-- Cards Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    
+                    <!-- Card 1: Intro -->
+                    <div class="group bg-white rounded-3xl p-2 border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+                        <!-- Abstract Geometric Header -->
+                        <div class="h-64 rounded-2xl bg-slate-50 relative overflow-hidden mb-6 flex items-center justify-center">
+                            <!-- Geometric Composition -->
+                            <div class="absolute inset-0 opacity-50 geo-pattern-1"></div>
+                            <div class="relative w-48 h-48">
+                                <div class="absolute top-0 left-0 w-32 h-32 bg-cardinal/10 rounded-full mix-blend-multiply filter blur-xl group-hover:bg-cardinal/20 transition-colors"></div>
+                                <div class="absolute bottom-0 right-0 w-32 h-32 bg-eablue/10 rounded-full mix-blend-multiply filter blur-xl group-hover:bg-eablue/20 transition-colors"></div>
+                                
+                                <div class="absolute top-8 left-8 w-24 h-24 bg-white border border-slate-200 rounded-lg shadow-sm rotate-3 group-hover:rotate-6 transition-transform duration-700 z-10 flex items-center justify-center">
+                                    <iconify-icon icon="solar:book-linear" class="text-slate-400 w-8 h-8"></iconify-icon>
+                                </div>
+                                <div class="absolute top-16 left-20 w-16 h-16 bg-cardinal text-white rounded-lg shadow-lg -rotate-6 group-hover:-rotate-12 transition-transform duration-700 z-20 flex items-center justify-center">
+                                    <span class="font-serif font-bold text-lg">Arete</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="px-6 pb-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="font-serif text-2xl text-slate-900 mb-1">Arete Reading Group</h3>
+                                    <div class="flex items-center gap-2 text-xs text-slate-500 flex-wrap">
+                                        <iconify-icon icon="solar:clock-circle-linear" class="w-3 h-3"></iconify-icon> 7 Weeks
+                                        <span class="w-1 h-1 bg-slate-300 rounded-full"></span>
+                                        <iconify-icon icon="solar:book-linear" class="w-3 h-3"></iconify-icon> 2 hrs/wk reading
+                                        <span class="w-1 h-1 bg-slate-300 rounded-full"></span>
+                                        <iconify-icon icon="solar:chat-round-linear" class="w-3 h-3"></iconify-icon> 1 hr/wk discussion
+                                    </div>
+                                </div>
+                                <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Beginner</span>
+                            </div>
+
+                            <p class="text-sm text-slate-600 leading-relaxed mb-6">
+                                A flagship discussion program run at top universities around the world, exploring the core ideas of effective altruism. Develop tools to reason clearly about doing the most good—covering moral philosophy, cause prioritization, and career planning.
+                            </p>
+
+                            <div class="space-y-3 mb-8">
+                                <div class="flex items-center gap-3 text-xs text-slate-600">
+                                    <div class="w-6 h-6 rounded-full bg-cardinal/10 border border-cardinal/20 text-cardinal flex items-center justify-center shrink-0"><iconify-icon icon="solar:lightbulb-bolt-linear" class="w-3 h-3"></iconify-icon></div>
+                                    <span>The Effectiveness Mindset</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-xs text-slate-600">
+                                    <div class="w-6 h-6 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-600 flex items-center justify-center shrink-0"><iconify-icon icon="solar:chart-2-linear" class="w-3 h-3"></iconify-icon></div>
+                                    <span>Ambitious, High Impact Career Planning</span>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-3">
+                                <a href="https://forms.gle/QdhRqbi6817kc2mb8" target="_blank" class="flex-1 bg-white text-slate-900 border border-slate-200 py-3 rounded-xl text-xs font-semibold hover:bg-cardinal hover:text-white hover:border-cardinal transition-colors text-center">Apply</a>
+                                <a href="https://docs.google.com/document/d/1GvRdhvLtPuaanJ1eTbldTRR5eqlgfjYXKHU5VjiW9Ys/edit?usp=sharing" target="_blank" class="flex-1 border border-slate-200 text-slate-600 py-3 rounded-xl text-xs font-semibold hover:bg-eablue hover:text-white hover:border-eablue transition-colors flex items-center justify-center gap-2">
+                                    <iconify-icon icon="solar:document-text-linear" class="w-3 h-3"></iconify-icon> Syllabus
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Gravitas Fellowship -->
+                    <div class="group bg-white rounded-3xl p-2 border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+                        <!-- Abstract Geometric Header -->
+                        <div class="h-64 rounded-2xl bg-slate-50 relative overflow-hidden mb-6 flex items-center justify-center">
+                            <div class="absolute inset-0 opacity-30 geo-pattern-2"></div>
+                            <div class="relative w-48 h-48">
+                                <div class="absolute top-4 right-4 w-40 h-40 border border-slate-200 rounded-full flex items-center justify-center group-hover:scale-105 transition-transform duration-700">
+                                    <div class="w-32 h-32 border border-slate-200 rounded-full flex items-center justify-center">
+                                        <div class="w-24 h-24 border border-slate-200 rounded-full"></div>
+                                    </div>
+                                </div>
+                                <div class="absolute bottom-6 left-6 w-16 h-16 bg-eablue text-white rounded-lg shadow-lg rotate-3 group-hover:rotate-12 transition-transform duration-700 z-20 flex items-center justify-center">
+                                    <iconify-icon icon="solar:atom-linear" class="w-8 h-8"></iconify-icon>
+                                </div>
+                                <div class="absolute bottom-20 left-20 w-12 h-12 bg-slate-900 rounded-full shadow-lg z-30 group-hover:translate-y-[-5px] transition-transform duration-500"></div>
+                            </div>
+                        </div>
+
+                        <div class="px-6 pb-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="font-serif text-2xl text-slate-900 mb-1">Gravitas Reading Group</h3>
+                                    <div class="flex items-center gap-2 text-xs text-slate-500 flex-wrap">
+                                        <iconify-icon icon="solar:clock-circle-linear" class="w-3 h-3"></iconify-icon> 7 Weeks
+                                        <span class="w-1 h-1 bg-slate-300 rounded-full"></span>
+                                        <iconify-icon icon="solar:book-linear" class="w-3 h-3"></iconify-icon> 2 hrs/wk reading
+                                        <span class="w-1 h-1 bg-slate-300 rounded-full"></span>
+                                        <iconify-icon icon="solar:users-group-rounded-linear" class="w-3 h-3"></iconify-icon> Weekly cohort dinner
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="text-sm text-slate-600 leading-relaxed mb-6">
+                                We live in a pivotal moment in human history. Explore the profound responsibilities that fall to us—emerging technologies of unprecedented promise and peril, global challenges, and what it means to be stewards of the future.
+                            </p>
+
+                            <div class="space-y-3 mb-8">
+                                <div class="flex items-center gap-3 text-xs text-slate-600">
+                                    <div class="w-6 h-6 rounded-full bg-blue-50 border border-blue-100 text-eablue flex items-center justify-center shrink-0"><iconify-icon icon="solar:cpu-linear" class="w-3 h-3"></iconify-icon></div>
+                                    <span>Technologies of Promise &amp; Peril</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-xs text-slate-600">
+                                    <div class="w-6 h-6 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-600 flex items-center justify-center shrink-0"><iconify-icon icon="solar:buildings-2-linear" class="w-3 h-3"></iconify-icon></div>
+                                    <span>Civics &amp; Global Challenges</span>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-3">
+                                <a href="https://forms.gle/abaiphBTna1spD797" target="_blank" class="flex-1 border border-slate-200 text-slate-600 py-3 rounded-xl text-xs font-semibold text-center hover:bg-cardinal hover:text-white hover:border-cardinal transition-colors">Apply</a>
+                                <a href="https://docs.google.com/document/d/1IP0Fb-BSXYA5kXfu5EV8ySM46rtCo6aR9uAAmswwu9c/edit?usp=sharing" target="_blank" class="flex-1 border border-slate-200 text-slate-600 py-3 rounded-xl text-xs font-semibold hover:bg-eablue hover:text-white hover:border-eablue transition-colors flex items-center justify-center gap-2">
+                                    <iconify-icon icon="solar:document-text-linear" class="w-3 h-3"></iconify-icon> Syllabus
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Career Accelerator -->
+                    <div class="group bg-white rounded-3xl p-2 border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+                        <!-- Abstract Geometric Header -->
+                        <div class="h-64 rounded-2xl bg-slate-50 relative overflow-hidden mb-6 flex items-center justify-center">
+                            <div class="absolute inset-0 opacity-30 geo-pattern-1"></div>
+                            <div class="relative w-48 h-48">
+                                <div class="absolute top-0 left-0 w-32 h-32 bg-emerald-500/10 rounded-full mix-blend-multiply filter blur-xl group-hover:bg-emerald-500/20 transition-colors"></div>
+                                <div class="absolute bottom-0 right-0 w-32 h-32 bg-eablue/10 rounded-full mix-blend-multiply filter blur-xl group-hover:bg-eablue/20 transition-colors"></div>
+
+                                <div class="absolute top-8 left-8 w-24 h-24 bg-white border border-slate-200 rounded-lg shadow-sm rotate-3 group-hover:rotate-6 transition-transform duration-700 z-10 flex items-center justify-center">
+                                    <iconify-icon icon="solar:rocket-2-linear" class="text-slate-400 w-8 h-8"></iconify-icon>
+                                </div>
+                                <div class="absolute top-16 left-20 w-20 h-16 bg-emerald-600 text-white rounded-lg shadow-lg -rotate-6 group-hover:-rotate-12 transition-transform duration-700 z-20 flex items-center justify-center">
+                                    <iconify-icon icon="solar:graph-up-linear" class="w-6 h-6"></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="px-6 pb-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="font-serif text-2xl text-slate-900 mb-1">Career Accelerator</h3>
+                                    <div class="flex items-center gap-2 text-xs text-slate-500 flex-wrap">
+                                        <iconify-icon icon="solar:clock-circle-linear" class="w-3 h-3"></iconify-icon> Ongoing
+                                        <span class="w-1 h-1 bg-slate-300 rounded-full"></span>
+                                        <iconify-icon icon="solar:users-group-rounded-linear" class="w-3 h-3"></iconify-icon> Co-working group
+                                    </div>
+                                </div>
+                                <span class="bg-cardinal/10 text-cardinal px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Advanced</span>
+                            </div>
+
+                            <p class="text-sm text-slate-600 leading-relaxed mb-6">
+                                A semi-structured co-working group to make concrete progress on your career plans. Includes accountability, goal-setting, and one-on-one support.
+                            </p>
+
+                            <div class="space-y-3 mb-8">
+                                <div class="flex items-center gap-3 text-xs text-slate-600">
+                                    <div class="w-6 h-6 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-600 flex items-center justify-center shrink-0"><iconify-icon icon="solar:target-linear" class="w-3 h-3"></iconify-icon></div>
+                                    <span>Goal-Setting &amp; Accountability</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-xs text-slate-600">
+                                    <div class="w-6 h-6 rounded-full bg-blue-50 border border-blue-100 text-eablue flex items-center justify-center shrink-0"><iconify-icon icon="solar:user-hand-up-linear" class="w-3 h-3"></iconify-icon></div>
+                                    <span>Personalized One-on-One Support</span>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-3">
+                                <a href="https://forms.gle/xvADdLHasnUZutwB9" target="_blank" class="flex-1 border border-slate-200 text-slate-600 py-3 rounded-xl text-xs font-semibold text-center hover:bg-cardinal hover:text-white hover:border-cardinal transition-colors">Apply</a>
+                                <a href="career-accelerator.html" class="flex-1 border border-slate-200 text-slate-600 py-3 rounded-xl text-xs font-semibold hover:bg-eablue hover:text-white hover:border-eablue transition-colors flex items-center justify-center gap-2">
+                                    <iconify-icon icon="solar:info-circle-linear" class="w-3 h-3"></iconify-icon> Learn More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Project Incubator -->
+                    <div class="group bg-white rounded-3xl p-2 border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+                        <!-- Abstract Geometric Header -->
+                        <div class="h-64 rounded-2xl bg-slate-50 relative overflow-hidden mb-6 flex items-center justify-center">
+                            <div class="absolute inset-0 opacity-30 geo-pattern-2"></div>
+                            <div class="relative w-48 h-48">
+                                <div class="absolute top-0 left-0 w-32 h-32 bg-purple-500/10 rounded-full mix-blend-multiply filter blur-xl group-hover:bg-purple-500/20 transition-colors"></div>
+                                <div class="absolute bottom-0 right-0 w-32 h-32 bg-eablue/10 rounded-full mix-blend-multiply filter blur-xl group-hover:bg-eablue/20 transition-colors"></div>
+
+                                <div class="absolute top-8 left-8 w-24 h-24 bg-white border border-slate-200 rounded-lg shadow-sm rotate-3 group-hover:rotate-6 transition-transform duration-700 z-10 flex items-center justify-center">
+                                    <iconify-icon icon="solar:lightbulb-linear" class="text-slate-400 w-8 h-8"></iconify-icon>
+                                </div>
+                                <div class="absolute top-16 left-20 w-20 h-16 bg-purple-600 text-white rounded-lg shadow-lg -rotate-6 group-hover:-rotate-12 transition-transform duration-700 z-20 flex items-center justify-center">
+                                    <iconify-icon icon="solar:code-square-linear" class="w-6 h-6"></iconify-icon>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="px-6 pb-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="font-serif text-2xl text-slate-900 mb-1">Project Incubator</h3>
+                                    <div class="flex items-center gap-2 text-xs text-slate-500 flex-wrap">
+                                        <iconify-icon icon="solar:clock-circle-linear" class="w-3 h-3"></iconify-icon> Quarterly
+                                        <span class="w-1 h-1 bg-slate-300 rounded-full"></span>
+                                        <iconify-icon icon="solar:users-group-rounded-linear" class="w-3 h-3"></iconify-icon> Project teams
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-end gap-1">
+                                    <span class="bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Coming Soon</span>
+                                    <span class="bg-cardinal/10 text-cardinal px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Advanced</span>
+                                </div>
+                            </div>
+
+                            <p class="text-sm text-slate-600 leading-relaxed mb-6">
+                                We run high-impact projects, match-make teams, provide mentorship, resources, and a community of builders tackling the world's most pressing problems.
+                            </p>
+
+                            <div class="space-y-3 mb-8">
+                                <div class="flex items-center gap-3 text-xs text-slate-600">
+                                    <div class="w-6 h-6 rounded-full bg-purple-50 border border-purple-100 text-purple-600 flex items-center justify-center shrink-0"><iconify-icon icon="solar:lightbulb-bolt-linear" class="w-3 h-3"></iconify-icon></div>
+                                    <span>Idea Development &amp; Validation</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-xs text-slate-600">
+                                    <div class="w-6 h-6 rounded-full bg-blue-50 border border-blue-100 text-eablue flex items-center justify-center shrink-0"><iconify-icon icon="solar:hand-shake-linear" class="w-3 h-3"></iconify-icon></div>
+                                    <span>Mentorship &amp; Resources</span>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-3">
+                                <a href="https://forms.gle/XJ6JMWBmb7jA68Tr6" target="_blank" class="flex-1 bg-white text-slate-900 border border-slate-200 py-3 rounded-xl text-xs font-semibold hover:bg-cardinal hover:text-white hover:border-cardinal transition-colors text-center">Pitch a Project</a>
+                                <a href="https://forms.gle/Xzk5ZiiSL6QeUmGLA" target="_blank" class="flex-1 bg-white text-slate-900 border border-slate-200 py-3 rounded-xl text-xs font-semibold hover:bg-cardinal hover:text-white hover:border-cardinal transition-colors text-center">Join a Project</a>
+                                <a href="project-incubator.html" class="flex-1 border border-slate-200 text-slate-600 py-3 rounded-xl text-xs font-semibold hover:bg-eablue hover:text-white hover:border-eablue transition-colors flex items-center justify-center gap-2">
+                                    <iconify-icon icon="solar:info-circle-linear" class="w-3 h-3"></iconify-icon> Learn More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Bottom CTA -->
+                <div class="mt-16 p-8 rounded-2xl bg-gradient-to-r from-slate-100 to-slate-200 flex flex-col md:flex-row justify-between items-center gap-6 shadow-xl">
+                    <div>
+                        <h4 class="font-serif text-2xl mb-2 text-slate-900">Not sure which one is for you?</h4>
+                        <p class="text-slate-600 text-xs">See our intro talk to learn more or reach out to one of our organizers.</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <a href="community.html#team" class="bg-transparent text-slate-900 border border-slate-300 px-6 py-3 rounded-full text-xs font-bold hover:bg-cardinal hover:text-white hover:border-cardinal hover:scale-105 transition-all duration-300 whitespace-nowrap">
+                            Reach Out to Us
+                        </a>
+                        <span class="text-slate-400 text-xs font-medium">or</span>
+                        <a href="https://docs.google.com/presentation/d/1aLniewyVmU-n7joj_NZRonyxZd4MISbkkzpF3c2lk4E/edit?usp=sharing" target="_blank" class="bg-transparent text-slate-900 border border-slate-300 px-6 py-3 rounded-full text-xs font-bold hover:bg-eablue hover:text-white hover:border-eablue hover:scale-105 transition-all duration-300 whitespace-nowrap">
+                            See Intro Talk
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="mt-24 border-t border-slate-200"></div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: PROJECTS -->
+        <section id="projects" class="min-h-screen w-full bg-white py-24 px-6 md:px-12 relative overflow-hidden">
+
+            <!-- Decorative Geometric Elements -->
+            <div class="absolute top-20 right-10 w-64 h-64 border border-slate-100 rounded-full opacity-50"></div>
+            <div class="absolute top-32 right-24 w-40 h-40 border border-eablue/20 rounded-full"></div>
+            <div class="absolute bottom-20 left-10 w-32 h-32 bg-cardinal/5 rotate-45"></div>
+            <div class="absolute bottom-40 left-20 w-16 h-16 bg-eablue/10 rotate-12"></div>
+            <div class="absolute top-1/2 left-1/4 w-2 h-2 bg-cardinal rounded-full opacity-40"></div>
+            <div class="absolute top-1/3 right-1/3 w-3 h-3 bg-eablue rounded-full opacity-30"></div>
+
+            <div class="max-w-7xl mx-auto relative z-10">
+
+                <!-- Section Header with Tabs -->
+                <div class="mb-12">
+                    <span class="text-eablue font-mono text-xs uppercase tracking-widest mb-3 block">03 — Projects</span>
+                    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+                        <div>
+                            <h2 class="font-serif text-4xl md:text-5xl text-slate-900 tracking-tight mb-4">Research & Writing</h2>
+                            <p class="text-slate-500 max-w-xl text-sm leading-relaxed">
+                                Explore our community's research, blog posts, and project write-ups on high-impact cause areas.
+                            </p>
+                        </div>
+                        <!-- Tab Switcher -->
+                        <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-full self-start md:self-auto">
+                            <button id="tab-selected" class="works-tab px-4 py-2 rounded-full text-xs font-medium transition-all bg-white text-slate-900 shadow-sm">
+                                Selected Works
+                            </button>
+                            <button id="tab-recent" class="works-tab px-4 py-2 rounded-full text-xs font-medium transition-all text-slate-500 hover:text-slate-700">
+                                Recent Works
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Container with Sliding Panels -->
+                <div class="relative overflow-hidden">
+                    <div id="works-slider" class="flex transition-transform duration-500 ease-out">
+
+                        <!-- Selected Works Panel -->
+                        <div id="selected-works" class="w-full flex-shrink-0">
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="selected-grid">
+                                <!-- Will be populated by JS with curated posts -->
+                            </div>
+                        </div>
+
+                        <!-- Recent Works Panel -->
+                        <div id="recent-works" class="w-full flex-shrink-0">
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="recent-grid">
+                                <!-- Will be populated by JS from RSS feed -->
+                            </div>
+                            <!-- Loading State -->
+                            <div id="loading-state" class="hidden text-center py-12">
+                                <iconify-icon icon="solar:refresh-linear" class="w-8 h-8 text-slate-300 animate-spin"></iconify-icon>
+                                <p class="text-slate-400 text-sm mt-3">Loading latest posts...</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+        <!-- SECTION 4: EVENTS -->
+        <section id="events" class="min-h-screen w-full bg-slate-50 py-24 px-6 md:px-12 relative overflow-hidden">
+
+            <!-- Decorative Elements -->
+            <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
+            <div class="absolute top-20 left-10 w-24 h-24 border border-slate-200 rounded-full"></div>
+            <div class="absolute bottom-20 right-10 w-32 h-32 border border-cardinal/10 rounded-full"></div>
+
+            <div class="max-w-7xl mx-auto relative z-10">
+
+                <!-- Section Header -->
+                <div class="mb-16 text-center">
+                    <span class="text-cardinal font-mono text-xs uppercase tracking-widest mb-3 block">04 — Events</span>
+                    <h2 class="font-serif text-4xl md:text-5xl text-slate-900 tracking-tight mb-4">Upcoming Events</h2>
+                    <p class="text-slate-500 max-w-xl mx-auto text-sm leading-relaxed">
+                        Join us for speaker events, workshops, and socials throughout the quarter.
+                    </p>
+                </div>
+
+                <!--
+                =====================================================
+                PAST EVENTS REEL - Hidden until we have events
+                To restore: remove this comment wrapper and the hidden class
+                =====================================================
+
+                <div class="relative mb-20">
+                    <div class="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide" id="events-reel">
+                        [Event cards go here]
+                    </div>
+                    <div class="absolute right-0 top-1/2 -translate-y-1/2 w-20 h-full bg-gradient-to-l from-slate-50 to-transparent pointer-events-none flex items-center justify-end pr-2">
+                        <iconify-icon icon="solar:arrow-right-linear" class="w-5 h-5 text-slate-400 animate-pulse"></iconify-icon>
+                    </div>
+                </div>
+
+                =====================================================
+                -->
+
+                <!-- CTA Section -->
+                <div class="text-center">
+                    <div class="inline-block p-8 md:p-12 rounded-3xl bg-gradient-to-br from-cardinal to-cardinal/80 shadow-2xl shadow-cardinal/20 relative overflow-hidden">
+                        <!-- Decorative circles -->
+                        <div class="absolute -top-10 -right-10 w-40 h-40 border border-white/10 rounded-full"></div>
+                        <div class="absolute -bottom-10 -left-10 w-32 h-32 border border-white/10 rounded-full"></div>
+
+                        <div class="relative z-10">
+                            <iconify-icon icon="solar:bell-linear" class="w-8 h-8 text-white/80 mb-4"></iconify-icon>
+                            <h3 class="font-serif text-2xl md:text-3xl text-white mb-3">Get Notified About Events</h3>
+                            <p class="text-white/70 text-sm mb-6 max-w-md mx-auto">Be the first to know about upcoming speakers, workshops, and socials.</p>
+
+                            <a href="https://partiful.com/u/GmoDYdjQo7EG0PuqDoSV" target="_blank" class="inline-flex items-center gap-2 bg-white text-cardinal px-6 py-3 rounded-full text-sm font-bold hover:bg-slate-100 hover:scale-105 transition-all shadow-lg">
+                                <iconify-icon icon="solar:bell-bing-linear" class="w-4 h-4"></iconify-icon>
+                                Follow on Partiful
+                            </a>
+                            <p class="text-white/50 text-xs mt-4">Get notified when we post new events.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="bg-slate-50/80 backdrop-blur-sm border-t border-slate-200 py-12 px-6 md:px-12">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-slate-400 text-xs">
+                <p>© 2026 Stanford Effective Altruism.</p>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <a href="mailto:stanfordea.ops@gmail.com" class="hover:text-cardinal transition-colors">Email</a>
+                    <a href="https://stanfordeffectivealtruism.substack.com/" target="_blank" class="hover:text-cardinal transition-colors">Substack</a>
+                    <a href="https://forum.effectivealtruism.org/users/stanford-ea" target="_blank" class="hover:text-cardinal transition-colors">EA Forum</a>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- SHADERS -->
+    <script type="x-shader/x-vertex" id="vertexShader">
+        uniform float uTime;
+        uniform float uSize;
+        uniform float uAmplitude;
+        uniform vec3 uHover; 
+        uniform float uHoverActive;
+
+        varying float vNoise;
+        varying vec3 vPos;
+        
+        // Simplex Noise (Standard implementation)
+        vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+        vec4 mod289(vec4 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+        vec4 permute(vec4 x) { return mod289(((x*34.0)+1.0)*x); }
+        vec4 taylorInvSqrt(vec4 r) { return 1.79284291400159 - 0.85373472095314 * r; }
+
+        float snoise(vec3 v) {
+            const vec2  C = vec2(1.0/6.0, 1.0/3.0) ;
+            const vec4  D = vec4(0.0, 0.5, 1.0, 2.0);
+            vec3 i  = floor(v + dot(v, C.yyy) );
+            vec3 x0 = v - i + dot(i, C.xxx) ;
+            vec3 g = step(x0.yzx, x0.xyz);
+            vec3 l = 1.0 - g;
+            vec3 i1 = min( g.xyz, l.zxy );
+            vec3 i2 = max( g.xyz, l.zxy );
+            vec3 x1 = x0 - i1 + 1.0 * C.xxx;
+            vec3 x2 = x0 - i2 + 2.0 * C.xxx;
+            vec3 x3 = x0 - 1.0 + 3.0 * C.xxx;
+            i = mod289(i);
+            vec4 p = permute( permute( permute(
+                        i.z + vec4(0.0, i1.z, i2.z, 1.0 ))
+                    + i.y + vec4(0.0, i1.y, i2.y, 1.0 ))
+                    + i.x + vec4(0.0, i1.x, i2.x, 1.0 ));
+            float n_ = 1.0/7.0;
+            vec3  ns = n_ * D.wyz - D.xzx;
+            vec4 j = p - 49.0 * floor(p * ns.z *ns.z);
+            vec4 x_ = floor(j * ns.z);
+            vec4 y_ = floor(j - 7.0 * x_ );
+            vec4 x = x_ *ns.x + ns.yyyy;
+            vec4 y = y_ *ns.x + ns.yyyy;
+            vec4 h = 1.0 - abs(x) - abs(y);
+            vec4 b0 = vec4( x.xy, y.xy );
+            vec4 b1 = vec4( x.zw, y.zw );
+            vec4 s0 = floor(b0)*2.0 + 1.0;
+            vec4 s1 = floor(b1)*2.0 + 1.0;
+            vec4 sh = -step(h, vec4(0.0));
+            vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy ;
+            vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww ;
+            vec3 p0 = vec3(a0.xy,h.x);
+            vec3 p1 = vec3(a0.zw,h.y);
+            vec3 p2 = vec3(a1.xy,h.z);
+            vec3 p3 = vec3(a1.zw,h.w);
+            vec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2, p2), dot(p3,p3)));
+            p0 *= norm.x; p1 *= norm.y; p2 *= norm.z; p3 *= norm.w;
+            vec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0);
+            m = m * m;
+            return 42.0 * dot( m*m, vec4( dot(p0,x0), dot(p1,x1), dot(p2,x2), dot(p3,x3) ) );
+        }
+        
+        void main() {
+            vec3 pos = position;
+            vec3 norm = normal;
+            
+            float freq = 0.5;
+            float speed = 0.15;
+            
+            vec3 symPos = vec3(pos.x, pos.y, pos.z); 
+            float n = snoise(vec3(symPos.x * freq + uTime * speed, symPos.y * freq, symPos.z * freq));
+            
+            float displacement = n * uAmplitude;
+            vec3 newPos = pos + norm * displacement;
+            
+            if (uHoverActive > 0.5) {
+                float dist = distance(newPos, uHover);
+                float repulsionRadius = 4.5;
+                if (dist < repulsionRadius) {
+                    vec3 repulseDir = normalize(newPos - uHover);
+                    float force = (1.0 - dist / repulsionRadius);
+                    force = pow(force, 3.0) * 4.0;
+                    newPos += repulseDir * force;
+                }
+            }
+
+            vNoise = n; 
+            vPos = newPos;
+
+            vec4 mvPosition = modelViewMatrix * vec4(newPos, 1.0);
+            gl_Position = projectionMatrix * mvPosition;
+
+            gl_PointSize = uSize * (20.0 / -mvPosition.z) * (1.0 + n * 0.3);
+        }
+    </script>
+
+    <script type="x-shader/x-fragment" id="fragmentShader">
+        uniform vec3 uColorA; 
+        uniform vec3 uColorB; 
+        
+        varying float vNoise;
+        varying vec3 vPos;
+
+        void main() {
+            float strength = distance(gl_PointCoord, vec2(0.5));
+            strength = 1.0 - strength;
+            strength = pow(strength, 2.0);
+            
+            float mixFactor = (vNoise * 0.5 + 0.5); 
+            float yGradient = (vPos.y / 15.0) * 0.5 + 0.5;
+            mixFactor = mix(mixFactor, yGradient, 0.4);
+
+            vec3 color = mix(uColorB, uColorA, clamp(mixFactor, 0.0, 1.0));
+            gl_FragColor = vec4(color, strength * 0.9);
+            
+            if (strength < 0.1) discard;
+        }
+    </script>
+
+    <script>
+        // Icons loaded via Iconify
+
+        // --- THREE JS SCENE ---
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color('#F8FAFC');
+        scene.fog = new THREE.Fog('#F8FAFC', 20, 60);
+
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+        camera.position.set(0, 0, 32); 
+        camera.lookAt(5, 0, 0);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        container.appendChild(renderer.domElement);
+
+        const COLOR_RED = new THREE.Color('#8C1515');
+        const COLOR_BLUE = new THREE.Color('#0C87C9');
+
+        const raycaster = new THREE.Raycaster();
+        const pointer = new THREE.Vector2();
+
+        // Large invisible plane for global cursor tracking - positioned at front of sphere
+        const hitPlaneGeometry = new THREE.PlaneGeometry(100, 100);
+        const hitPlaneMaterial = new THREE.MeshBasicMaterial({ visible: false, side: THREE.DoubleSide });
+        const hitPlane = new THREE.Mesh(hitPlaneGeometry, hitPlaneMaterial);
+        hitPlane.position.set(7, 0, 4.5); // Halfway into sphere for smooth interaction
+        scene.add(hitPlane);
+
+        let particles;
+        const uniforms = {
+            uTime: { value: 0 },
+            uSize: { value: 4.5 },
+            uAmplitude: { value: 1.0 },
+            uColorA: { value: COLOR_RED },
+            uColorB: { value: COLOR_BLUE },
+            uHover: { value: new THREE.Vector3(0, 0, 0) },
+            uHoverActive: { value: 0.0 }
+        };
+
+        const material = new THREE.ShaderMaterial({
+            vertexShader: document.getElementById('vertexShader').textContent,
+            fragmentShader: document.getElementById('fragmentShader').textContent,
+            uniforms: uniforms,
+            transparent: true,
+            depthWrite: false,
+            blending: THREE.NormalBlending 
+        });
+
+        function updateGeometry(detailLevel) {
+            if (particles) {
+                particles.geometry.dispose();
+                scene.remove(particles);
+            }
+            const detail = Math.max(1, Math.floor(detailLevel)); 
+            const geometry = new THREE.IcosahedronGeometry(9, detail);
+            particles = new THREE.Points(geometry, material);
+            particles.position.set(7, 0, 0);
+            scene.add(particles);
+        }
+
+        updateGeometry(30);
+
+        let time = 0;
+        let targetHover = new THREE.Vector3(0,0,0);
+
+        document.addEventListener('mousemove', (e) => {
+            pointer.x = (e.clientX / window.innerWidth) * 2 - 1;
+            pointer.y = -(e.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        // Always keep repulsion active - shader handles distance falloff
+        uniforms.uHoverActive.value = 1.0;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            time += 0.01;
+            uniforms.uTime.value = time;
+
+            if (particles) {
+                // Gentle rotation
+                particles.rotation.y = time * 0.05;
+                particles.rotation.z = Math.sin(time * 0.1) * 0.05;
+
+                // Scroll parallax effect: move particles up slightly when scrolling down
+                const scrollOffset = window.scrollY * 0.005;
+                particles.position.y = scrollOffset;
+                hitPlane.position.y = scrollOffset;
+
+                // Always track cursor position via the plane, then project onto sphere surface
+                raycaster.setFromCamera(pointer, camera);
+                const intersects = raycaster.intersectObject(hitPlane);
+
+                if (intersects.length > 0) {
+                    const worldPoint = intersects[0].point;
+                    const localPoint = worldPoint.clone();
+                    particles.worldToLocal(localPoint);
+
+                    // Project onto sphere surface so tracking matches particle positions
+                    const sphereRadius = 9;
+                    if (localPoint.length() > 0.1) {
+                        localPoint.normalize().multiplyScalar(sphereRadius);
+                    }
+
+                    targetHover.lerp(localPoint, 0.15);
+                    uniforms.uHover.value.copy(targetHover);
+                }
+            }
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // --- CONTROLS ---
+        document.getElementById('input-size').addEventListener('input', (e) => {
+            uniforms.uSize.value = parseFloat(e.target.value);
+            document.getElementById('val-size').innerText = e.target.value;
+        });
+
+        document.getElementById('input-amp').addEventListener('input', (e) => {
+            uniforms.uAmplitude.value = parseFloat(e.target.value);
+            document.getElementById('val-amp').innerText = e.target.value;
+        });
+
+        document.getElementById('input-detail').addEventListener('input', (e) => {
+            const val = parseInt(e.target.value);
+            updateGeometry(val);
+            let label = "Med";
+            if (val < 10) label = "Low";
+            if (val > 25) label = "High";
+            document.getElementById('val-detail').innerText = label;
+        });
+
+        // --- ROTATING TAGS ---
+        const rotatingTags = document.getElementById('rotating-tags');
+        if (rotatingTags) {
+            const tagCount = 8;
+            let currentTag = 0;
+            const tagHeight = 16;
+            let tagsIntervalId;
+
+            function advanceTag() {
+                currentTag++;
+                rotatingTags.style.transition = 'transform 500ms ease-out';
+                rotatingTags.style.transform = `translateY(-${currentTag * tagHeight}px)`;
+
+                if (currentTag >= tagCount) {
+                    setTimeout(() => {
+                        rotatingTags.style.transition = 'none';
+                        rotatingTags.style.transform = 'translateY(0)';
+                        currentTag = 0;
+                    }, 500);
+                }
+            }
+
+            tagsIntervalId = setInterval(advanceTag, 8000);
+
+            // Click to advance and reset timer
+            rotatingTags.parentElement.style.cursor = 'pointer';
+            rotatingTags.parentElement.addEventListener('click', () => {
+                clearInterval(tagsIntervalId);
+                advanceTag();
+                tagsIntervalId = setInterval(advanceTag, 8000);
+            });
+        }
+
+        // --- ROTATING CAREERS (scroll up) ---
+        const rotatingCareers = document.getElementById('rotating-careers');
+        if (rotatingCareers) {
+            const careerCount = 9;
+            const tagHeight = 16;
+            let currentCareer = Math.floor(Math.random() * careerCount);
+            let careersIntervalId;
+
+            rotatingCareers.style.transform = `translateY(-${currentCareer * tagHeight}px)`;
+
+            function advanceCareer() {
+                currentCareer++;
+                rotatingCareers.style.transition = 'transform 500ms ease-out';
+                rotatingCareers.style.transform = `translateY(-${currentCareer * tagHeight}px)`;
+
+                if (currentCareer >= careerCount) {
+                    setTimeout(() => {
+                        rotatingCareers.style.transition = 'none';
+                        rotatingCareers.style.transform = 'translateY(0)';
+                        currentCareer = 0;
+                    }, 500);
+                }
+            }
+
+            careersIntervalId = setInterval(advanceCareer, 6000); // 6s
+
+            // Click to advance and reset timer
+            rotatingCareers.parentElement.style.cursor = 'pointer';
+            rotatingCareers.parentElement.addEventListener('click', () => {
+                clearInterval(careersIntervalId);
+                advanceCareer();
+                careersIntervalId = setInterval(advanceCareer, 6000);
+            });
+        }
+
+        // --- ROTATING CHALLENGES (scroll down / fall from above) ---
+        const rotatingChallenges = document.getElementById('rotating-challenges');
+        if (rotatingChallenges) {
+            const challengeCount = 11;
+            const tagHeight = 16;
+            let currentChallenge = Math.floor(Math.random() * challengeCount) + 1;
+            let challengesIntervalId;
+
+            rotatingChallenges.style.transform = `translateY(-${currentChallenge * tagHeight}px)`;
+
+            function advanceChallenge() {
+                currentChallenge--;
+                rotatingChallenges.style.transition = 'transform 500ms ease-out';
+                rotatingChallenges.style.transform = `translateY(-${currentChallenge * tagHeight}px)`;
+
+                if (currentChallenge <= 0) {
+                    setTimeout(() => {
+                        rotatingChallenges.style.transition = 'none';
+                        rotatingChallenges.style.transform = `translateY(-${challengeCount * tagHeight}px)`;
+                        currentChallenge = challengeCount;
+                    }, 500);
+                }
+            }
+
+            challengesIntervalId = setInterval(advanceChallenge, 8000); // 8s
+
+            // Click to advance and reset timer
+            rotatingChallenges.parentElement.style.cursor = 'pointer';
+            rotatingChallenges.parentElement.addEventListener('click', () => {
+                clearInterval(challengesIntervalId);
+                advanceChallenge();
+                challengesIntervalId = setInterval(advanceChallenge, 8000);
+            });
+        }
+
+        // --- NAV INDICATOR ---
+        const navIndicator = document.getElementById('nav-indicator');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = ['hero', 'fellowships', 'projects', 'events'];
+
+        function updateNavIndicator(activeNav) {
+            const activeLink = document.querySelector(`[data-nav="${activeNav}"]`);
+            if (activeLink && navIndicator) {
+                const nav = activeLink.parentElement;
+                const navRect = nav.getBoundingClientRect();
+                const linkRect = activeLink.getBoundingClientRect();
+                const offsetLeft = linkRect.left - navRect.left;
+
+                navIndicator.style.left = `${offsetLeft}px`;
+                navIndicator.style.width = `${linkRect.width}px`;
+
+                // Update active link styling
+                navLinks.forEach(link => {
+                    link.classList.remove('text-cardinal', 'font-semibold');
+                    link.classList.add('text-slate-600');
+                });
+                activeLink.classList.remove('text-slate-600');
+                activeLink.classList.add('text-cardinal', 'font-semibold');
+            }
+        }
+
+        function onScroll() {
+            const scrollPos = window.scrollY + window.innerHeight / 3;
+
+            let currentSection = 'hero';
+            sections.forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+                if (section && section.offsetTop <= scrollPos) {
+                    currentSection = sectionId;
+                }
+            });
+
+            updateNavIndicator(currentSection);
+        }
+
+        // Initialize and listen
+        window.addEventListener('scroll', onScroll);
+        window.addEventListener('resize', () => onScroll());
+        setTimeout(() => onScroll(), 100); // Initial position after fonts load
+
+        // --- CURRENT QUARTER ---
+        function getCurrentQuarter() {
+            const now = new Date();
+            const month = now.getMonth(); // 0-11
+            const year = now.getFullYear();
+
+            // Show current quarter in first month, then switch to next quarter
+            // This way applications are open for current quarter initially,
+            // then switch to advertising the next quarter's applications
+            //
+            // Winter: Jan (show Winter), Feb-Mar (show Spring)
+            // Spring: Apr (show Spring), May-Jun (show Summer)
+            // Summer: Jul (show Summer), Aug (show Fall)
+            // Fall: Sep (show Fall), Oct-Dec (show Winter of next year)
+
+            let quarter;
+            let quarterYear = year;
+
+            switch (month) {
+                case 0: // January - first month of Winter
+                    quarter = 'Winter';
+                    break;
+                case 1: // February
+                case 2: // March
+                    quarter = 'Spring';
+                    break;
+                case 3: // April - first month of Spring
+                    quarter = 'Spring';
+                    break;
+                case 4: // May
+                case 5: // June
+                    quarter = 'Summer';
+                    break;
+                case 6: // July - first month of Summer
+                    quarter = 'Summer';
+                    break;
+                case 7: // August
+                    quarter = 'Fall';
+                    break;
+                case 8: // September - first month of Fall
+                    quarter = 'Fall';
+                    break;
+                case 9:  // October
+                case 10: // November
+                case 11: // December
+                    quarter = 'Winter';
+                    quarterYear = year + 1; // Winter of next year
+                    break;
+            }
+
+            return `${quarter} ${quarterYear}`;
+        }
+
+        const quarterEl = document.getElementById('current-quarter');
+        if (quarterEl) {
+            quarterEl.textContent = getCurrentQuarter();
+        }
+
+        // --- RESEARCH & WRITING: RSS FEED + TABS ---
+        const RSS_FEEDS = [
+            {
+                url: 'https://aviparrack.substack.com/feed',
+                source: 'Substack',
+                author: 'Avi Parrack',
+                defaultImage: null // Substack usually has images
+            },
+            {
+                url: 'https://forum.effectivealtruism.org/feed.xml?view=userPosts&userId=dduNddkEjpdBgAdfE',
+                source: 'EA Forum',
+                author: 'Avi Parrack',
+                defaultImage: 'https://forum.effectivealtruism.org/images/ea-forum-logo-on-orange.png'
+            },
+            {
+                url: 'https://forum.effectivealtruism.org/feed.xml?view=userPosts&userId=H3tBLXCQEMqkyJiMJ',
+                source: 'EA Forum',
+                author: 'Kelsey Piper',
+                defaultImage: 'https://forum.effectivealtruism.org/images/ea-forum-logo-on-orange.png'
+            },
+            {
+                url: 'https://sahebgulati.substack.com/feed',
+                source: 'Substack',
+                author: 'Saheb Gulati',
+                defaultImage: null
+            }
+            // Add more feeds here later:
+            // { url: 'https://forum.effectivealtruism.org/feed.xml?view=userPosts&userId=OTHER_USER', source: 'EA Forum', author: 'Name', defaultImage: '...' }
+        ];
+
+        // Default fallback image for EA Forum posts
+        const EA_FORUM_FALLBACK = 'https://forum.effectivealtruism.org/images/ea-forum-logo-on-orange.png';
+
+        // CORS proxies with fallbacks
+        const CORS_PROXIES = [
+            (url) => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
+            (url) => `https://corsproxy.io/?${encodeURIComponent(url)}`,
+            (url) => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`
+        ];
+
+        // Cache keys
+        const CACHE_KEY_RECENT = 'sea_recent_works_cache';
+        const CACHE_KEY_IMAGES = 'sea_images_cache';
+        const CACHE_EXPIRY = 10 * 60 * 1000; // 10 minutes
+
+        // Fetch with timeout
+        async function fetchWithTimeout(url, timeoutMs = 8000) {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+            try {
+                const response = await fetch(url, { signal: controller.signal });
+                clearTimeout(timeoutId);
+                return response;
+            } catch (error) {
+                clearTimeout(timeoutId);
+                throw error;
+            }
+        }
+
+        // Fetch with proxy fallbacks
+        async function fetchWithProxyFallback(feedUrl) {
+            for (let i = 0; i < CORS_PROXIES.length; i++) {
+                try {
+                    const proxyUrl = CORS_PROXIES[i](feedUrl);
+                    console.log(`[SEA] Trying proxy ${i + 1} for ${feedUrl.substring(0, 50)}...`);
+                    const response = await fetchWithTimeout(proxyUrl);
+                    if (response.ok) {
+                        console.log(`[SEA] Success with proxy ${i + 1}`);
+                        return await response.text();
+                    }
+                } catch (e) {
+                    console.log(`[SEA] Proxy ${i + 1} failed: ${e.message}`);
+                    continue;
+                }
+            }
+            throw new Error(`All proxies failed for ${feedUrl}`);
+        }
+
+        // Get cached data if still valid
+        function getCachedData(key) {
+            try {
+                const cached = localStorage.getItem(key);
+                if (cached) {
+                    const { data, timestamp } = JSON.parse(cached);
+                    if (Date.now() - timestamp < CACHE_EXPIRY) {
+                        return data;
+                    }
+                }
+            } catch (e) {
+                // Cache read failed, ignore
+            }
+            return null;
+        }
+
+        // Save data to cache
+        function setCachedData(key, data) {
+            try {
+                localStorage.setItem(key, JSON.stringify({
+                    data,
+                    timestamp: Date.now()
+                }));
+            } catch (e) {
+                // Cache write failed, ignore
+            }
+        }
+
+        // Selected works (curated)
+        const SELECTED_WORKS = [
+            {
+                url: 'https://aviparrack.substack.com/p/the-overview',
+                title: 'The Overview',
+                description: 'A narrative exploring perspective and imagination through an astronaut\'s profound experience viewing Earth from orbit.',
+                date: 'Oct 2025',
+                category: 'Perspective',
+                author: 'Avi Parrack',
+                featured: true
+            },
+            {
+                url: 'https://aviparrack.substack.com/p/levers-for-agent-coordination',
+                title: 'Levers for Agent Coordination',
+                description: 'A high-level framework for agent coordination, levers for key coordination dynamics, and some initial prescriptions for what to coordinate around.',
+                date: 'Sep 2025',
+                category: 'AI Coordination',
+                author: 'Avi Parrack'
+            },
+            {
+                url: 'https://sahebgulati.substack.com/p/curated-ai-career-advice',
+                title: 'Curated AI Career Advice',
+                description: 'A compilation of resources on personal and professional preparation for advancing artificial intelligence.',
+                date: 'Aug 2025',
+                category: 'AI Careers',
+                author: 'Saheb Gulati'
+            },
+            {
+                url: 'https://aviparrack.substack.com/p/gardening-for-the-brain',
+                title: 'Gardening for the Brain',
+                description: 'Personal systems and mental frameworks for maintaining happiness, health, and productivity.',
+                date: 'Jun 2025',
+                category: 'Productivity',
+                author: 'Avi Parrack',
+                featured: true
+            }
+        ];
+
+        // Color themes for cards
+        const CARD_THEMES = [
+            { bg: 'from-eablue/10 to-cardinal/10', tag: 'bg-eablue/10 text-eablue' },
+            { bg: 'from-slate-800 to-slate-900', tag: 'bg-slate-100 text-slate-600' },
+            { bg: 'from-amber-50 to-orange-100', tag: 'bg-amber-100 text-amber-700' },
+            { bg: 'from-emerald-50 to-emerald-100', tag: 'bg-emerald-100 text-emerald-700' },
+            { bg: 'from-purple-50 to-purple-100', tag: 'bg-purple-100 text-purple-700' },
+            { bg: 'from-rose-50 to-rose-100', tag: 'bg-rose-100 text-rose-700' }
+        ];
+
+        // EA Forum specific theme (orange)
+        const EA_FORUM_THEME = { bg: 'from-orange-100 to-orange-200', tag: 'bg-orange-100 text-orange-700' };
+
+        // Format date from RSS
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            return `${months[date.getMonth()]} ${date.getFullYear()}`;
+        }
+
+        // Extract image from RSS content
+        function extractImage(content, enclosure) {
+            // First try enclosure
+            if (enclosure) return enclosure;
+
+            // Try to find image in content HTML
+            const imgMatch = content?.match(/<img[^>]+src=["']([^"']+)["']/i);
+            if (imgMatch) return imgMatch[1];
+
+            // Try to find Substack CDN image
+            const substackImg = content?.match(/https:\/\/substackcdn\.com\/image\/[^"'\s]+/i);
+            if (substackImg) return substackImg[0];
+
+            return null;
+        }
+
+        // Create a post card HTML
+        function createPostCard(post, index, isFeatured = false) {
+            // Use EA Forum theme for EA Forum posts, otherwise cycle through themes
+            const theme = post.source === 'EA Forum' ? EA_FORUM_THEME : CARD_THEMES[index % CARD_THEMES.length];
+            const hasImage = post.image && post.image.length > 0;
+
+            if (isFeatured) {
+                return `
+                    <a href="${post.url}" target="_blank" class="md:col-span-2 lg:col-span-2 group h-full">
+                        <div class="bg-slate-50 rounded-2xl p-2 border border-slate-100 hover:shadow-lg transition-all duration-300 h-full flex flex-col">
+                            <div class="h-64 rounded-xl ${hasImage ? '' : 'bg-gradient-to-br ' + theme.bg} mb-4 flex items-center justify-center relative overflow-hidden shrink-0">
+                                ${hasImage
+                                    ? `<img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover rounded-xl" onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                       <div class="absolute inset-0 bg-gradient-to-br ${theme.bg} items-center justify-center hidden"><div class="absolute inset-0 geo-pattern-2 opacity-20"></div><iconify-icon icon="solar:document-text-linear" class="w-16 h-16 text-slate-300"></iconify-icon></div>`
+                                    : `<div class="absolute inset-0 geo-pattern-2 opacity-20"></div>
+                                       <iconify-icon icon="solar:document-text-linear" class="w-16 h-16 text-slate-300"></iconify-icon>`
+                                }
+                            </div>
+                            <div class="px-4 pb-4 flex flex-col flex-grow">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span class="px-2 py-0.5 rounded-full ${theme.tag} text-[10px] font-bold uppercase">${post.category || 'Article'}</span>
+                                    <span class="text-slate-500 text-[10px]">${post.date}</span>
+                                </div>
+                                <h3 class="font-serif text-xl text-slate-900 mb-2 group-hover:text-cardinal transition-colors">${post.title}</h3>
+                                <p class="text-sm text-slate-500 leading-relaxed line-clamp-2">${post.description}</p>
+                                <div class="flex items-center gap-3 mt-auto pt-4">
+                                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-cardinal to-eablue shrink-0"></div>
+                                    <span class="text-xs text-slate-600">${post.author || 'Stanford EA'}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                `;
+            } else {
+                return `
+                    <a href="${post.url}" target="_blank" class="group">
+                        <div class="bg-slate-50 rounded-2xl p-2 border border-slate-100 hover:shadow-lg transition-all duration-300 h-full flex flex-col">
+                            <div class="h-40 rounded-xl ${hasImage ? '' : 'bg-gradient-to-br ' + theme.bg} mb-4 flex items-center justify-center overflow-hidden shrink-0 relative">
+                                ${hasImage
+                                    ? `<img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover rounded-xl" onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                       <div class="absolute inset-0 bg-gradient-to-br ${theme.bg} rounded-xl items-center justify-center hidden"><iconify-icon icon="solar:document-text-linear" class="w-10 h-10 text-slate-300"></iconify-icon></div>`
+                                    : `<iconify-icon icon="solar:document-text-linear" class="w-10 h-10 text-slate-300"></iconify-icon>`
+                                }
+                            </div>
+                            <div class="px-4 pb-4 flex flex-col flex-grow">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span class="px-2 py-0.5 rounded-full ${theme.tag} text-[10px] font-bold uppercase">${post.category || 'Article'}</span>
+                                    <span class="text-slate-500 text-[10px]">${post.date}</span>
+                                </div>
+                                <h3 class="font-serif text-lg text-slate-900 mb-2 group-hover:text-cardinal transition-colors">${post.title}</h3>
+                                <p class="text-sm text-slate-500 leading-relaxed line-clamp-2">${post.description}</p>
+                                <div class="flex items-center gap-2 mt-auto pt-4">
+                                    <div class="w-6 h-6 rounded-full bg-gradient-to-br from-cardinal to-eablue shrink-0"></div>
+                                    <span class="text-xs text-slate-600">${post.author || 'Stanford EA'}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                `;
+            }
+        }
+
+        // Render selected works (with images from RSS)
+        async function renderSelectedWorks() {
+            const grid = document.getElementById('selected-grid');
+            if (!grid) return;
+
+            // Check for cached images first
+            const cachedImages = getCachedData(CACHE_KEY_IMAGES);
+
+            // Render immediately (with cached images if available)
+            let html = '';
+            SELECTED_WORKS.forEach((post, index) => {
+                const postWithImage = cachedImages ? { ...post, image: cachedImages[post.url] || post.image } : post;
+                html += createPostCard(postWithImage, index, post.featured);
+            });
+            grid.innerHTML = html;
+
+            // Fetch fresh images in parallel
+            try {
+                const imageMap = cachedImages || {};
+
+                // Fetch all feeds in parallel
+                const feedResults = await Promise.allSettled(
+                    RSS_FEEDS.map(async (feed) => {
+                        const text = await fetchWithProxyFallback(feed.url);
+                        return { feed, text };
+                    })
+                );
+
+                // Process successful results
+                feedResults.forEach(result => {
+                    if (result.status === 'fulfilled') {
+                        const { feed, text } = result.value;
+                        try {
+                            const parser = new DOMParser();
+                            const xml = parser.parseFromString(text, 'text/xml');
+                            const items = xml.querySelectorAll('item');
+
+                            items.forEach(item => {
+                                const link = item.querySelector('link')?.textContent;
+                                const content = item.querySelector('content\\:encoded, encoded')?.textContent || '';
+                                const description = item.querySelector('description')?.textContent || '';
+                                const enclosure = item.querySelector('enclosure')?.getAttribute('url');
+                                const image = extractImage(content || description, enclosure) || feed.defaultImage;
+                                if (link && image) {
+                                    imageMap[link] = image;
+                                }
+                            });
+                        } catch (parseError) {
+                            console.warn(`Could not parse feed: ${feed.url}`, parseError);
+                        }
+                    }
+                });
+
+                // Cache the images
+                setCachedData(CACHE_KEY_IMAGES, imageMap);
+
+                // Re-render with fresh images
+                let htmlWithImages = '';
+                SELECTED_WORKS.forEach((post, index) => {
+                    const postWithImage = { ...post, image: imageMap[post.url] || post.image };
+                    htmlWithImages += createPostCard(postWithImage, index, post.featured);
+                });
+                grid.innerHTML = htmlWithImages;
+
+            } catch (error) {
+                console.error('Error fetching images for selected works:', error);
+                // Keep the version with cached/no images
+            }
+        }
+
+        // Tab switching
+        const tabSelected = document.getElementById('tab-selected');
+        const tabRecent = document.getElementById('tab-recent');
+        const slider = document.getElementById('works-slider');
+        let recentLoaded = false;
+        let recentWorksCache = null; // Cache fetched posts
+
+        function switchToTab(tab) {
+            if (tab === 'selected') {
+                slider.style.transform = 'translateX(0)';
+                tabSelected.classList.add('bg-white', 'text-slate-900', 'shadow-sm');
+                tabSelected.classList.remove('text-slate-500');
+                tabRecent.classList.remove('bg-white', 'text-slate-900', 'shadow-sm');
+                tabRecent.classList.add('text-slate-500');
+            } else {
+                slider.style.transform = 'translateX(-100%)';
+                tabRecent.classList.add('bg-white', 'text-slate-900', 'shadow-sm');
+                tabRecent.classList.remove('text-slate-500');
+                tabSelected.classList.remove('bg-white', 'text-slate-900', 'shadow-sm');
+                tabSelected.classList.add('text-slate-500');
+
+                // Render from cache if available, otherwise show loading
+                if (recentWorksCache) {
+                    renderRecentFromCache();
+                } else if (!recentLoaded) {
+                    // Still loading, show loading state
+                    document.getElementById('loading-state')?.classList.remove('hidden');
+                }
+            }
+        }
+
+        // Render recent works from cache
+        function renderRecentFromCache() {
+            const grid = document.getElementById('recent-grid');
+            if (!grid || !recentWorksCache) return;
+
+            let html = '';
+            recentWorksCache.slice(0, 5).forEach((post, index) => {
+                html += createPostCard(post, index, index === 0);
+            });
+            grid.innerHTML = html;
+        }
+
+        // Background fetch for recent works
+        async function prefetchRecentWorks() {
+            const loading = document.getElementById('loading-state');
+
+            // Check for localStorage cache first for instant display
+            const cachedPosts = getCachedData(CACHE_KEY_RECENT);
+            if (cachedPosts && cachedPosts.length > 0) {
+                recentWorksCache = cachedPosts;
+                recentLoaded = true;
+                loading?.classList.add('hidden');
+                if (slider.style.transform === 'translateX(-100%)') {
+                    renderRecentFromCache();
+                }
+            }
+
+            // Fetch fresh data in parallel
+            try {
+                const allPosts = [];
+
+                // Fetch all feeds in parallel
+                const feedResults = await Promise.allSettled(
+                    RSS_FEEDS.map(async (feed) => {
+                        const text = await fetchWithProxyFallback(feed.url);
+                        return { feed, text };
+                    })
+                );
+
+                // Process successful results
+                feedResults.forEach(result => {
+                    if (result.status === 'fulfilled') {
+                        const { feed, text } = result.value;
+                        try {
+                            const parser = new DOMParser();
+                            const xml = parser.parseFromString(text, 'text/xml');
+                            const items = xml.querySelectorAll('item');
+
+                            items.forEach((item, index) => {
+                                if (index >= 3) return; // Limit to 3 per feed for diversity
+
+                                const title = item.querySelector('title')?.textContent || 'Untitled';
+                                const link = item.querySelector('link')?.textContent || '#';
+                                const pubDate = item.querySelector('pubDate')?.textContent;
+                                const description = item.querySelector('description')?.textContent || '';
+                                const content = item.querySelector('content\\:encoded, encoded')?.textContent || '';
+                                const enclosure = item.querySelector('enclosure')?.getAttribute('url');
+                                const creator = item.querySelector('dc\\:creator, creator')?.textContent || feed.author;
+
+                                const cleanDesc = description.replace(/<[^>]*>/g, '').substring(0, 200) + '...';
+                                const image = extractImage(content || description, enclosure) || feed.defaultImage;
+
+                                allPosts.push({
+                                    title,
+                                    url: link,
+                                    date: formatDate(pubDate),
+                                    rawDate: new Date(pubDate),
+                                    description: cleanDesc,
+                                    image,
+                                    author: creator,
+                                    source: feed.source,
+                                    category: feed.source === 'EA Forum' ? 'EA Forum' : 'Article'
+                                });
+                            });
+                        } catch (parseError) {
+                            console.warn(`Could not parse feed: ${feed.url}`, parseError);
+                        }
+                    }
+                });
+
+                // Deduplicate posts (same article on Substack and EA Forum)
+                function normalizeTitle(title) {
+                    return title
+                        .toLowerCase()
+                        .replace(/[^\w\s]/g, '') // Remove punctuation
+                        .replace(/\s+/g, ' ')    // Normalize whitespace
+                        .trim();
+                }
+
+                function titlesAreSimilar(title1, title2) {
+                    const norm1 = normalizeTitle(title1);
+                    const norm2 = normalizeTitle(title2);
+                    // Exact match after normalization
+                    if (norm1 === norm2) return true;
+                    // First 15 chars match (catches cross-post titles with minor suffix differences)
+                    if (norm1.length >= 15 && norm2.length >= 15 && norm1.slice(0, 15) === norm2.slice(0, 15)) return true;
+                    // One title contains the other (for slightly different versions)
+                    if (norm1.includes(norm2) || norm2.includes(norm1)) {
+                        const shorter = norm1.length < norm2.length ? norm1 : norm2;
+                        const longer = norm1.length < norm2.length ? norm2 : norm1;
+                        // Only consider similar if shorter is at least 60% of longer
+                        if (shorter.length / longer.length > 0.6) return true;
+                    }
+                    return false;
+                }
+
+                // Group by author and dedupe within same author's posts
+                const seenTitles = new Map(); // normalized title -> post
+                const deduplicatedPosts = [];
+
+                // Sort to prefer Substack over EA Forum (process Substack first)
+                allPosts.sort((a, b) => {
+                    if (a.source === 'Substack' && b.source !== 'Substack') return -1;
+                    if (b.source === 'Substack' && a.source !== 'Substack') return 1;
+                    return 0;
+                });
+
+                for (const post of allPosts) {
+                    const normalizedTitle = normalizeTitle(post.title);
+                    let isDuplicate = false;
+
+                    // Check against all seen titles — skip author check for cross-source dupes
+                    // (same person's name may differ between Substack and EA Forum feeds)
+                    for (const [seenTitle, seenPost] of seenTitles) {
+                        const crossSource = (post.source === 'Substack') !== (seenPost.source === 'Substack');
+                        const sameAuthor = seenPost.author === post.author;
+                        if ((sameAuthor || crossSource) && titlesAreSimilar(post.title, seenPost.title)) {
+                            isDuplicate = true;
+                            console.log(`[SEA] Deduped: "${post.title}" (${post.source}) - keeping ${seenPost.source} version`);
+                            break;
+                        }
+                    }
+
+                    if (!isDuplicate) {
+                        seenTitles.set(normalizedTitle, post);
+                        deduplicatedPosts.push(post);
+                    }
+                }
+
+                // Sort by date (newest first)
+                deduplicatedPosts.sort((a, b) => b.rawDate - a.rawDate);
+
+                // Only update if we got fresh data
+                if (deduplicatedPosts.length > 0) {
+                    // Cache the results in both memory and localStorage
+                    recentWorksCache = deduplicatedPosts;
+                    setCachedData(CACHE_KEY_RECENT, deduplicatedPosts);
+                }
+
+                recentLoaded = true;
+                loading?.classList.add('hidden');
+
+                // If user is already on recent tab, render with fresh data
+                if (slider.style.transform === 'translateX(-100%)') {
+                    renderRecentFromCache();
+                }
+
+            } catch (error) {
+                console.error('Error prefetching RSS:', error);
+                loading?.classList.add('hidden');
+            }
+        }
+
+        tabSelected?.addEventListener('click', () => switchToTab('selected'));
+        tabRecent?.addEventListener('click', () => switchToTab('recent'));
+
+        // Initialize selected works immediately
+        renderSelectedWorks();
+
+        // Prefetch recent works in background immediately
+        console.log('[SEA] Starting RSS prefetch...');
+        prefetchRecentWorks().then(() => {
+            console.log('[SEA] RSS prefetch complete');
+        });
+
+        // Also prefetch EA Forum curated feed for the EA page (warms the cache)
+        const EA_FORUM_CURATED = 'https://forum.effectivealtruism.org/feed.xml?view=curated-rss';
+        const EA_FORUM_CACHE_KEY = 'sea_ea_forum_cache';
+
+        async function prefetchEAForumFeed() {
+            // Don't refetch if cache is still valid
+            const cached = getCachedData(EA_FORUM_CACHE_KEY);
+            if (cached) {
+                console.log('[SEA] EA Forum cache still valid, skipping prefetch');
+                return;
+            }
+
+            try {
+                console.log('[SEA] Prefetching EA Forum feed for EA page...');
+                const text = await fetchWithProxyFallback(EA_FORUM_CURATED);
+
+                // Parse and cache (same format as ea.html expects)
+                const parser = new DOMParser();
+                const xml = parser.parseFromString(text, 'text/xml');
+                const items = xml.querySelectorAll('item');
+
+                const posts = [];
+                items.forEach((item, index) => {
+                    if (index >= 6) return;
+                    const title = item.querySelector('title')?.textContent || 'Untitled';
+                    const link = item.querySelector('link')?.textContent || '#';
+                    const pubDate = item.querySelector('pubDate')?.textContent;
+                    const description = item.querySelector('description')?.textContent || '';
+                    const creator = item.querySelector('dc\\:creator, creator')?.textContent || 'EA Forum';
+                    const cleanDesc = description.replace(/<[^>]*>/g, '').substring(0, 120) + '...';
+
+                    // Format relative time inline
+                    const date = new Date(pubDate);
+                    const diffDays = Math.floor((new Date() - date) / (1000 * 60 * 60 * 24));
+                    let dateStr = diffDays === 0 ? 'Today' : diffDays === 1 ? 'Yesterday' :
+                                  diffDays < 7 ? `${diffDays} days ago` :
+                                  diffDays < 30 ? `${Math.floor(diffDays / 7)} weeks ago` :
+                                  diffDays < 365 ? `${Math.floor(diffDays / 30)} months ago` :
+                                  `${Math.floor(diffDays / 365)} years ago`;
+
+                    posts.push({ title, url: link, date: dateStr, rawDate: pubDate, description: cleanDesc, author: creator });
+                });
+
+                if (posts.length > 0) {
+                    setCachedData(EA_FORUM_CACHE_KEY, posts);
+                    console.log('[SEA] EA Forum feed prefetched and cached');
+                }
+            } catch (e) {
+                console.log('[SEA] EA Forum prefetch failed (non-critical):', e.message);
+            }
+        }
+
+        // Prefetch EA Forum after a short delay (lower priority than main content)
+        setTimeout(() => prefetchEAForumFeed(), 2000);
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                const isOpen = !mobileMenu.classList.contains('hidden');
+                if (isOpen) {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.setAttribute('icon', 'solar:hamburger-menu-linear');
+                } else {
+                    mobileMenu.classList.remove('hidden');
+                    menuIcon.setAttribute('icon', 'solar:close-circle-linear');
+                }
+            });
+        }
+    </script>
+</body></html>

@@ -1,0 +1,733 @@
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | Stanford Effective Altruism</title>
+<link rel="icon" type="image/png" href="SEALogoBlueSquare.png">
+<!-- Prefetch other pages for faster navigation -->
+<link rel="prefetch" href="index.html">
+<link rel="prefetch" href="ea.html">
+<link rel="prefetch" href="career-accelerator.html">
+<link rel="prefetch" href="project-incubator.html">
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<!-- Tailwind & Icons -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+fontFamily: {
+sans: ['Inter', 'sans-serif'],
+serif: ['Source Serif Pro', 'serif'],
+mono: ['JetBrains Mono', 'monospace'],
+},
+colors: {
+bg: '#F8FAFC',
+cardinal: '#8C1515',
+eablue: '#0C87C9',
+slate: '#334155',
+dark: '#0F172A'
+},
+animation: {
+'fade-in': 'fadeIn 1.2s ease-out forwards',
+'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+'float': 'float 6s ease-in-out infinite',
+'float-delayed': 'float 6s ease-in-out 2s infinite',
+'gradient': 'gradient 8s ease infinite',
+},
+keyframes: {
+fadeIn: {
+'0%': { opacity: '0', transform: 'translateY(10px)' },
+'100%': { opacity: '1', transform: 'translateY(0)' },
+},
+slideUp: {
+'0%': { opacity: '0', transform: 'translateY(40px)' },
+'100%': { opacity: '1', transform: 'translateY(0)' },
+},
+float: {
+'0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+'50%': { transform: 'translateY(-20px) rotate(3deg)' },
+},
+gradient: {
+'0%, 100%': { backgroundPosition: '0% 50%' },
+'50%': { backgroundPosition: '100% 50%' },
+}
+}
+}
+}
+}
+</script>
+<style>
+body { margin: 0; background-color: #F8FAFC; color: #0F172A; overflow-x: hidden; }
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+/* Glass Components */
+.glass-panel {
+background: rgba(255, 255, 255, 0.85);
+backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+border: 1px solid rgba(255, 255, 255, 0.6);
+box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
+}
+.glass-nav {
+background: rgba(255, 255, 255, 0.7);
+backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+::selection { background: #0C87C9; color: white; }
+/* Logo color grading to match eablue */
+.logo-blue {
+    filter: brightness(0) saturate(100%) invert(41%) sepia(98%) saturate(456%) hue-rotate(166deg) brightness(93%) contrast(96%);
+}
+/* Animated gradient mesh */
+.gradient-mesh {
+background: linear-gradient(-45deg, #8C1515, #0C87C9, #334155, #8C1515);
+background-size: 400% 400%;
+animation: gradient 15s ease infinite;
+}
+/* Floating shapes */
+.floating-shape {
+position: absolute;
+border-radius: 50%;
+filter: blur(60px);
+opacity: 0.5;
+}
+</style></head>
+
+<body class="antialiased font-sans bg-bg min-h-screen relative selection:bg-cardinal selection:text-white">
+
+    <!-- Animated Background - Cardinal emphasis -->
+    <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        <!-- Floating gradient blobs - more cardinal red tones -->
+        <div class="floating-shape w-[500px] h-[500px] bg-cardinal/40 top-[-100px] right-[-100px] animate-float"></div>
+        <div class="floating-shape w-[400px] h-[400px] bg-cardinal/20 bottom-[-50px] left-[-100px] animate-float-delayed"></div>
+        <div class="floating-shape w-[300px] h-[300px] bg-rose-500/20 top-[40%] left-[30%] animate-float" style="animation-delay: 1s;"></div>
+        <div class="floating-shape w-[200px] h-[200px] bg-cardinal/15 top-[20%] left-[60%] animate-float-delayed" style="animation-delay: 3s;"></div>
+
+        <!-- Subtle grid pattern -->
+        <div class="absolute inset-0 opacity-[0.02]" style="background-image: radial-gradient(#8C1515 1px, transparent 1px); background-size: 40px 40px;"></div>
+    </div>
+
+    <!-- Navigation (Sticky) -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3 cursor-pointer">
+                <img src="SEAlogo.png" alt="Stanford EA" class="h-10 w-auto logo-blue">
+                <div class="flex flex-col leading-none">
+                    <span class="font-serif text-base font-semibold text-slate-900">Stanford</span>
+                    <span class="font-sans text-[10px] font-medium tracking-widest uppercase text-eablue">Effective Altruism</span>
+                </div>
+            </a>
+
+            <!-- Navigation Islands -->
+            <div class="hidden md:flex items-center gap-3">
+                <!-- Island 1: About Us (Active) - LEFT -->
+                <nav class="flex items-center gap-1 bg-cardinal/10 p-1 rounded-full border border-cardinal/20 relative">
+                    <div id="nav-indicator" class="absolute h-[calc(100%-8px)] bg-white rounded-full shadow-sm transition-all duration-300 ease-out" style="left: 4px; width: 70px;"></div>
+                    <a href="#team" data-nav="team" class="nav-link px-4 py-1.5 rounded-full text-xs font-medium text-slate-600 hover:text-cardinal transition-all relative z-10">Our Team</a>
+                    <!-- TEMPORARILY HIDDEN: Alumni & Mentors nav links (restore when ready)
+                    <a href="#alumni" data-nav="alumni" class="nav-link px-4 py-1.5 rounded-full text-xs font-medium text-slate-600 hover:text-cardinal transition-all relative z-10">Alumni</a>
+                    <a href="#mentors" data-nav="mentors" class="nav-link px-4 py-1.5 rounded-full text-xs font-medium text-slate-600 hover:text-cardinal transition-all relative z-10">Mentors</a>
+                    -->
+                </nav>
+
+                <!-- Island Separator -->
+                <div class="w-px h-6 bg-slate-200"></div>
+
+                <!-- Island 2: Stanford EA (Link) - CENTER -->
+                <a href="index.html" class="flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium text-slate-500 hover:text-cardinal hover:bg-slate-100/50 transition-all">
+                    <span>Stanford EA</span>
+                </a>
+
+                <!-- Island Separator -->
+                <div class="w-px h-6 bg-slate-200"></div>
+
+                <!-- Island 3: Effective Altruism (Link) - RIGHT -->
+                <a href="ea.html" class="flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium text-slate-500 hover:text-eablue hover:bg-slate-100/50 transition-all">
+                    <span>Effective Altruism</span>
+                    <iconify-icon icon="solar:arrow-right-linear" class="w-3 h-3"></iconify-icon>
+                </a>
+            </div>
+
+            <a href="https://forms.gle/rzgbSgyfRM6f6Ncd8" target="_blank" class="hidden sm:block bg-cardinal text-white px-4 py-2 rounded-full text-xs font-medium tracking-wide hover:bg-cardinal/90 transition-colors shadow-lg shadow-cardinal/20">
+                Join Newsletter
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden flex items-center justify-center w-10 h-10 rounded-full bg-slate-100/50 border border-slate-200/50 text-slate-600 hover:text-cardinal transition-colors">
+                <iconify-icon id="menu-icon" icon="solar:hamburger-menu-linear" class="text-xl"></iconify-icon>
+            </button>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-lg border-b border-slate-200 shadow-lg">
+            <nav class="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-2">
+                <a href="index.html" class="px-4 py-3 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors">Home</a>
+                <a href="community.html" class="px-4 py-3 rounded-xl text-sm font-medium text-cardinal bg-cardinal/5">Meet the Team</a>
+                <a href="ea.html" class="px-4 py-3 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors">Effective Altruism</a>
+                <a href="manifesto.html" class="px-4 py-3 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors">Manifesto</a>
+                <div class="border-t border-slate-100 my-2"></div>
+                <a href="https://forms.gle/rzgbSgyfRM6f6Ncd8" target="_blank" class="px-4 py-3 rounded-xl text-sm font-medium text-white bg-cardinal hover:bg-cardinal/90 transition-colors text-center">Join Newsletter</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Scrollable Content Wrapper -->
+    <main class="relative z-10 w-full">
+
+        <!-- SECTION 1: TEAM (Hero) -->
+        <section id="team" class="min-h-screen w-full flex flex-col justify-center px-6 md:px-12 pt-28 pb-16 relative">
+
+            <div class="max-w-4xl animate-fade-in" style="animation-delay: 0.1s;">
+                <div class="inline-flex items-center gap-2 mb-6 px-3 py-1 rounded-full border border-cardinal/30 bg-cardinal/10 backdrop-blur-sm transition-all duration-200 cursor-pointer hover:scale-105 hover:shadow-lg hover:border-cardinal/50">
+                    <div class="w-1.5 h-1.5 rounded-full bg-cardinal animate-pulse shrink-0"></div>
+                    <div class="overflow-hidden h-[16px] relative w-[205px]">
+                        <div id="rotating-team-tags" class="transition-transform duration-500 ease-out">
+                            <span class="font-mono text-[10px] text-cardinal font-medium tracking-wide uppercase block h-[16px] leading-[16px]">Learning Leadership</span>
+                            <span class="font-mono text-[10px] text-cardinal font-medium tracking-wide uppercase block h-[16px] leading-[16px]">Building Professional Networks</span>
+                            <span class="font-mono text-[10px] text-cardinal font-medium tracking-wide uppercase block h-[16px] leading-[16px]">High-Agency Work</span>
+                            <span class="font-mono text-[10px] text-cardinal font-medium tracking-wide uppercase block h-[16px] leading-[16px]">Event Planning</span>
+                            <span class="font-mono text-[10px] text-cardinal font-medium tracking-wide uppercase block h-[16px] leading-[16px]">Mentorship</span>
+                            <span class="font-mono text-[10px] text-cardinal font-medium tracking-wide uppercase block h-[16px] leading-[16px]">Public Speaking</span>
+                            <span class="font-mono text-[10px] text-cardinal font-medium tracking-wide uppercase block h-[16px] leading-[16px]">Strategic Thinking</span>
+                            <span class="font-mono text-[10px] text-cardinal font-medium tracking-wide uppercase block h-[16px] leading-[16px]">Community Building</span>
+                            <span class="font-mono text-[10px] text-cardinal font-medium tracking-wide uppercase block h-[16px] leading-[16px]">Resume-Building</span>
+                            <span class="font-mono text-[10px] text-cardinal font-medium tracking-wide uppercase block h-[16px] leading-[16px]">Learning Leadership</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-slate-900 leading-[0.95] tracking-tight mb-8">
+                    Meet the <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cardinal via-cardinal to-eablue italic pr-4">Team.</span>
+                </h1>
+
+                <p class="max-w-lg font-sans text-sm md:text-base text-slate-600 leading-relaxed mb-10">
+                    We're rapidly expanding our board to fill key roles as members of previous leadership take leave for career opportunities! If you're excited about high-impact work, read our <a href="manifesto.html" class="text-eablue hover:text-cardinal underline underline-offset-2">manifesto</a> and <a href="https://forms.gle/3JoFie1MNziEv2NF7" target="_blank" class="text-eablue hover:text-cardinal underline underline-offset-2">apply</a>.
+                </p>
+            </div>
+
+            <!-- Team Grid -->
+            <div class="max-w-7xl w-full mt-8 pb-24 mx-auto">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+                    <!-- Avi Parrack -->
+                    <div class="group">
+                        <div class="bg-white rounded-2xl p-4 border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                            <div class="w-full aspect-square rounded-xl mb-4 overflow-hidden">
+                                <img src="Media/D1AC2E7E-FE08-42F7-999D-9FD3E09E9925_1_102_o.jpeg" alt="Avi Parrack" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="font-serif text-lg text-slate-900 mb-1">Avi Parrack</h3>
+                            <p class="text-xs text-cardinal font-medium mb-2">President</p>
+                            <div class="flex items-center justify-between">
+                                <p class="text-xs text-slate-500">PhD Phys '29</p>
+                                <div class="flex items-center gap-2">
+                                    <a href="https://www.linkedin.com/in/aviparrack/" target="_blank" class="text-slate-400 hover:text-slate-600 transition-colors"><iconify-icon icon="mdi:linkedin" class="w-3.5 h-3.5"></iconify-icon></a>
+                                    <a href="https://x.com/aviparr" target="_blank" class="text-slate-400 hover:text-slate-600 transition-colors"><iconify-icon icon="ri:twitter-x-fill" class="w-3 h-3"></iconify-icon></a>
+                                    <a href="https://aviparrack.substack.com/" target="_blank" class="text-slate-400 hover:text-slate-600 transition-colors"><iconify-icon icon="simple-icons:substack" class="w-3 h-3"></iconify-icon></a>
+                                    <a href="https://aviparrack.com/" target="_blank" class="text-slate-400 hover:text-slate-600 transition-colors"><iconify-icon icon="mdi:web" class="w-3.5 h-3.5"></iconify-icon></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dilon Chugh -->
+                    <div class="group">
+                        <div class="bg-white rounded-2xl p-4 border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                            <div class="w-full aspect-square rounded-xl mb-4 overflow-hidden">
+                                <img src="Media/Dilon.jpg" alt="Dilon Chugh" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="font-serif text-lg text-slate-900 mb-1">Dilon Chugh</h3>
+                            <p class="text-xs text-eablue font-medium mb-2">Fellowships Lead</p>
+                            <div class="flex items-center justify-between">
+                                <p class="text-xs text-slate-500">Math+Phil '29</p>
+                                <div class="flex items-center gap-2">
+                                    <a href="https://www.linkedin.com/in/dilon-chugh/" target="_blank" class="text-slate-400 hover:text-slate-600 transition-colors"><iconify-icon icon="mdi:linkedin" class="w-3.5 h-3.5"></iconify-icon></a>
+                                    <a href="https://dilon.dev/" target="_blank" class="text-slate-400 hover:text-slate-600 transition-colors"><iconify-icon icon="mdi:web" class="w-3.5 h-3.5"></iconify-icon></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ahmad Dagher -->
+                    <div class="group">
+                        <div class="bg-white rounded-2xl p-4 border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                            <div class="w-full aspect-square rounded-xl mb-4 overflow-hidden">
+                                <img src="Media/Ahmad.jpg" alt="Ahmad Dagher" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="font-serif text-lg text-slate-900 mb-1">Ahmad Dagher</h3>
+                            <p class="text-xs text-cardinal font-medium mb-2">Treasurer</p>
+                            <div class="flex items-center justify-between">
+                                <p class="text-xs text-slate-500">Bio+CS '29</p>
+                                <div class="flex items-center gap-2">
+                                    <a href="https://www.linkedin.com/in/ahmad-dagher-415452343/" target="_blank" class="text-slate-400 hover:text-slate-600 transition-colors"><iconify-icon icon="mdi:linkedin" class="w-3.5 h-3.5"></iconify-icon></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dillon Nguyen -->
+                    <div class="group">
+                        <div class="bg-white rounded-2xl p-4 border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                            <div class="w-full aspect-square rounded-xl mb-4 overflow-hidden">
+                                <img src="Media/Dillon.jpg" alt="Dillon Nguyen" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="font-serif text-lg text-slate-900 mb-1">Dillon Nguyen</h3>
+                            <p class="text-xs text-eablue font-medium mb-2">Events Lead</p>
+                            <div class="flex items-center justify-between">
+                                <p class="text-xs text-slate-500">Math+CS</p>
+                                <div class="flex items-center gap-2">
+                                    <a href="https://www.linkedin.com/in/dillonkn/" target="_blank" class="text-slate-400 hover:text-slate-600 transition-colors"><iconify-icon icon="mdi:linkedin" class="w-3.5 h-3.5"></iconify-icon></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Community Lead - Open -->
+                    <div class="group">
+                        <div class="bg-white rounded-2xl p-4 border border-dashed border-slate-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                            <div class="w-full aspect-square rounded-xl bg-gradient-to-br from-sky-50 to-sky-100 mb-4 flex items-center justify-center">
+                                <iconify-icon icon="solar:user-plus-rounded-linear" class="w-12 h-12 text-sky-300"></iconify-icon>
+                            </div>
+                            <p class="text-xs text-sky-600 font-medium mb-1">Community Lead</p>
+                            <p class="text-xs text-slate-500 mb-3">Accepting Applications</p>
+                            <a href="https://forms.gle/3JoFie1MNziEv2NF7" target="_blank" class="block w-full bg-sky-50 text-sky-700 border border-sky-200 py-2 rounded-lg text-xs font-semibold hover:bg-sky-100 transition-colors text-center">Apply</a>
+                        </div>
+                    </div>
+
+                    <!-- Conference Lead - Open -->
+                    <div class="group">
+                        <div class="bg-white rounded-2xl p-4 border border-dashed border-slate-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                            <div class="w-full aspect-square rounded-xl bg-gradient-to-br from-indigo-50 to-indigo-100 mb-4 flex items-center justify-center">
+                                <iconify-icon icon="solar:user-plus-rounded-linear" class="w-12 h-12 text-indigo-300"></iconify-icon>
+                            </div>
+                            <p class="text-xs text-indigo-600 font-medium mb-1">Conference Lead</p>
+                            <p class="text-xs text-slate-500 mb-3">Accepting Applications</p>
+                            <a href="https://forms.gle/3JoFie1MNziEv2NF7" target="_blank" class="block w-full bg-indigo-50 text-indigo-700 border border-indigo-200 py-2 rounded-lg text-xs font-semibold hover:bg-indigo-100 transition-colors text-center">Apply</a>
+                        </div>
+                    </div>
+
+                    <!-- Marketing Lead - Open -->
+                    <div class="group">
+                        <div class="bg-white rounded-2xl p-4 border border-dashed border-slate-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                            <div class="w-full aspect-square rounded-xl bg-gradient-to-br from-orange-50 to-orange-100 mb-4 flex items-center justify-center">
+                                <iconify-icon icon="solar:user-plus-rounded-linear" class="w-12 h-12 text-orange-300"></iconify-icon>
+                            </div>
+                            <p class="text-xs text-orange-600 font-medium mb-1">Marketing Lead</p>
+                            <p class="text-xs text-slate-500 mb-3">Accepting Applications</p>
+                            <a href="https://forms.gle/3JoFie1MNziEv2NF7" target="_blank" class="block w-full bg-orange-50 text-orange-700 border border-orange-200 py-2 rounded-lg text-xs font-semibold hover:bg-orange-100 transition-colors text-center">Apply</a>
+                        </div>
+                    </div>
+
+                    <!-- Recruitment Lead - Open -->
+                    <div class="group">
+                        <div class="bg-white rounded-2xl p-4 border border-dashed border-slate-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                            <div class="w-full aspect-square rounded-xl bg-gradient-to-br from-teal-50 to-teal-100 mb-4 flex items-center justify-center">
+                                <iconify-icon icon="solar:user-plus-rounded-linear" class="w-12 h-12 text-teal-300"></iconify-icon>
+                            </div>
+                            <p class="text-xs text-teal-600 font-medium mb-1">Recruitment Lead</p>
+                            <p class="text-xs text-slate-500 mb-3">Accepting Applications</p>
+                            <a href="https://forms.gle/3JoFie1MNziEv2NF7" target="_blank" class="block w-full bg-teal-50 text-teal-700 border border-teal-200 py-2 rounded-lg text-xs font-semibold hover:bg-teal-100 transition-colors text-center">Apply</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50 hidden md:block">
+                <iconify-icon icon="solar:arrow-down-linear" class="w-5 h-5 text-slate-400"></iconify-icon>
+            </div>
+        </section>
+
+        <!-- TEMPORARILY HIDDEN: Alumni & Mentors sections
+             To restore: Remove the <template id="hidden-sections"> wrapper and its closing </template> tag -->
+        <template id="hidden-sections">
+
+        <!-- SECTION 2: ALUMNI -->
+        <section id="alumni" class="min-h-screen w-full bg-slate-50/90 border-t border-slate-200 py-24 px-6 md:px-12 relative">
+            <div class="max-w-7xl mx-auto">
+
+                <!-- Section Header -->
+                <div class="mb-16">
+                    <span class="text-eablue font-mono text-xs uppercase tracking-widest mb-3 block">02 — Alumni Network</span>
+                    <h2 class="font-serif text-4xl md:text-5xl text-slate-900 tracking-tight mb-4">Where They Are Now</h2>
+                    <p class="text-slate-500 max-w-xl text-sm leading-relaxed">
+                        Stanford EA alumni are making an impact across AI safety research, policy, global health, and more.
+                    </p>
+                </div>
+
+                <!-- Alumni Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <!-- Alumni Card: Kuhan Jeyapragasan -->
+                    <div class="group bg-white rounded-2xl p-6 border border-slate-100 hover:shadow-lg transition-all duration-300">
+                        <div class="flex items-start gap-4 mb-4">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-eablue/20 to-eablue/30 flex items-center justify-center shrink-0 overflow-hidden">
+                                <img src="Media/Kuhan.jpg" alt="Kuhan Jeyapragasan" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h3 class="font-serif text-lg text-slate-900 mb-1">Kuhan Jeyapragasan</h3>
+                                <p class="text-xs text-slate-500">Masters CS '20</p>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <p class="text-sm text-slate-600 leading-relaxed">Kuhan and Stanford EA members founded the <a href="https://seri.stanford.edu/" target="_blank" class="text-eablue hover:underline">Stanford Existential Risks Initiative</a>, incubated <a href="https://www.matsprogram.org/" target="_blank" class="text-eablue hover:underline">MATS</a>, <a href="https://www.effectivealtruism.org/courses" target="_blank" class="text-eablue hover:underline">EA Virtual Programs</a>, and the <a href="https://gfi.org/directory/the-stanford-alt-protein-project/" target="_blank" class="text-eablue hover:underline">Alternative Protein Project</a>. He also set up AI safety programming at MIT and Harvard, and currently works on strengthening democracy at <a href="https://www.linkedin.com/company/civitech/" target="_blank" class="text-eablue hover:underline">Civitech</a>.</p>
+                        </div>
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <span class="px-2 py-1 rounded-full bg-eablue/10 text-eablue text-[10px] font-medium">AI Safety</span>
+                            <span class="px-2 py-1 rounded-full bg-purple-100 text-purple-700 text-[10px] font-medium">Community Building</span>
+                            <span class="px-2 py-1 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-medium">Democracy</span>
+                        </div>
+                    </div>
+
+                    <!-- Alumni Card: Felipe Calero Forero -->
+                    <div class="group bg-white rounded-2xl p-6 border border-slate-100 hover:shadow-lg transition-all duration-300">
+                        <div class="flex items-start gap-4 mb-4">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-cardinal/20 to-cardinal/30 flex items-center justify-center shrink-0 overflow-hidden">
+                                <!-- TODO: Add photo later -->
+                                <iconify-icon icon="solar:user-rounded-linear" class="w-8 h-8 text-cardinal/50"></iconify-icon>
+                            </div>
+                            <div>
+                                <h3 class="font-serif text-lg text-slate-900 mb-1">Felipe Calero Forero</h3>
+                                <p class="text-xs text-slate-500">CS '23</p>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <p class="text-sm text-slate-600 leading-relaxed">Former researcher at GovAI and RAND Corporation focusing on compute governance and AI policy.</p>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <span class="px-2 py-1 rounded-full bg-cardinal/10 text-cardinal text-[10px] font-medium">AI Governance</span>
+                                <span class="px-2 py-1 rounded-full bg-eablue/10 text-eablue text-[10px] font-medium">Policy</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <a href="https://www.rand.org" target="_blank" class="w-5 h-5 rounded-full overflow-hidden hover:scale-110 transition-transform" title="RAND Corporation">
+                                    <img src="https://www.google.com/s2/favicons?domain=rand.org&sz=64" alt="RAND" class="w-full h-full object-cover">
+                                </a>
+                                <a href="https://www.governance.ai" target="_blank" class="w-5 h-5 rounded-full overflow-hidden hover:scale-110 transition-transform" title="GovAI">
+                                    <img src="https://www.google.com/s2/favicons?domain=governance.ai&sz=64" alt="GovAI" class="w-full h-full object-cover">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Alumni Card 3 -->
+                    <div class="group bg-white rounded-2xl p-6 border border-slate-100 hover:shadow-lg transition-all duration-300">
+                        <div class="flex items-start gap-4 mb-4">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-emerald-100 to-emerald-200 flex items-center justify-center shrink-0">
+                                <iconify-icon icon="solar:user-rounded-linear" class="w-8 h-8 text-emerald-400"></iconify-icon>
+                            </div>
+                            <div>
+                                <h3 class="font-serif text-lg text-slate-900 mb-1">Alumni Name</h3>
+                                <p class="text-xs text-slate-500">Stanford EA '20</p>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <p class="text-sm text-slate-600 leading-relaxed">Leading global health initiatives at a major foundation.</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-1 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-medium">Global Health</span>
+                            <span class="px-2 py-1 rounded-full bg-slate-100 text-slate-600 text-[10px] font-medium">Nonprofit</span>
+                        </div>
+                    </div>
+
+                    <!-- Alumni Card 4 -->
+                    <div class="group bg-white rounded-2xl p-6 border border-slate-100 hover:shadow-lg transition-all duration-300">
+                        <div class="flex items-start gap-4 mb-4">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-purple-100 to-purple-200 flex items-center justify-center shrink-0">
+                                <iconify-icon icon="solar:user-rounded-linear" class="w-8 h-8 text-purple-400"></iconify-icon>
+                            </div>
+                            <div>
+                                <h3 class="font-serif text-lg text-slate-900 mb-1">Alumni Name</h3>
+                                <p class="text-xs text-slate-500">Stanford EA '23</p>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <p class="text-sm text-slate-600 leading-relaxed">PhD researcher in biosecurity and pandemic preparedness.</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-1 rounded-full bg-purple-100 text-purple-700 text-[10px] font-medium">Biosecurity</span>
+                            <span class="px-2 py-1 rounded-full bg-slate-100 text-slate-600 text-[10px] font-medium">Academia</span>
+                        </div>
+                    </div>
+
+                    <!-- Alumni Card 5 -->
+                    <div class="group bg-white rounded-2xl p-6 border border-slate-100 hover:shadow-lg transition-all duration-300">
+                        <div class="flex items-start gap-4 mb-4">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-amber-100 to-amber-200 flex items-center justify-center shrink-0">
+                                <iconify-icon icon="solar:user-rounded-linear" class="w-8 h-8 text-amber-400"></iconify-icon>
+                            </div>
+                            <div>
+                                <h3 class="font-serif text-lg text-slate-900 mb-1">Alumni Name</h3>
+                                <p class="text-xs text-slate-500">Stanford EA '19</p>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <p class="text-sm text-slate-600 leading-relaxed">Grantmaker at a major EA-aligned foundation.</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-1 rounded-full bg-amber-100 text-amber-700 text-[10px] font-medium">Grantmaking</span>
+                            <span class="px-2 py-1 rounded-full bg-slate-100 text-slate-600 text-[10px] font-medium">Philanthropy</span>
+                        </div>
+                    </div>
+
+                    <!-- More Alumni Placeholder -->
+                    <div class="group bg-slate-100 rounded-2xl p-6 border border-dashed border-slate-300 flex items-center justify-center hover:border-cardinal transition-colors cursor-pointer">
+                        <div class="text-center">
+                            <iconify-icon icon="solar:add-circle-linear" class="w-8 h-8 text-slate-400 mb-2"></iconify-icon>
+                            <p class="text-sm text-slate-500">View all alumni</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 3: MENTORS -->
+        <section id="mentors" class="min-h-screen w-full bg-slate-900 py-24 px-6 md:px-12 relative overflow-hidden">
+
+            <!-- Decorative Elements -->
+            <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent"></div>
+            <div class="absolute top-20 right-10 w-32 h-32 border border-slate-800 rounded-full"></div>
+            <div class="absolute bottom-20 left-10 w-24 h-24 border border-cardinal/20 rounded-full"></div>
+
+            <div class="max-w-7xl mx-auto relative z-10">
+
+                <!-- Section Header -->
+                <div class="mb-16 text-center">
+                    <span class="text-cardinal font-mono text-xs uppercase tracking-widest mb-3 block">03 — Mentors</span>
+                    <h2 class="font-serif text-4xl md:text-5xl text-slate-900 tracking-tight mb-4">Professional Network</h2>
+                    <p class="text-slate-400 max-w-xl mx-auto text-sm leading-relaxed">
+                        Industry professionals and researchers who guide our community members on high-impact career paths.
+                    </p>
+                </div>
+
+                <!-- Mentors Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <!-- Mentor Card 1 -->
+                    <div class="group bg-slate-800 rounded-2xl p-6 border border-slate-700 hover:border-slate-600 transition-all">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-14 h-14 rounded-full bg-gradient-to-br from-cardinal to-cardinal/70 flex items-center justify-center">
+                                <iconify-icon icon="solar:user-rounded-bold" class="w-7 h-7 text-white"></iconify-icon>
+                            </div>
+                            <div>
+                                <h3 class="font-serif text-lg text-slate-900">Mentor Name</h3>
+                                <p class="text-xs text-slate-400">AI Safety Researcher</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-400 mb-4 leading-relaxed">Senior researcher at a leading AI lab, specializing in alignment and interpretability.</p>
+                        <div class="flex items-center gap-2 text-xs text-slate-500">
+                            <iconify-icon icon="solar:buildings-linear" class="w-3 h-3"></iconify-icon>
+                            <span>AI Research Lab</span>
+                        </div>
+                    </div>
+
+                    <!-- Mentor Card 2 -->
+                    <div class="group bg-slate-800 rounded-2xl p-6 border border-slate-700 hover:border-slate-600 transition-all">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-14 h-14 rounded-full bg-gradient-to-br from-eablue to-eablue/70 flex items-center justify-center">
+                                <iconify-icon icon="solar:user-rounded-bold" class="w-7 h-7 text-white"></iconify-icon>
+                            </div>
+                            <div>
+                                <h3 class="font-serif text-lg text-slate-900">Mentor Name</h3>
+                                <p class="text-xs text-slate-400">Policy Director</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-400 mb-4 leading-relaxed">Leading technology policy initiatives at a major think tank in Washington D.C.</p>
+                        <div class="flex items-center gap-2 text-xs text-slate-500">
+                            <iconify-icon icon="solar:buildings-linear" class="w-3 h-3"></iconify-icon>
+                            <span>Policy Think Tank</span>
+                        </div>
+                    </div>
+
+                    <!-- Mentor Card 3 -->
+                    <div class="group bg-slate-800 rounded-2xl p-6 border border-slate-700 hover:border-slate-600 transition-all">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-14 h-14 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center">
+                                <iconify-icon icon="solar:user-rounded-bold" class="w-7 h-7 text-white"></iconify-icon>
+                            </div>
+                            <div>
+                                <h3 class="font-serif text-lg text-slate-900">Mentor Name</h3>
+                                <p class="text-xs text-slate-400">Global Health Expert</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-400 mb-4 leading-relaxed">Program officer at a major foundation focused on global health interventions.</p>
+                        <div class="flex items-center gap-2 text-xs text-slate-500">
+                            <iconify-icon icon="solar:buildings-linear" class="w-3 h-3"></iconify-icon>
+                            <span>Global Foundation</span>
+                        </div>
+                    </div>
+
+                    <!-- Mentor Card 4 -->
+                    <div class="group bg-slate-800 rounded-2xl p-6 border border-slate-700 hover:border-slate-600 transition-all">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-14 h-14 rounded-full bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center">
+                                <iconify-icon icon="solar:user-rounded-bold" class="w-7 h-7 text-white"></iconify-icon>
+                            </div>
+                            <div>
+                                <h3 class="font-serif text-lg text-slate-900">Mentor Name</h3>
+                                <p class="text-xs text-slate-400">Biosecurity Researcher</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-400 mb-4 leading-relaxed">Professor focusing on pandemic preparedness and biosecurity policy.</p>
+                        <div class="flex items-center gap-2 text-xs text-slate-500">
+                            <iconify-icon icon="solar:buildings-linear" class="w-3 h-3"></iconify-icon>
+                            <span>Stanford University</span>
+                        </div>
+                    </div>
+
+                    <!-- Mentor Card 5 -->
+                    <div class="group bg-slate-800 rounded-2xl p-6 border border-slate-700 hover:border-slate-600 transition-all">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-14 h-14 rounded-full bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center">
+                                <iconify-icon icon="solar:user-rounded-bold" class="w-7 h-7 text-white"></iconify-icon>
+                            </div>
+                            <div>
+                                <h3 class="font-serif text-lg text-slate-900">Mentor Name</h3>
+                                <p class="text-xs text-slate-400">Startup Founder</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-400 mb-4 leading-relaxed">Founded multiple impact-focused startups in the climate and food tech space.</p>
+                        <div class="flex items-center gap-2 text-xs text-slate-500">
+                            <iconify-icon icon="solar:buildings-linear" class="w-3 h-3"></iconify-icon>
+                            <span>Impact Ventures</span>
+                        </div>
+                    </div>
+
+                    <!-- Become a Mentor CTA -->
+                    <a href="mailto:stanfordea.ops@gmail.com" class="group bg-gradient-to-br from-cardinal to-cardinal/80 rounded-2xl p-6 flex flex-col justify-center items-center text-center cursor-pointer hover:shadow-lg hover:shadow-cardinal/20 transition-all">
+                        <iconify-icon icon="solar:hand-shake-linear" class="w-10 h-10 text-white/80 mb-3"></iconify-icon>
+                        <h3 class="font-serif text-lg text-white mb-2">Become a Mentor</h3>
+                        <p class="text-sm text-white/70 mb-4">Share your expertise with the next generation.</p>
+                        <span class="text-xs text-white font-medium underline underline-offset-2">Get in touch</span>
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+
+        </template>
+        <!-- END TEMPORARILY HIDDEN sections -->
+
+        <!-- FOOTER -->
+        <footer class="bg-slate-50/80 backdrop-blur-sm border-t border-slate-200 py-12 px-6 md:px-12">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-slate-400 text-xs">
+                <p>© 2026 Stanford Effective Altruism.</p>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <a href="mailto:stanfordea.ops@gmail.com" class="hover:text-cardinal transition-colors">Email</a>
+                    <a href="https://stanfordeffectivealtruism.substack.com/" target="_blank" class="hover:text-cardinal transition-colors">Substack</a>
+                    <a href="https://forum.effectivealtruism.org/users/stanford-ea" target="_blank" class="hover:text-cardinal transition-colors">EA Forum</a>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        // --- ROTATING TEAM TAGS ---
+        const rotatingTeamTags = document.getElementById('rotating-team-tags');
+        if (rotatingTeamTags) {
+            const tagCount = 9;
+            const tagHeight = 16;
+            let currentTag = Math.floor(Math.random() * tagCount);
+            let teamTagsIntervalId;
+
+            rotatingTeamTags.style.transform = `translateY(-${currentTag * tagHeight}px)`;
+
+            function advanceTeamTag() {
+                currentTag++;
+                rotatingTeamTags.style.transition = 'transform 500ms ease-out';
+                rotatingTeamTags.style.transform = `translateY(-${currentTag * tagHeight}px)`;
+
+                if (currentTag >= tagCount) {
+                    setTimeout(() => {
+                        rotatingTeamTags.style.transition = 'none';
+                        rotatingTeamTags.style.transform = 'translateY(0)';
+                        currentTag = 0;
+                    }, 500);
+                }
+            }
+
+            teamTagsIntervalId = setInterval(advanceTeamTag, 8000);
+
+            // Click to advance and reset timer
+            rotatingTeamTags.parentElement.style.cursor = 'pointer';
+            rotatingTeamTags.parentElement.addEventListener('click', () => {
+                clearInterval(teamTagsIntervalId);
+                advanceTeamTag();
+                teamTagsIntervalId = setInterval(advanceTeamTag, 8000);
+            });
+        }
+
+        // --- NAV INDICATOR ---
+        const navIndicator = document.getElementById('nav-indicator');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = ['team', 'alumni', 'mentors'];
+
+        function updateNavIndicator(activeNav) {
+            const activeLink = document.querySelector(`[data-nav="${activeNav}"]`);
+            if (activeLink && navIndicator) {
+                const nav = activeLink.parentElement;
+                const navRect = nav.getBoundingClientRect();
+                const linkRect = activeLink.getBoundingClientRect();
+                const offsetLeft = linkRect.left - navRect.left;
+
+                navIndicator.style.left = `${offsetLeft}px`;
+                navIndicator.style.width = `${linkRect.width}px`;
+
+                // Update active link styling
+                navLinks.forEach(link => {
+                    link.classList.remove('text-cardinal', 'font-semibold');
+                    link.classList.add('text-slate-600');
+                });
+                activeLink.classList.remove('text-slate-600');
+                activeLink.classList.add('text-cardinal', 'font-semibold');
+            }
+        }
+
+        function onScroll() {
+            const scrollPos = window.scrollY + window.innerHeight / 3;
+
+            let currentSection = 'team';
+            sections.forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+                if (section && section.offsetTop <= scrollPos) {
+                    currentSection = sectionId;
+                }
+            });
+
+            updateNavIndicator(currentSection);
+        }
+
+        // Initialize and listen
+        window.addEventListener('scroll', onScroll);
+        window.addEventListener('resize', () => onScroll());
+        setTimeout(() => onScroll(), 100);
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                const isOpen = !mobileMenu.classList.contains('hidden');
+                if (isOpen) {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.setAttribute('icon', 'solar:hamburger-menu-linear');
+                } else {
+                    mobileMenu.classList.remove('hidden');
+                    menuIcon.setAttribute('icon', 'solar:close-circle-linear');
+                }
+            });
+        }
+    </script>
+</body></html>

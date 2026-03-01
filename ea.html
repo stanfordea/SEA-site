@@ -1,0 +1,1728 @@
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Effective Altruism | Stanford EA</title>
+<link rel="icon" type="image/png" href="SEALogoBlueSquare.png">
+<!-- Prefetch other pages for faster navigation -->
+<link rel="prefetch" href="index.html">
+<link rel="prefetch" href="community.html">
+<link rel="prefetch" href="career-accelerator.html">
+<link rel="prefetch" href="project-incubator.html">
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<!-- Tailwind & Icons -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+fontFamily: {
+sans: ['Inter', 'sans-serif'],
+serif: ['Source Serif Pro', 'serif'],
+mono: ['JetBrains Mono', 'monospace'],
+},
+colors: {
+bg: '#F8FAFC',
+cardinal: '#8C1515',
+eablue: '#0C87C9',
+eateal: '#1A9B9B',
+easky: '#4DB5E4',
+slate: '#334155',
+dark: '#0F172A'
+},
+animation: {
+'fade-in': 'fadeIn 1.2s ease-out forwards',
+'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+'orbit': 'orbit 30s linear infinite',
+'orbit-reverse': 'orbit 35s linear infinite reverse',
+'trace-ellipse': 'traceEllipse 90s linear infinite',
+'wobble-pill': 'wobblePill 8s ease-in-out infinite',
+'pulse-slow': 'pulse 4s ease-in-out infinite',
+'float-slow': 'floatSlow 8s ease-in-out infinite',
+'scroll-left': 'scrollLeft 30s linear infinite',
+'scroll-right': 'scrollRight 30s linear infinite',
+'float': 'float 20s ease-in-out infinite',
+'float-delayed': 'floatDelayed 25s ease-in-out infinite',
+},
+keyframes: {
+fadeIn: {
+'0%': { opacity: '0', transform: 'translateY(10px)' },
+'100%': { opacity: '1', transform: 'translateY(0)' },
+},
+slideUp: {
+'0%': { opacity: '0', transform: 'translateY(40px)' },
+'100%': { opacity: '1', transform: 'translateY(0)' },
+},
+orbit: {
+'0%': { transform: 'rotate(0deg)' },
+'100%': { transform: 'rotate(360deg)' },
+},
+traceEllipse: {
+'0%': { left: '50%', top: '0%' },
+'10%': { left: '79.4%', top: '9.5%' },
+'20%': { left: '97.6%', top: '34.5%' },
+'30%': { left: '97.6%', top: '65.5%' },
+'40%': { left: '79.4%', top: '90.5%' },
+'50%': { left: '50%', top: '100%' },
+'60%': { left: '20.6%', top: '90.5%' },
+'70%': { left: '2.4%', top: '65.5%' },
+'80%': { left: '2.4%', top: '34.5%' },
+'90%': { left: '20.6%', top: '9.5%' },
+'100%': { left: '50%', top: '0%' },
+},
+wobblePill: {
+'0%, 100%': { transform: 'translate(0%, 0%)' },
+'25%': { transform: 'translate(3%, -4%)' },
+'50%': { transform: 'translate(-2%, 3%)' },
+'75%': { transform: 'translate(4%, 2%)' },
+},
+floatSlow: {
+'0%, 100%': { transform: 'translateY(0) translateX(0)' },
+'25%': { transform: 'translateY(-10px) translateX(5px)' },
+'50%': { transform: 'translateY(-5px) translateX(-5px)' },
+'75%': { transform: 'translateY(-15px) translateX(3px)' },
+},
+scrollLeft: {
+'0%': { transform: 'translateX(0)' },
+'100%': { transform: 'translateX(-50%)' },
+},
+scrollRight: {
+'0%': { transform: 'translateX(-50%)' },
+'100%': { transform: 'translateX(0)' },
+},
+float: {
+'0%, 100%': { transform: 'translate(0, 0) rotate(0deg)' },
+'25%': { transform: 'translate(30px, -40px) rotate(5deg)' },
+'50%': { transform: 'translate(-20px, 20px) rotate(-5deg)' },
+'75%': { transform: 'translate(40px, 30px) rotate(3deg)' },
+},
+floatDelayed: {
+'0%, 100%': { transform: 'translate(0, 0) rotate(0deg)' },
+'33%': { transform: 'translate(-40px, 30px) rotate(-8deg)' },
+'66%': { transform: 'translate(30px, -20px) rotate(5deg)' },
+}
+}
+}
+}
+}
+</script>
+<style>
+body { margin: 0; background-color: #F8FAFC; color: #0F172A; overflow-x: hidden; }
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+/* Glass Components */
+.glass-panel {
+background: rgba(255, 255, 255, 0.85);
+backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+border: 1px solid rgba(255, 255, 255, 0.6);
+box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
+}
+.glass-nav {
+background: rgba(255, 255, 255, 0.7);
+backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+::selection { background: #0C87C9; color: white; }
+/* Logo color grading to match eablue */
+.logo-blue {
+    filter: brightness(0) saturate(100%) invert(41%) sepia(98%) saturate(456%) hue-rotate(166deg) brightness(93%) contrast(96%);
+}
+/* Orbit pill styles */
+.orbit-pill {
+    transition: all 0.3s ease;
+    transform: translate(-50%, -50%);
+}
+.orbit-pill-inner {
+    display: inline-block;
+    padding: 8px 16px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 9999px;
+    font-size: 12px;
+    color: #475569;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.orbit-pill:hover .orbit-pill-inner {
+    transform: scale(1.1);
+    border-color: #0C87C9;
+    color: #0C87C9;
+    box-shadow: 0 4px 20px rgba(12, 135, 201, 0.25), 0 0 30px rgba(12, 135, 201, 0.15);
+    background: white;
+}
+.orbit-pill-mobile {
+    display: inline-block;
+    padding: 6px 12px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 9999px;
+    font-size: 11px;
+    color: #475569;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+.orbit-pill-mobile:hover {
+    transform: scale(1.05);
+    border-color: #0C87C9;
+    color: #0C87C9;
+    box-shadow: 0 4px 15px rgba(12, 135, 201, 0.2);
+}
+/* Scrolling animation */
+.scroll-container {
+overflow: hidden;
+mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+-webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+/* Floating shapes */
+.floating-shape {
+position: absolute;
+border-radius: 50%;
+filter: blur(80px);
+}
+</style></head>
+
+<body class="antialiased font-sans bg-bg min-h-screen relative selection:bg-eablue selection:text-white">
+
+    <!-- Animated Background - Floating Blue Orbs -->
+    <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        <!-- Large orbs - blue emphasis (65% blue tones) -->
+        <div class="floating-shape w-[500px] h-[500px] bg-eablue/30 top-[-100px] right-[-100px] animate-float"></div>
+        <div class="floating-shape w-[400px] h-[400px] bg-eateal/25 bottom-[-50px] right-[20%] animate-float-delayed"></div>
+        <div class="floating-shape w-[350px] h-[350px] bg-easky/20 top-[30%] right-[10%] animate-float" style="animation-delay: 1.5s;"></div>
+        <div class="floating-shape w-[300px] h-[300px] bg-eablue/20 bottom-[20%] left-[-50px] animate-float-delayed" style="animation-delay: 2s;"></div>
+        <!-- Smaller accent orbs - including subtle red for balance -->
+        <div class="floating-shape w-[200px] h-[200px] bg-cardinal/15 top-[60%] left-[10%] animate-float" style="animation-delay: 3s;"></div>
+        <div class="floating-shape w-[250px] h-[250px] bg-eateal/15 top-[10%] left-[30%] animate-float-delayed" style="animation-delay: 4s;"></div>
+        <!-- Subtle dot grid overlay -->
+        <div class="absolute inset-0 opacity-[0.02]" style="background-image: radial-gradient(#0C87C9 1px, transparent 1px); background-size: 40px 40px;"></div>
+    </div>
+
+    <!-- Navigation (Sticky) -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3 cursor-pointer">
+                <img src="SEAlogo.png" alt="Stanford EA" class="h-10 w-auto logo-blue">
+                <div class="flex flex-col leading-none">
+                    <span class="font-serif text-base font-semibold text-slate-900">Stanford</span>
+                    <span class="font-sans text-[10px] font-medium tracking-widest uppercase text-eablue">Effective Altruism</span>
+                </div>
+            </a>
+
+            <!-- Navigation Islands -->
+            <div class="hidden md:flex items-center gap-3">
+                <!-- Island 1: About Us (Link) - LEFT -->
+                <a href="community.html" class="flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium text-slate-500 hover:text-cardinal hover:bg-slate-100/50 transition-all">
+                    <iconify-icon icon="solar:arrow-left-linear" class="w-3 h-3"></iconify-icon>
+                    <span>About Us</span>
+                </a>
+
+                <!-- Island Separator -->
+                <div class="w-px h-6 bg-slate-200"></div>
+
+                <!-- Island 2: Stanford EA (Link) - CENTER -->
+                <a href="index.html" class="flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium text-slate-500 hover:text-cardinal hover:bg-slate-100/50 transition-all">
+                    <span>Stanford EA</span>
+                </a>
+
+                <!-- Island Separator -->
+                <div class="w-px h-6 bg-slate-200"></div>
+
+                <!-- Island 3: Effective Altruism (Active) - RIGHT -->
+                <nav class="flex items-center gap-1 bg-eablue/10 p-1 rounded-full border border-eablue/20 relative">
+                    <div id="nav-indicator" class="absolute h-[calc(100%-8px)] bg-white rounded-full shadow-sm transition-all duration-300 ease-out" style="left: 4px; width: 80px;"></div>
+                    <a href="#what-is-ea" data-nav="what-is-ea" class="nav-link px-4 py-1.5 rounded-full text-xs font-medium text-slate-600 hover:text-eablue transition-all relative z-10">What is EA</a>
+                    <a href="#big-problems" data-nav="big-problems" class="nav-link px-4 py-1.5 rounded-full text-xs font-medium text-slate-600 hover:text-eablue transition-all relative z-10">Pressing Problems</a>
+                    <a href="#global-community" data-nav="global-community" class="nav-link px-4 py-1.5 rounded-full text-xs font-medium text-slate-600 hover:text-eablue transition-all relative z-10">Global Community</a>
+                </nav>
+            </div>
+
+            <a href="index.html#fellowships" class="hidden sm:block bg-eablue text-white px-4 py-2 rounded-full text-xs font-medium tracking-wide hover:bg-eablue/90 transition-colors shadow-lg shadow-eablue/20">
+                Get Involved
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden flex items-center justify-center w-10 h-10 rounded-full bg-slate-100/50 border border-slate-200/50 text-slate-600 hover:text-eablue transition-colors">
+                <iconify-icon id="menu-icon" icon="solar:hamburger-menu-linear" class="text-xl"></iconify-icon>
+            </button>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-lg border-b border-slate-200 shadow-lg">
+            <nav class="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-2">
+                <a href="index.html" class="px-4 py-3 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors">Home</a>
+                <a href="community.html" class="px-4 py-3 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors">Meet the Team</a>
+                <a href="ea.html" class="px-4 py-3 rounded-xl text-sm font-medium text-eablue bg-eablue/5">Effective Altruism</a>
+                <a href="manifesto.html" class="px-4 py-3 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors">Manifesto</a>
+                <div class="border-t border-slate-100 my-2"></div>
+                <a href="index.html#fellowships" class="px-4 py-3 rounded-xl text-sm font-medium text-white bg-eablue hover:bg-eablue/90 transition-colors text-center">Get Involved</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Scrollable Content Wrapper -->
+    <main class="relative z-10 w-full">
+
+        <!-- SECTION 1: WHAT IS EA (Hero) -->
+        <section id="what-is-ea" class="min-h-screen w-full flex flex-col justify-center px-6 md:px-12 pt-20 relative">
+
+            <div class="max-w-4xl animate-fade-in" style="animation-delay: 0.1s;">
+                <div class="inline-flex items-center gap-2 mb-6 px-3 py-1 rounded-full border border-eablue/30 bg-eablue/10 backdrop-blur-sm hover:scale-105 hover:shadow-md hover:shadow-eablue/20 transition-all duration-200 cursor-pointer">
+                    <div class="w-1.5 h-1.5 rounded-full bg-eablue animate-pulse shrink-0"></div>
+                    <div class="overflow-hidden h-[16px] relative w-[115px]">
+                        <div id="rotating-ea-tags" class="transition-transform duration-500 ease-out">
+                            <span class="font-mono text-[10px] text-eablue font-medium tracking-wide uppercase block h-[16px] leading-[16px]">A Global Movement</span>
+                            <span class="font-mono text-[10px] text-eablue font-medium tracking-wide uppercase block h-[16px] leading-[16px]">A Research Field</span>
+                            <span class="font-mono text-[10px] text-eablue font-medium tracking-wide uppercase block h-[16px] leading-[16px]">Applied Ethics</span>
+                            <span class="font-mono text-[10px] text-eablue font-medium tracking-wide uppercase block h-[16px] leading-[16px]">A Global Movement</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-slate-900 leading-[0.95] tracking-tight mb-8">
+                    What is<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cardinal via-eablue via-35% to-eablue italic pr-4">Effective Altruism?</span>
+                </h1>
+
+                <p class="max-w-xl font-sans text-sm md:text-base text-slate-600 leading-relaxed mb-10">
+                    Effective altruism asks a simple question: how can we do the most good? We try to find out through evidence, action, and iteration.
+                </p>
+
+                <div class="flex items-center gap-4">
+                    <a href="#big-problems" class="group relative overflow-hidden bg-eablue text-white px-7 py-3 rounded-full shadow-lg shadow-eablue/30 hover:shadow-eablue/50 transition-all duration-300">
+                        <span class="relative z-10 flex items-center gap-2 font-medium text-sm">
+                            Explore Big Problems
+                            <iconify-icon icon="solar:arrow-down-linear" class="w-4 h-4"></iconify-icon>
+                        </span>
+                    </a>
+                    <a href="https://www.effectivealtruism.org" target="_blank" class="px-6 py-3 rounded-full border border-slate-200 hover:border-eablue hover:text-eablue transition-colors bg-white/50 backdrop-blur-sm text-sm font-medium text-slate-600 flex items-center gap-2">
+                        Learn More
+                        <iconify-icon icon="solar:arrow-right-up-linear" class="w-4 h-4"></iconify-icon>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Video Carousel -->
+            <div class="w-full mt-16 mb-20 px-6 relative">
+                <!-- Navigation Arrows -->
+                <button id="video-prev" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/90 backdrop-blur-sm border border-slate-200 rounded-full shadow-lg flex items-center justify-center hover:bg-slate-50 transition-colors">
+                    <iconify-icon icon="solar:arrow-left-linear" class="w-5 h-5 text-slate-600"></iconify-icon>
+                </button>
+                <button id="video-next" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/90 backdrop-blur-sm border border-slate-200 rounded-full shadow-lg flex items-center justify-center hover:bg-slate-50 transition-colors">
+                    <iconify-icon icon="solar:arrow-right-linear" class="w-5 h-5 text-slate-600"></iconify-icon>
+                </button>
+
+                <!-- Carousel Container -->
+                <div class="mx-8" style="overflow-x: clip; overflow-y: visible;">
+                    <div id="video-carousel" class="flex transition-transform duration-500 ease-out pt-8 pb-4" style="gap: 1.5rem;">
+                        <!-- Video 1: Recent Keynotes -->
+                        <div class="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] flex flex-col video-card" data-index="0">
+                            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                                <div class="aspect-video">
+                                    <iframe src="https://www.youtube.com/embed/SF-57j9kuXE?start=8" frameborder="0" width="100%" height="100%" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                                </div>
+                            </div>
+                            <p class="text-sm font-medium text-slate-600 text-center mt-3">Recent Keynotes</p>
+                        </div>
+
+                        <!-- Video 2: What are the most important moral problems? -->
+                        <div class="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] flex flex-col video-card" data-index="1">
+                            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm md:-translate-y-6">
+                                <div class="aspect-video">
+                                    <iframe src="https://www.youtube.com/embed/WyprXhvGVYk" frameborder="0" width="100%" height="100%" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                                </div>
+                            </div>
+                            <p class="text-sm font-medium text-slate-600 text-center mt-3 md:-translate-y-6">What Are the Most Important<br>Moral Problems of Our Time?</p>
+                        </div>
+
+                        <!-- Video 3: What's New? -->
+                        <div class="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] flex flex-col video-card" data-index="2">
+                            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                                <div class="aspect-video">
+                                    <iframe src="https://www.youtube.com/embed/uWFU0XovQ6E?start=2782" frameborder="0" width="100%" height="100%" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                                </div>
+                            </div>
+                            <p class="text-sm font-medium text-slate-600 text-center mt-3">2025 Wrapped</p>
+                        </div>
+
+                        <!-- Video 4: Strangers Are Drowning -->
+                        <div class="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] flex flex-col video-card" data-index="3">
+                            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm md:-translate-y-6">
+                                <div class="aspect-video">
+                                    <iframe src="https://www.youtube.com/embed/TdXKak-k6zw" frameborder="0" width="100%" height="100%" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                                </div>
+                            </div>
+                            <p class="text-sm font-medium text-slate-600 text-center mt-3 md:-translate-y-6">Strangers Are Drowning<br>And We Can Save Them</p>
+                        </div>
+
+                        <!-- Video 5: How big could our future be? -->
+                        <div class="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] flex flex-col video-card" data-index="4">
+                            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                                <div class="aspect-video">
+                                    <iframe src="https://www.youtube.com/embed/LEENEFaVUzU" frameborder="0" width="100%" height="100%" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                                </div>
+                            </div>
+                            <p class="text-sm font-medium text-slate-600 text-center mt-3">How Big Could Our Future Be?</p>
+                        </div>
+
+                        <!-- Video 6: Our great privileges confer great responsibility -->
+                        <div class="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] flex flex-col video-card" data-index="5">
+                            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm md:-translate-y-6">
+                                <div class="aspect-video">
+                                    <iframe src="https://www.youtube.com/embed/QkB3Zq3zoR4" frameborder="0" width="100%" height="100%" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                                </div>
+                            </div>
+                            <p class="text-sm font-medium text-slate-600 text-center mt-3 md:-translate-y-6">Our Great Privileges Confer<br>Great Responsibility</p>
+                        </div>
+
+                        <!-- Video 7: Growing the pie -->
+                        <div class="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] flex flex-col video-card" data-index="6">
+                            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                                <div class="aspect-video">
+                                    <iframe src="https://www.youtube.com/embed/rvskMHn0sqQ" frameborder="0" width="100%" height="100%" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                                </div>
+                            </div>
+                            <p class="text-sm font-medium text-slate-600 text-center mt-3">Growing the Pie</p>
+                        </div>
+
+                        <!-- Video 8: Is this the most important century? -->
+                        <div class="flex-shrink-0 w-full md:w-[calc(33.333%-1rem)] flex flex-col video-card" data-index="7">
+                            <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm md:-translate-y-6">
+                                <div class="aspect-video">
+                                    <iframe src="https://www.youtube.com/embed/-T__YWoq45I" frameborder="0" width="100%" height="100%" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                                </div>
+                            </div>
+                            <p class="text-sm font-medium text-slate-600 text-center mt-3 md:-translate-y-6">Is This the Most Important<br>Century in History?</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 animate-bounce opacity-50 hidden md:block">
+                <iconify-icon icon="solar:arrow-down-linear" class="w-5 h-5 text-slate-400"></iconify-icon>
+            </div>
+        </section>
+
+        <!-- SECTION 2: BIG PROBLEMS -->
+        <section id="big-problems" class="min-h-screen w-full bg-slate-50/80 border-t border-slate-200 py-24 px-6 md:px-12 relative">
+
+            <div class="max-w-7xl mx-auto relative z-10">
+
+                <!-- Section Header -->
+                <div class="mb-12">
+                    <span class="text-eablue font-mono text-xs uppercase tracking-widest mb-3 block">02 — Priority Areas</span>
+                    <h2 class="font-serif text-4xl md:text-5xl text-slate-900 tracking-tight mb-4">Tackling the World's Most Pressing Problems</h2>
+                    <p class="text-slate-500 max-w-xl text-sm leading-relaxed">
+                        We try to identify the world's most pressing problems and work on them. We focus on issues that are
+                        <span class="font-semibold text-eablue">large in scope</span>,
+                        <span class="font-semibold text-eateal">neglected by existing efforts</span>, and where
+                        <span class="font-semibold text-eablue">real progress is achievable</span> —
+                        that combination is where additional resources can have the greatest impact.
+                    </p>
+                </div>
+
+<!--
+                =====================================================
+                MAINTENANCE NOTE: Problem Profiles
+                Check this page occasionally to update the profiles:
+                https://80000hours.org/problem-profiles/
+
+                Last updated: December 2024
+                =====================================================
+                -->
+
+                <!-- Problem Profiles Grid -->
+                <style>
+                    .problem-card {
+                        transition: all 0.3s ease;
+                    }
+                    .problem-card:nth-child(odd) {
+                        transform: translateY(4px);
+                    }
+                    .problem-card:nth-child(even) {
+                        transform: translateY(-4px);
+                    }
+                    .problem-card:hover {
+                        transform: translateY(-2px) !important;
+                    }
+                </style>
+                <div class="space-y-10">
+
+                    <!-- Catastrophic Risks - Top Priority -->
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-3 h-3 rounded-full bg-cardinal"></div>
+                            <h3 class="font-serif text-lg text-slate-800">Catastrophic Risks</h3>
+                        </div>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            <a href="https://80000hours.org/problem-profiles/risks-from-power-seeking-ai/" target="_blank" class="problem-card group relative bg-white rounded-xl p-5 border border-slate-200 hover:border-cardinal/40 hover:shadow-lg hover:shadow-cardinal/10">
+                                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cardinal to-cardinal/60 rounded-t-xl"></div>
+                                <h4 class="font-semibold text-slate-800 group-hover:text-cardinal transition-colors text-sm mb-1">Power-seeking AI</h4>
+                                <p class="text-xs text-slate-500">Advanced AI pursuing unintended goals</p>
+                                <iconify-icon icon="solar:arrow-right-up-linear" class="absolute top-4 right-4 w-4 h-4 text-slate-300 group-hover:text-cardinal transition-colors"></iconify-icon>
+                            </a>
+                            <a href="https://80000hours.org/problem-profiles/extreme-power-concentration/" target="_blank" class="problem-card group relative bg-white rounded-xl p-5 border border-slate-200 hover:border-cardinal/40 hover:shadow-lg hover:shadow-cardinal/10">
+                                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cardinal to-cardinal/60 rounded-t-xl"></div>
+                                <h4 class="font-semibold text-slate-800 group-hover:text-cardinal transition-colors text-sm mb-1">Extreme Power Centralization</h4>
+                                <p class="text-xs text-slate-500">Risks from centralized control</p>
+                                <iconify-icon icon="solar:arrow-right-up-linear" class="absolute top-4 right-4 w-4 h-4 text-slate-300 group-hover:text-cardinal transition-colors"></iconify-icon>
+                            </a>
+                            <a href="https://80000hours.org/problem-profiles/preventing-catastrophic-pandemics/" target="_blank" class="problem-card group relative bg-white rounded-xl p-5 border border-slate-200 hover:border-cardinal/40 hover:shadow-lg hover:shadow-cardinal/10">
+                                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cardinal to-cardinal/60 rounded-t-xl"></div>
+                                <h4 class="font-semibold text-slate-800 group-hover:text-cardinal transition-colors text-sm mb-1">Engineered Pandemics</h4>
+                                <p class="text-xs text-slate-500">Biosecurity and pandemic prevention</p>
+                                <iconify-icon icon="solar:arrow-right-up-linear" class="absolute top-4 right-4 w-4 h-4 text-slate-300 group-hover:text-cardinal transition-colors"></iconify-icon>
+                            </a>
+                            <a href="https://80000hours.org/problem-profiles/great-power-conflict/" target="_blank" class="problem-card group relative bg-white rounded-xl p-5 border border-slate-200 hover:border-cardinal/40 hover:shadow-lg hover:shadow-cardinal/10">
+                                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cardinal to-cardinal/60 rounded-t-xl"></div>
+                                <h4 class="font-semibold text-slate-800 group-hover:text-cardinal transition-colors text-sm mb-1">Great Power Conflict</h4>
+                                <p class="text-xs text-slate-500">Nuclear war and geopolitical stability</p>
+                                <iconify-icon icon="solar:arrow-right-up-linear" class="absolute top-4 right-4 w-4 h-4 text-slate-300 group-hover:text-cardinal transition-colors"></iconify-icon>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Emerging Challenges -->
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-3 h-3 rounded-full bg-eateal"></div>
+                            <h3 class="font-serif text-lg text-slate-800">Emerging Challenges</h3>
+                        </div>
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+                            <a href="https://80000hours.org/problem-profiles/space-governance/" target="_blank" class="problem-card group relative bg-white rounded-xl p-4 border border-slate-200 hover:border-eateal/40 hover:shadow-lg hover:shadow-eateal/10">
+                                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-eateal to-eateal/60 rounded-t-xl"></div>
+                                <h4 class="font-medium text-slate-800 group-hover:text-eateal transition-colors text-sm">Space Governance</h4>
+                                <iconify-icon icon="solar:arrow-right-up-linear" class="absolute top-3 right-3 w-3 h-3 text-slate-300 group-hover:text-eateal transition-colors"></iconify-icon>
+                            </a>
+                            <a href="https://80000hours.org/problem-profiles/moral-status-digital-minds/" target="_blank" class="problem-card group relative bg-white rounded-xl p-4 border border-slate-200 hover:border-eateal/40 hover:shadow-lg hover:shadow-eateal/10">
+                                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-eateal to-eateal/60 rounded-t-xl"></div>
+                                <h4 class="font-medium text-slate-800 group-hover:text-eateal transition-colors text-sm">Digital Minds</h4>
+                                <iconify-icon icon="solar:arrow-right-up-linear" class="absolute top-3 right-3 w-3 h-3 text-slate-300 group-hover:text-eateal transition-colors"></iconify-icon>
+                            </a>
+                            <a href="https://80000hours.org/problem-profiles/ai-enhanced-decision-making/" target="_blank" class="problem-card group relative bg-white rounded-xl p-4 border border-slate-200 hover:border-eateal/40 hover:shadow-lg hover:shadow-eateal/10">
+                                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-eateal to-eateal/60 rounded-t-xl"></div>
+                                <h4 class="font-medium text-slate-800 group-hover:text-eateal transition-colors text-sm">AI Enhanced Epistemics</h4>
+                                <iconify-icon icon="solar:arrow-right-up-linear" class="absolute top-3 right-3 w-3 h-3 text-slate-300 group-hover:text-eateal transition-colors"></iconify-icon>
+                            </a>
+                            <a href="https://80000hours.org/problem-profiles/catastrophic-ai-misuse/" target="_blank" class="problem-card group relative bg-white rounded-xl p-4 border border-slate-200 hover:border-eateal/40 hover:shadow-lg hover:shadow-eateal/10">
+                                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-eateal to-eateal/60 rounded-t-xl"></div>
+                                <h4 class="font-medium text-slate-800 group-hover:text-eateal transition-colors text-sm">AI Misuse</h4>
+                                <iconify-icon icon="solar:arrow-right-up-linear" class="absolute top-3 right-3 w-3 h-3 text-slate-300 group-hover:text-eateal transition-colors"></iconify-icon>
+                            </a>
+                            <a href="https://80000hours.org/problem-profiles/gradual-disempowerment/" target="_blank" class="problem-card group relative bg-white rounded-xl p-4 border border-slate-200 hover:border-eateal/40 hover:shadow-lg hover:shadow-eateal/10">
+                                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-eateal to-eateal/60 rounded-t-xl"></div>
+                                <h4 class="font-medium text-slate-800 group-hover:text-eateal transition-colors text-sm">Gradual Disempowerment</h4>
+                                <iconify-icon icon="solar:arrow-right-up-linear" class="absolute top-3 right-3 w-3 h-3 text-slate-300 group-hover:text-eateal transition-colors"></iconify-icon>
+                            </a>
+                            <a href="https://80000hours.org/problem-profiles/s-risks/" target="_blank" class="problem-card group relative bg-white rounded-xl p-4 border border-slate-200 hover:border-eateal/40 hover:shadow-lg hover:shadow-eateal/10">
+                                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-eateal to-eateal/60 rounded-t-xl"></div>
+                                <h4 class="font-medium text-slate-800 group-hover:text-eateal transition-colors text-sm">S-Risks</h4>
+                                <iconify-icon icon="solar:arrow-right-up-linear" class="absolute top-3 right-3 w-3 h-3 text-slate-300 group-hover:text-eateal transition-colors"></iconify-icon>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Two Column: Animal Welfare + Global Health -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Animal Welfare -->
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-3 h-3 rounded-full bg-eablue"></div>
+                                <h3 class="font-serif text-lg text-slate-800">Animal Welfare</h3>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3">
+                                <a href="https://80000hours.org/problem-profiles/factory-farming/" target="_blank" class="problem-card group relative bg-white rounded-xl p-5 border border-slate-200 hover:border-eablue/40 hover:shadow-lg hover:shadow-eablue/10">
+                                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-eablue to-eablue/60 rounded-t-xl"></div>
+                                    <h4 class="font-semibold text-slate-800 group-hover:text-eablue transition-colors text-sm mb-1">Factory Farming</h4>
+                                    <p class="text-xs text-slate-500">Billions of animals in suffering</p>
+                                    <iconify-icon icon="solar:arrow-right-up-linear" class="absolute top-4 right-4 w-4 h-4 text-slate-300 group-hover:text-eablue transition-colors"></iconify-icon>
+                                </a>
+                                <a href="https://80000hours.org/problem-profiles/wild-animal-welfare/" target="_blank" class="problem-card group relative bg-white rounded-xl p-5 border border-slate-200 hover:border-eablue/40 hover:shadow-lg hover:shadow-eablue/10">
+                                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-eablue to-eablue/60 rounded-t-xl"></div>
+                                    <h4 class="font-semibold text-slate-800 group-hover:text-eablue transition-colors text-sm mb-1">Wild Animal Suffering</h4>
+                                    <p class="text-xs text-slate-500">Improving lives in nature</p>
+                                    <iconify-icon icon="solar:arrow-right-up-linear" class="absolute top-4 right-4 w-4 h-4 text-slate-300 group-hover:text-eablue transition-colors"></iconify-icon>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Global Health & Development -->
+                        <div>
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-3 h-3 rounded-full bg-easky"></div>
+                                <h3 class="font-serif text-lg text-slate-800">Global Health & Development</h3>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3">
+                                <a href="https://80000hours.org/problem-profiles/health-in-poor-countries/" target="_blank" class="problem-card group relative bg-white rounded-xl p-5 border border-slate-200 hover:border-easky/40 hover:shadow-lg hover:shadow-easky/10">
+                                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-easky to-easky/60 rounded-t-xl"></div>
+                                    <h4 class="font-semibold text-slate-800 group-hover:text-eablue transition-colors text-sm mb-1">Global Health</h4>
+                                    <p class="text-xs text-slate-500">Preventable disease and poverty</p>
+                                    <iconify-icon icon="solar:arrow-right-up-linear" class="absolute top-4 right-4 w-4 h-4 text-slate-300 group-hover:text-eablue transition-colors"></iconify-icon>
+                                </a>
+                                <a href="https://80000hours.org/problem-profiles/climate-change/" target="_blank" class="problem-card group relative bg-white rounded-xl p-5 border border-slate-200 hover:border-easky/40 hover:shadow-lg hover:shadow-easky/10">
+                                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-easky to-easky/60 rounded-t-xl"></div>
+                                    <h4 class="font-semibold text-slate-800 group-hover:text-eablue transition-colors text-sm mb-1">Climate Change</h4>
+                                    <p class="text-xs text-slate-500">Environmental sustainability</p>
+                                    <iconify-icon icon="solar:arrow-right-up-linear" class="absolute top-4 right-4 w-4 h-4 text-slate-300 group-hover:text-eablue transition-colors"></iconify-icon>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- View All Link -->
+                <p class="text-center text-sm text-slate-500 mt-10">
+                    <a href="https://80000hours.org/problem-profiles/" target="_blank" class="hover:text-eablue transition-colors inline-flex items-center gap-1">
+                        View all problem profiles on 80,000 Hours
+                        <iconify-icon icon="solar:arrow-right-up-linear" class="w-4 h-4"></iconify-icon>
+                    </a>
+                </p>
+
+            </div>
+        </section>
+
+        <!-- SECTION 3: GLOBAL COMMUNITY -->
+        <section id="global-community" class="min-h-screen w-full bg-white border-t border-slate-200 py-24 px-6 md:px-12 relative overflow-hidden">
+
+            <!-- Decorative elements -->
+            <div class="absolute top-20 right-10 w-64 h-64 border border-eablue/10 rounded-full"></div>
+            <div class="absolute bottom-20 left-10 w-32 h-32 border border-cardinal/10 rounded-full"></div>
+
+            <div class="max-w-7xl mx-auto relative z-10">
+
+                <!-- Section Header -->
+                <div class="mb-16">
+                    <span class="text-eateal font-mono text-xs uppercase tracking-widest mb-3 block">03 — Network</span>
+                    <h2 class="font-serif text-4xl md:text-5xl text-slate-900 tracking-tight mb-4">Global Community</h2>
+                    <p class="text-slate-500 max-w-xl text-sm leading-relaxed">
+                        EA is a worldwide movement with thousands of members, dozens of organizations, and university groups on every continent.
+                    </p>
+                </div>
+
+                <!-- EA Organizations & Affiliates - Two Row Scrolling Bars -->
+                <div class="mb-16">
+                    <h3 class="font-serif text-xl text-slate-900 mb-6">EA Organizations & Affiliates</h3>
+
+                    <!-- Row 1: Meta/Core EA Organizations -->
+                    <div class="scroll-container">
+                        <div class="flex gap-6 animate-scroll-left" style="width: max-content; animation-duration: 55s;">
+                            <!-- First set - 14 meta/core EA orgs -->
+                            <a href="https://80000hours.org" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=80000hours.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">80,000 Hours</span>
+                            </a>
+                            <a href="https://www.givewell.org" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=givewell.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">GiveWell</span>
+                            </a>
+                            <a href="https://www.openphilanthropy.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=openphilanthropy.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Coefficient Giving</span>
+                            </a>
+                            <a href="https://www.centreforeffectivealtruism.org" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=centreforeffectivealtruism.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Centre for Effective Altruism</span>
+                            </a>
+                            <a href="https://www.givingwhatwecan.org" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=givingwhatwecan.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Giving What We Can</span>
+                            </a>
+                            <a href="https://rethinkpriorities.org" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=rethinkpriorities.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Rethink Priorities</span>
+                            </a>
+                            <a href="https://www.forethought.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=forethought.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Forethought</span>
+                            </a>
+                            <a href="https://www.longview.org" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=longview.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Longview Philanthropy</span>
+                            </a>
+                            <a href="https://www.founderspledge.com/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=founderspledge.com&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Founders Pledge</span>
+                            </a>
+                            <a href="https://globalprioritiesinstitute.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=globalprioritiesinstitute.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Global Priorities Institute</span>
+                            </a>
+                            <a href="https://www.charityentrepreneurship.com/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=charityentrepreneurship.com&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Charity Entrepreneurship</span>
+                            </a>
+                            <a href="https://www.1fortheworld.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=1fortheworld.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">One for the World</span>
+                            </a>
+                            <a href="https://www.thelifeyoucansave.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=thelifeyoucansave.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">The Life You Can Save</span>
+                            </a>
+                            <a href="https://funds.effectivealtruism.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=effectivealtruism.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA Funds</span>
+                            </a>
+                            <a href="https://bluedot.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=bluedot.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">BlueDot Impact</span>
+                            </a>
+                            <!-- Duplicate for seamless loop -->
+                            <a href="https://80000hours.org" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=80000hours.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">80,000 Hours</span>
+                            </a>
+                            <a href="https://www.givewell.org" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=givewell.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">GiveWell</span>
+                            </a>
+                            <a href="https://www.openphilanthropy.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=openphilanthropy.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Coefficient Giving</span>
+                            </a>
+                            <a href="https://www.centreforeffectivealtruism.org" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=centreforeffectivealtruism.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Centre for Effective Altruism</span>
+                            </a>
+                            <a href="https://www.givingwhatwecan.org" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=givingwhatwecan.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Giving What We Can</span>
+                            </a>
+                            <a href="https://rethinkpriorities.org" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=rethinkpriorities.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Rethink Priorities</span>
+                            </a>
+                            <a href="https://www.forethought.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=forethought.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Forethought</span>
+                            </a>
+                            <a href="https://www.longview.org" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=longview.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Longview Philanthropy</span>
+                            </a>
+                            <a href="https://www.founderspledge.com/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=founderspledge.com&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Founders Pledge</span>
+                            </a>
+                            <a href="https://globalprioritiesinstitute.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=globalprioritiesinstitute.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Global Priorities Institute</span>
+                            </a>
+                            <a href="https://www.charityentrepreneurship.com/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=charityentrepreneurship.com&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Charity Entrepreneurship</span>
+                            </a>
+                            <a href="https://www.1fortheworld.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=1fortheworld.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">One for the World</span>
+                            </a>
+                            <a href="https://www.thelifeyoucansave.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=thelifeyoucansave.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">The Life You Can Save</span>
+                            </a>
+                            <a href="https://funds.effectivealtruism.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=effectivealtruism.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA Funds</span>
+                            </a>
+                            <a href="https://bluedot.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=bluedot.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">BlueDot Impact</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Row 2: Cause-Specific Organizations (offset for staggered effect) -->
+                    <div class="scroll-container mt-4" style="padding-left: 80px;">
+                        <div class="flex gap-6 animate-scroll-right" style="width: max-content; animation-duration: 140s;">
+                            <!-- First set - 38 cause-specific orgs -->
+                            <a href="https://www.anthropic.com/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=anthropic.com&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Anthropic</span>
+                            </a>
+                            <a href="https://deepmind.google/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=deepmind.google&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Google DeepMind</span>
+                            </a>
+                            <a href="https://www.redwoodresearch.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=redwoodresearch.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Redwood Research</span>
+                            </a>
+                            <a href="https://alignment.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=alignment.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">ARC</span>
+                            </a>
+                            <a href="https://metr.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=metr.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">METR</span>
+                            </a>
+                            <a href="https://www.safe.ai/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=safe.ai&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">CAIS</span>
+                            </a>
+                            <a href="https://www.governance.ai/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=governance.ai&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">GovAI</span>
+                            </a>
+                            <a href="https://futureoflife.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=futureoflife.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Future of Life Institute</span>
+                            </a>
+                            <a href="https://www.apolloresearch.ai/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=apolloresearch.ai&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Apollo Research</span>
+                            </a>
+                            <a href="https://far.ai/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=far.ai&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">FAR AI</span>
+                            </a>
+                            <a href="https://www.aisi.gov.uk/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=aisi.gov.uk&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">UK AI Security Institute</span>
+                            </a>
+                            <a href="https://www.matsprogram.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=matsprogram.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">MATS</span>
+                            </a>
+                            <a href="https://ai-futures.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=ai-futures.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">AI Futures</span>
+                            </a>
+                            <a href="https://www.civai.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=civai.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">CivAI</span>
+                            </a>
+                            <a href="https://safeaiforum.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=safeaiforum.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Safe AI Forum</span>
+                            </a>
+                            <a href="https://www.horizonpublicservice.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=horizonpublicservice.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Horizon Institute</span>
+                            </a>
+                            <a href="https://responsibleinnovation.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=responsibleinnovation.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Americans for Responsible Innovation</span>
+                            </a>
+                            <a href="https://cset.georgetown.edu/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=georgetown.edu&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">CSET</span>
+                            </a>
+                            <a href="https://www.iaps.ai/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=iaps.ai&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">IAPS</span>
+                            </a>
+                            <a href="https://securebio.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=securebio.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">SecureBio</span>
+                            </a>
+                            <a href="https://www.nti.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=nti.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">NTI</span>
+                            </a>
+                            <a href="https://centerforhealthsecurity.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=centerforhealthsecurity.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Johns Hopkins CHS</span>
+                            </a>
+                            <a href="https://www.cser.ac.uk/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=cser.ac.uk&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">CSER</span>
+                            </a>
+                            <a href="https://gcrinstitute.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=gcrinstitute.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">GCRI</span>
+                            </a>
+                            <a href="https://www.againstmalaria.com/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=againstmalaria.com&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Against Malaria Foundation</span>
+                            </a>
+                            <a href="https://www.givedirectly.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=givedirectly.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">GiveDirectly</span>
+                            </a>
+                            <a href="https://www.malariaconsortium.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=malariaconsortium.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Malaria Consortium</span>
+                            </a>
+                            <a href="https://helenkellerintl.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=helenkellerintl.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Helen Keller International</span>
+                            </a>
+                            <a href="https://www.newincentives.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=newincentives.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">New Incentives</span>
+                            </a>
+                            <a href="https://www.evidenceaction.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=evidenceaction.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Evidence Action</span>
+                            </a>
+                            <a href="https://www.sightsavers.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=sightsavers.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Sightsavers</span>
+                            </a>
+                                                        <a href="https://www.idinsight.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=idinsight.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">IDinsight</span>
+                            </a>
+                            <a href="https://www.poverty-action.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=poverty-action.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">IPA</span>
+                            </a>
+                            <a href="https://www.happierlivesinstitute.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=happierlivesinstitute.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Happier Lives Institute</span>
+                            </a>
+                            <a href="https://gfi.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=gfi.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Good Food Institute</span>
+                            </a>
+                            <a href="https://www.wildanimalinitiative.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=wildanimalinitiative.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Wild Animal Initiative</span>
+                            </a>
+                            <a href="https://www.rand.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=rand.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">RAND Corporation</span>
+                            </a>
+                            <a href="https://www.sentientfutures.ai/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=sentientfutures.ai&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Sentient Futures</span>
+                            </a>
+                            <!-- Duplicate for seamless loop -->
+                            <a href="https://www.anthropic.com/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=anthropic.com&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Anthropic</span>
+                            </a>
+                            <a href="https://deepmind.google/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=deepmind.google&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Google DeepMind</span>
+                            </a>
+                            <a href="https://www.redwoodresearch.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=redwoodresearch.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Redwood Research</span>
+                            </a>
+                            <a href="https://alignment.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=alignment.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">ARC</span>
+                            </a>
+                            <a href="https://metr.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=metr.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">METR</span>
+                            </a>
+                            <a href="https://www.safe.ai/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=safe.ai&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">CAIS</span>
+                            </a>
+                            <a href="https://www.governance.ai/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=governance.ai&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">GovAI</span>
+                            </a>
+                            <a href="https://futureoflife.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=futureoflife.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Future of Life Institute</span>
+                            </a>
+                            <a href="https://www.apolloresearch.ai/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=apolloresearch.ai&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Apollo Research</span>
+                            </a>
+                            <a href="https://far.ai/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=far.ai&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">FAR AI</span>
+                            </a>
+                            <a href="https://www.aisi.gov.uk/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=aisi.gov.uk&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">UK AI Security Institute</span>
+                            </a>
+                            <a href="https://www.matsprogram.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=matsprogram.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">MATS</span>
+                            </a>
+                            <a href="https://ai-futures.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=ai-futures.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">AI Futures</span>
+                            </a>
+                            <a href="https://www.civai.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=civai.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">CivAI</span>
+                            </a>
+                            <a href="https://safeaiforum.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=safeaiforum.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Safe AI Forum</span>
+                            </a>
+                            <a href="https://www.horizonpublicservice.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=horizonpublicservice.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Horizon Institute</span>
+                            </a>
+                            <a href="https://responsibleinnovation.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=responsibleinnovation.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Americans for Responsible Innovation</span>
+                            </a>
+                            <a href="https://cset.georgetown.edu/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=georgetown.edu&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">CSET</span>
+                            </a>
+                            <a href="https://www.iaps.ai/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=iaps.ai&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">IAPS</span>
+                            </a>
+                            <a href="https://securebio.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=securebio.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">SecureBio</span>
+                            </a>
+                            <a href="https://www.nti.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=nti.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">NTI</span>
+                            </a>
+                            <a href="https://centerforhealthsecurity.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=centerforhealthsecurity.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Johns Hopkins CHS</span>
+                            </a>
+                            <a href="https://www.cser.ac.uk/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=cser.ac.uk&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">CSER</span>
+                            </a>
+                            <a href="https://gcrinstitute.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=gcrinstitute.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">GCRI</span>
+                            </a>
+                            <a href="https://www.againstmalaria.com/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=againstmalaria.com&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Against Malaria Foundation</span>
+                            </a>
+                            <a href="https://www.givedirectly.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=givedirectly.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">GiveDirectly</span>
+                            </a>
+                            <a href="https://www.malariaconsortium.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=malariaconsortium.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Malaria Consortium</span>
+                            </a>
+                            <a href="https://helenkellerintl.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=helenkellerintl.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Helen Keller International</span>
+                            </a>
+                            <a href="https://www.newincentives.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=newincentives.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">New Incentives</span>
+                            </a>
+                            <a href="https://www.evidenceaction.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=evidenceaction.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Evidence Action</span>
+                            </a>
+                            <a href="https://www.sightsavers.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=sightsavers.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Sightsavers</span>
+                            </a>
+                                                        <a href="https://www.idinsight.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=idinsight.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">IDinsight</span>
+                            </a>
+                            <a href="https://www.poverty-action.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=poverty-action.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">IPA</span>
+                            </a>
+                            <a href="https://www.happierlivesinstitute.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=happierlivesinstitute.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Happier Lives Institute</span>
+                            </a>
+                            <a href="https://gfi.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=gfi.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Good Food Institute</span>
+                            </a>
+                            <a href="https://www.wildanimalinitiative.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=wildanimalinitiative.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Wild Animal Initiative</span>
+                            </a>
+                            <a href="https://www.rand.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=rand.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">RAND Corporation</span>
+                            </a>
+                            <a href="https://www.sentientfutures.ai/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=sentientfutures.ai&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Sentient Futures</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- See Jobs Link -->
+                    <div class="mt-4 text-center">
+                        <a href="https://jobs.80000hours.org/" target="_blank" class="inline-flex items-center gap-2 text-sm text-eablue hover:text-cardinal transition-colors font-medium">
+                            See Open High Impact Roles at Top Orgs
+                            <iconify-icon icon="solar:arrow-right-up-linear" class="w-4 h-4"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- EA Forum Section -->
+                <div class="mb-16">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="font-serif text-xl text-slate-900">Latest from EA Forum</h3>
+                        <a href="https://forum.effectivealtruism.org" target="_blank" class="text-xs text-eablue font-medium flex items-center gap-1 hover:underline">
+                            Visit EA Forum
+                            <iconify-icon icon="solar:arrow-right-up-linear" class="w-3 h-3"></iconify-icon>
+                        </a>
+                    </div>
+
+                    <!-- Loading indicator -->
+                    <div id="forum-loading" class="flex items-center justify-center py-12">
+                        <iconify-icon icon="solar:refresh-linear" class="w-6 h-6 text-eablue animate-spin"></iconify-icon>
+                        <span class="ml-3 text-slate-500 text-sm">Loading latest posts...</span>
+                    </div>
+
+                    <div id="forum-posts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 hidden">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- EA at Other Universities - Reverse Scrolling Bar -->
+                <div class="mb-16">
+                    <h3 class="font-serif text-xl text-slate-900 mb-6">EA at Other Universities</h3>
+
+                    <div class="scroll-container">
+                        <div class="flex gap-6 animate-scroll-right" style="width: max-content; animation-duration: 60s;">
+                            <!-- First set - 15 EA university groups -->
+                            <a href="https://harvardundergradea.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=harvardundergradea.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA Harvard</span>
+                            </a>
+                            <a href="https://impactclub.mit.edu/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=mit.edu&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA MIT</span>
+                            </a>
+                            <a href="https://eaberkeley.com/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=eaberkeley.com&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA Berkeley</span>
+                            </a>
+                            <a href="https://www.uchicagoea.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=uchicagoea.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA UChicago</span>
+                            </a>
+                            <a href="https://www.dukeea.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=dukeea.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA Duke</span>
+                            </a>
+                            <a href="https://www.eanu.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=eanu.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA Northwestern</span>
+                            </a>
+                            <a href="https://www.eacornell.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=eacornell.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA Cornell</span>
+                            </a>
+                            <a href="https://www.eaucla.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=eaucla.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA UCLA</span>
+                            </a>
+                            <a href="https://www.yaleeffectivealtruism.com/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=yaleeffectivealtruism.com&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA Yale</span>
+                            </a>
+                            <a href="https://nyuea.com/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=nyuea.com&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA NYU</span>
+                            </a>
+                            <a href="https://www.eapenn.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=eapenn.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA Penn</span>
+                            </a>
+                            <a href="https://eaoxford.com/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=eaoxford.com&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA Oxford</span>
+                            </a>
+                            <a href="https://www.eacambridge.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=eacambridge.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA Cambridge</span>
+                            </a>
+                            <a href="https://www.eahongkong.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=eahongkong.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA Hong Kong</span>
+                            </a>
+                            <a href="https://eaamsterdam.com/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=eaamsterdam.com&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA Amsterdam</span>
+                            </a>
+                            <!-- Duplicate set for seamless loop -->
+                            <a href="https://harvardundergradea.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=harvardundergradea.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA Harvard</span>
+                            </a>
+                            <a href="https://impactclub.mit.edu/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=mit.edu&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA MIT</span>
+                            </a>
+                            <a href="https://eaberkeley.com/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=eaberkeley.com&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA Berkeley</span>
+                            </a>
+                            <a href="https://www.uchicagoea.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=uchicagoea.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA UChicago</span>
+                            </a>
+                            <a href="https://www.dukeea.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=dukeea.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA Duke</span>
+                            </a>
+                            <a href="https://www.eanu.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=eanu.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA Northwestern</span>
+                            </a>
+                            <a href="https://www.eacornell.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=eacornell.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA Cornell</span>
+                            </a>
+                            <a href="https://www.eaucla.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=eaucla.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA UCLA</span>
+                            </a>
+                            <a href="https://www.yaleeffectivealtruism.com/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=yaleeffectivealtruism.com&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA Yale</span>
+                            </a>
+                            <a href="https://nyuea.com/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=nyuea.com&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA NYU</span>
+                            </a>
+                            <a href="https://www.eapenn.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=eapenn.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA Penn</span>
+                            </a>
+                            <a href="https://eaoxford.com/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=eaoxford.com&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA Oxford</span>
+                            </a>
+                            <a href="https://www.eacambridge.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=eacambridge.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA Cambridge</span>
+                            </a>
+                            <a href="https://www.eahongkong.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=eahongkong.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA Hong Kong</span>
+                            </a>
+                            <a href="https://eaamsterdam.com/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=eaamsterdam.com&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">EA Amsterdam</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- AI Safety Clubs - Second Row (offset for staggered effect) -->
+                    <div class="scroll-container mt-4" style="padding-left: 80px;">
+                        <div class="flex gap-6 animate-scroll-left" style="width: max-content; animation-duration: 45s;">
+                            <!-- First set - 9 AI Safety clubs -->
+                            <a href="https://stanfordaialignment.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=stanfordaialignment.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Stanford AI Alignment</span>
+                            </a>
+                            <a href="https://mitalignment.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=mitalignment.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">MAIA (MIT)</span>
+                            </a>
+                            <a href="https://berkeleyaisafety.com/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=berkeleyaisafety.com&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">BASIS (Berkeley)</span>
+                            </a>
+                            <a href="https://www.cambridgeaisafety.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=cambridgeaisafety.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Cambridge AI Safety</span>
+                            </a>
+                            <a href="https://aisafetyatucla.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=aisafetyatucla.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">AI Safety UCLA</span>
+                            </a>
+                            <a href="https://zurich.aisafety.ch/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=zurich.aisafety.ch&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Zurich AI Safety</span>
+                            </a>
+                            <a href="https://www.delftaisafety.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=delftaisafety.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Delft AI Safety</span>
+                            </a>
+                            <a href="https://aisafety.tokyo/benkyoukai" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=aisafety.tokyo&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">AI Safety Tokyo</span>
+                            </a>
+                            <a href="https://zotspot.uci.edu/aisuci/home/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=uci.edu&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">AI Safety UCI</span>
+                            </a>
+                            <!-- Duplicate set for seamless loop -->
+                            <a href="https://stanfordaialignment.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=stanfordaialignment.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Stanford AI Alignment</span>
+                            </a>
+                            <a href="https://mitalignment.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=mitalignment.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">MAIA (MIT)</span>
+                            </a>
+                            <a href="https://berkeleyaisafety.com/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=berkeleyaisafety.com&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">BASIS (Berkeley)</span>
+                            </a>
+                            <a href="https://www.cambridgeaisafety.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=cambridgeaisafety.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Cambridge AI Safety</span>
+                            </a>
+                            <a href="https://aisafetyatucla.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=aisafetyatucla.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">AI Safety UCLA</span>
+                            </a>
+                            <a href="https://zurich.aisafety.ch/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=zurich.aisafety.ch&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Zurich AI Safety</span>
+                            </a>
+                            <a href="https://www.delftaisafety.org/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=delftaisafety.org&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">Delft AI Safety</span>
+                            </a>
+                            <a href="https://aisafety.tokyo/benkyoukai" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=aisafety.tokyo&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">AI Safety Tokyo</span>
+                            </a>
+                            <a href="https://zotspot.uci.edu/aisuci/home/" target="_blank" class="flex items-center gap-3 px-5 py-3 bg-slate-50 rounded-full border border-slate-100 hover:border-eablue/30 hover:shadow-md transition-all shrink-0">
+                                <img src="https://www.google.com/s2/favicons?domain=uci.edu&sz=64" alt="" class="w-6 h-6 rounded object-contain" onerror="this.style.display='none';">
+                                <span class="text-sm font-medium text-slate-700">AI Safety UCI</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- See More Link -->
+                    <div class="mt-4 text-center">
+                        <a href="https://forum.effectivealtruism.org/allGroups" target="_blank" class="inline-flex items-center gap-2 text-sm text-eablue hover:text-cardinal transition-colors font-medium">
+                            See More EA Clubs
+                            <iconify-icon icon="solar:arrow-right-up-linear" class="w-4 h-4"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="text-center">
+                    <div class="inline-block p-8 md:p-12 rounded-3xl bg-gradient-to-br from-eablue to-eateal shadow-2xl shadow-eablue/20 relative overflow-hidden">
+                        <!-- Decorative elements -->
+                        <div class="absolute -top-10 -right-10 w-40 h-40 border border-white/10 rounded-full"></div>
+                        <div class="absolute -bottom-10 -left-10 w-32 h-32 border border-white/10 rounded-full"></div>
+
+                        <div class="relative z-10">
+                            <iconify-icon icon="solar:routing-linear" class="w-8 h-8 text-white/80 mb-4"></iconify-icon>
+                            <h3 class="font-serif text-2xl md:text-3xl text-white mb-3">Join the Stanford EA Community</h3>
+                            <p class="text-white/70 text-sm mb-6 max-w-md mx-auto">Connect with students who share your interest in doing the most good and making a difference.</p>
+
+                            <div class="flex flex-col sm:flex-row gap-3 justify-center items-center">
+                                <a href="index.html#fellowships" class="w-full sm:w-auto bg-white text-eablue px-6 py-3 rounded-full text-sm font-bold hover:bg-slate-100 transition-colors shadow-lg">
+                                    Apply to Fellowship
+                                </a>
+                                <a href="index.html" class="w-full sm:w-auto border border-white/30 text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-white/10 transition-colors">
+                                    Explore Stanford EA
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="bg-slate-50 border-t border-slate-200 py-12 px-6 md:px-12">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-slate-400 text-xs">
+                <p>© 2026 Stanford Effective Altruism.</p>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <a href="https://effectivealtruism.org" target="_blank" class="hover:text-eablue transition-colors">EA Global</a>
+                    <a href="https://80000hours.org" target="_blank" class="hover:text-eablue transition-colors">80,000 Hours</a>
+                    <a href="https://www.givingwhatwecan.org" target="_blank" class="hover:text-eablue transition-colors">Giving What We Can</a>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        // --- ROTATING EA TAGS ---
+        const rotatingEaTags = document.getElementById('rotating-ea-tags');
+        if (rotatingEaTags) {
+            const tagCount = 3;
+            const tagHeight = 16;
+            let currentTag = Math.floor(Math.random() * tagCount);
+            let eaTagsIntervalId;
+
+            rotatingEaTags.style.transform = `translateY(-${currentTag * tagHeight}px)`;
+
+            function advanceEaTag() {
+                currentTag++;
+                rotatingEaTags.style.transition = 'transform 500ms ease-out';
+                rotatingEaTags.style.transform = `translateY(-${currentTag * tagHeight}px)`;
+
+                if (currentTag >= tagCount) {
+                    setTimeout(() => {
+                        rotatingEaTags.style.transition = 'none';
+                        rotatingEaTags.style.transform = 'translateY(0)';
+                        currentTag = 0;
+                    }, 500);
+                }
+            }
+
+            eaTagsIntervalId = setInterval(advanceEaTag, 8000);
+
+            // Click to advance and reset timer
+            rotatingEaTags.parentElement.style.cursor = 'pointer';
+            rotatingEaTags.parentElement.addEventListener('click', () => {
+                clearInterval(eaTagsIntervalId);
+                advanceEaTag();
+                eaTagsIntervalId = setInterval(advanceEaTag, 8000);
+            });
+        }
+
+        // --- NAV INDICATOR ---
+        const navIndicator = document.getElementById('nav-indicator');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = ['what-is-ea', 'big-problems', 'global-community'];
+
+        function updateNavIndicator(activeNav) {
+            const activeLink = document.querySelector(`[data-nav="${activeNav}"]`);
+            if (activeLink && navIndicator) {
+                const nav = activeLink.parentElement;
+                const navRect = nav.getBoundingClientRect();
+                const linkRect = activeLink.getBoundingClientRect();
+                const offsetLeft = linkRect.left - navRect.left;
+
+                navIndicator.style.left = `${offsetLeft}px`;
+                navIndicator.style.width = `${linkRect.width}px`;
+
+                // Update active link styling
+                navLinks.forEach(link => {
+                    link.classList.remove('text-eablue', 'font-semibold');
+                    link.classList.add('text-slate-600');
+                });
+                activeLink.classList.remove('text-slate-600');
+                activeLink.classList.add('text-eablue', 'font-semibold');
+            }
+        }
+
+        function onScroll() {
+            const scrollPos = window.scrollY + window.innerHeight / 3;
+
+            let currentSection = 'what-is-ea';
+            sections.forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+                if (section && section.offsetTop <= scrollPos) {
+                    currentSection = sectionId;
+                }
+            });
+
+            updateNavIndicator(currentSection);
+        }
+
+        // Initialize and listen
+        window.addEventListener('scroll', onScroll);
+        window.addEventListener('resize', () => onScroll());
+        setTimeout(() => onScroll(), 100);
+
+        // --- EA FORUM CURATED FEED ---
+        const EA_FORUM_FEED = 'https://forum.effectivealtruism.org/feed.xml?view=curated-rss';
+
+        // CORS proxies with fallbacks
+        const CORS_PROXIES = [
+            (url) => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
+            (url) => `https://corsproxy.io/?${encodeURIComponent(url)}`,
+            (url) => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`
+        ];
+
+        // Cache settings
+        const FORUM_CACHE_KEY = 'sea_ea_forum_cache';
+        const CACHE_EXPIRY = 10 * 60 * 1000; // 10 minutes
+
+        // Fetch with timeout
+        async function fetchWithTimeout(url, timeoutMs = 8000) {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+            try {
+                const response = await fetch(url, { signal: controller.signal });
+                clearTimeout(timeoutId);
+                return response;
+            } catch (error) {
+                clearTimeout(timeoutId);
+                throw error;
+            }
+        }
+
+        // Fetch with proxy fallbacks
+        async function fetchWithProxyFallback(feedUrl) {
+            for (let i = 0; i < CORS_PROXIES.length; i++) {
+                try {
+                    const proxyUrl = CORS_PROXIES[i](feedUrl);
+                    console.log(`[EA Forum] Trying proxy ${i + 1}...`);
+                    const response = await fetchWithTimeout(proxyUrl);
+                    if (response.ok) {
+                        console.log(`[EA Forum] Success with proxy ${i + 1}`);
+                        return await response.text();
+                    }
+                } catch (e) {
+                    console.log(`[EA Forum] Proxy ${i + 1} failed: ${e.message}`);
+                    continue;
+                }
+            }
+            throw new Error('All proxies failed');
+        }
+
+        // Get cached data if still valid
+        function getCachedData(key) {
+            try {
+                const cached = localStorage.getItem(key);
+                if (cached) {
+                    const { data, timestamp } = JSON.parse(cached);
+                    if (Date.now() - timestamp < CACHE_EXPIRY) {
+                        return data;
+                    }
+                }
+            } catch (e) {}
+            return null;
+        }
+
+        // Save data to cache
+        function setCachedData(key, data) {
+            try {
+                localStorage.setItem(key, JSON.stringify({ data, timestamp: Date.now() }));
+            } catch (e) {}
+        }
+
+        // Color themes for forum posts (cycle through)
+        const FORUM_THEMES = [
+            { border: 'hover:border-eablue/30', hover: 'group-hover:text-eablue' },
+            { border: 'hover:border-eateal/30', hover: 'group-hover:text-eateal' },
+            { border: 'hover:border-cardinal/30', hover: 'group-hover:text-cardinal' },
+            { border: 'hover:border-purple-400/30', hover: 'group-hover:text-purple-600' },
+            { border: 'hover:border-amber-400/30', hover: 'group-hover:text-amber-600' },
+            { border: 'hover:border-emerald-400/30', hover: 'group-hover:text-emerald-600' }
+        ];
+
+        // Format relative time
+        function formatRelativeTime(dateStr) {
+            const date = new Date(dateStr);
+            const now = new Date();
+            const diffMs = now - date;
+            const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+            if (diffDays === 0) return 'Today';
+            if (diffDays === 1) return 'Yesterday';
+            if (diffDays < 7) return `${diffDays} days ago`;
+            if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
+            if (diffDays < 365) return `${Math.floor(diffDays / 30)} months ago`;
+            return `${Math.floor(diffDays / 365)} years ago`;
+        }
+
+        // Create forum post card
+        function createForumCard(post, index) {
+            const theme = FORUM_THEMES[index % FORUM_THEMES.length];
+            return `
+                <a href="${post.url}" target="_blank" class="group bg-slate-50 rounded-xl p-5 border border-slate-100 ${theme.border} hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-medium text-slate-700">${post.author}</span>
+                        <span class="text-slate-400 text-[10px]">${post.date}</span>
+                    </div>
+                    <h4 class="font-serif text-base text-slate-900 mb-2 ${theme.hover} transition-colors line-clamp-2">${post.title}</h4>
+                    <p class="text-xs text-slate-500 line-clamp-2">${post.description}</p>
+                </a>
+            `;
+        }
+
+        // Render posts to grid
+        function renderForumPosts(posts) {
+            const grid = document.getElementById('forum-posts-grid');
+            const loading = document.getElementById('forum-loading');
+            if (!grid) return;
+
+            loading?.classList.add('hidden');
+            grid.classList.remove('hidden');
+
+            if (posts.length === 0) {
+                grid.innerHTML = '<p class="text-center text-slate-400 py-8 col-span-full text-sm">No posts available.</p>';
+                return;
+            }
+
+            let html = '';
+            posts.forEach((post, index) => {
+                html += createForumCard(post, index);
+            });
+            grid.innerHTML = html;
+        }
+
+        // Parse RSS feed text into posts array
+        function parseForumFeed(text) {
+            const parser = new DOMParser();
+            const xml = parser.parseFromString(text, 'text/xml');
+            const items = xml.querySelectorAll('item');
+
+            const posts = [];
+            items.forEach((item, index) => {
+                if (index >= 6) return; // Show 6 posts
+
+                const title = item.querySelector('title')?.textContent || 'Untitled';
+                const link = item.querySelector('link')?.textContent || '#';
+                const pubDate = item.querySelector('pubDate')?.textContent;
+                const description = item.querySelector('description')?.textContent || '';
+                const creator = item.querySelector('dc\\:creator, creator')?.textContent || 'EA Forum';
+
+                const cleanDesc = description.replace(/<[^>]*>/g, '').substring(0, 120) + '...';
+
+                posts.push({
+                    title,
+                    url: link,
+                    date: formatRelativeTime(pubDate),
+                    rawDate: pubDate, // Keep raw date for cache freshness
+                    description: cleanDesc,
+                    author: creator
+                });
+            });
+            return posts;
+        }
+
+        // Fetch and render EA Forum posts
+        async function fetchForumPosts() {
+            const grid = document.getElementById('forum-posts-grid');
+            const loading = document.getElementById('forum-loading');
+            if (!grid) return;
+
+            // Show cached data immediately if available
+            const cachedPosts = getCachedData(FORUM_CACHE_KEY);
+            if (cachedPosts && cachedPosts.length > 0) {
+                console.log('[EA Forum] Showing cached posts');
+                renderForumPosts(cachedPosts);
+            }
+
+            // Fetch fresh data
+            try {
+                console.log('[EA Forum] Fetching fresh posts...');
+                const text = await fetchWithProxyFallback(EA_FORUM_FEED);
+                const posts = parseForumFeed(text);
+
+                if (posts.length > 0) {
+                    // Cache and render fresh posts
+                    setCachedData(FORUM_CACHE_KEY, posts);
+                    renderForumPosts(posts);
+                    console.log('[EA Forum] Fresh posts loaded');
+                }
+
+            } catch (error) {
+                console.error('Error fetching EA Forum:', error);
+                // Only show error if we don't have cached data
+                if (!cachedPosts || cachedPosts.length === 0) {
+                    loading?.classList.add('hidden');
+                    grid.classList.remove('hidden');
+                    grid.innerHTML = '<p class="text-center text-slate-400 py-8 col-span-full text-sm">Unable to load posts.</p>';
+                }
+            }
+        }
+
+        // Fetch forum posts immediately on page load
+        console.log('[EA Forum] Starting fetch...');
+        fetchForumPosts();
+
+        // --- VIDEO CAROUSEL (Infinite Loop) ---
+        const videoCarousel = document.getElementById('video-carousel');
+        const videoPrev = document.getElementById('video-prev');
+        const videoNext = document.getElementById('video-next');
+
+        if (videoCarousel && videoPrev && videoNext) {
+            const originalCards = Array.from(videoCarousel.querySelectorAll('.video-card'));
+            const totalVideos = originalCards.length;
+            const getVideosPerView = () => window.innerWidth >= 768 ? 3 : 1;
+
+            // Clone first and last few cards for seamless looping
+            const cloneCount = 3;
+            const firstClones = originalCards.slice(0, cloneCount).map(card => {
+                const clone = card.cloneNode(true);
+                clone.classList.add('clone');
+                return clone;
+            });
+            const lastClones = originalCards.slice(-cloneCount).map(card => {
+                const clone = card.cloneNode(true);
+                clone.classList.add('clone');
+                return clone;
+            });
+
+            // Append clones
+            firstClones.forEach(clone => videoCarousel.appendChild(clone));
+            lastClones.reverse().forEach(clone => videoCarousel.insertBefore(clone, videoCarousel.firstChild));
+
+            // Start at the first real card (after prepended clones)
+            let currentIndex = cloneCount;
+            let isTransitioning = false;
+
+            function getCardWidth() {
+                const card = videoCarousel.querySelector('.video-card');
+                return card ? card.offsetWidth + 24 : 0; // 24 = gap
+            }
+
+            function updateCarousel(animate = true) {
+                const offset = currentIndex * getCardWidth();
+                videoCarousel.style.transition = animate ? 'transform 500ms ease-out' : 'none';
+                videoCarousel.style.transform = `translateX(-${offset}px)`;
+            }
+
+            function handleTransitionEnd() {
+                isTransitioning = false;
+                // If we're on a clone, jump to the real card
+                if (currentIndex >= totalVideos + cloneCount) {
+                    currentIndex = cloneCount;
+                    updateCarousel(false);
+                } else if (currentIndex < cloneCount) {
+                    currentIndex = totalVideos + cloneCount - 1;
+                    updateCarousel(false);
+                }
+            }
+
+            videoCarousel.addEventListener('transitionend', handleTransitionEnd);
+
+            videoPrev.addEventListener('click', () => {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                currentIndex--;
+                updateCarousel();
+            });
+
+            videoNext.addEventListener('click', () => {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                currentIndex++;
+                updateCarousel();
+            });
+
+            // Handle resize
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    updateCarousel(false);
+                }, 100);
+            });
+
+            // Initial state
+            updateCarousel(false);
+        }
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                const isOpen = !mobileMenu.classList.contains('hidden');
+                if (isOpen) {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.setAttribute('icon', 'solar:hamburger-menu-linear');
+                } else {
+                    mobileMenu.classList.remove('hidden');
+                    menuIcon.setAttribute('icon', 'solar:close-circle-linear');
+                }
+            });
+        }
+
+    </script>
+</body></html>

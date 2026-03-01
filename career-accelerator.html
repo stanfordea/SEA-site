@@ -1,0 +1,208 @@
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Career Accelerator | Stanford Effective Altruism</title>
+<link rel="icon" type="image/png" href="SEALogoBlueSquare.png">
+<!-- Prefetch other pages for faster navigation -->
+<link rel="prefetch" href="index.html">
+<link rel="prefetch" href="ea.html">
+<link rel="prefetch" href="community.html">
+<link rel="prefetch" href="project-incubator.html">
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<!-- Tailwind & Icons -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+fontFamily: {
+sans: ['Inter', 'sans-serif'],
+serif: ['Source Serif Pro', 'serif'],
+mono: ['JetBrains Mono', 'monospace'],
+},
+colors: {
+bg: '#F8FAFC',
+cardinal: '#8C1515',
+eablue: '#0C87C9',
+slate: '#334155',
+dark: '#0F172A'
+}
+}
+}
+}
+</script>
+<style>
+body { margin: 0; background-color: #F8FAFC; color: #0F172A; overflow-x: hidden; }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+.glass-nav {
+background: rgba(255, 255, 255, 0.7);
+backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+::selection { background: #0C87C9; color: white; }
+.logo-blue {
+    filter: brightness(0) saturate(100%) invert(41%) sepia(98%) saturate(456%) hue-rotate(166deg) brightness(93%) contrast(96%);
+}
+</style></head>
+
+<body class="antialiased font-sans bg-bg min-h-screen">
+
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3 cursor-pointer">
+                <img src="SEAlogo.png" alt="Stanford EA" class="h-10 w-auto logo-blue">
+                <div class="flex flex-col leading-none">
+                    <span class="font-serif text-base font-semibold text-slate-900">Stanford</span>
+                    <span class="font-sans text-[10px] font-medium tracking-widest uppercase text-eablue">Effective Altruism</span>
+                </div>
+            </a>
+
+            <!-- Back to Programs -->
+            <a href="index.html#fellowships" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-slate-600 hover:text-cardinal hover:bg-slate-100/50 transition-all">
+                <iconify-icon icon="solar:arrow-left-linear" class="w-4 h-4"></iconify-icon>
+                Back to Programs
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-20 px-6">
+        <div class="max-w-3xl mx-auto">
+
+            <!-- Header -->
+            <div class="mb-12">
+                <span class="bg-cardinal/10 text-cardinal px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Advanced</span>
+                <h1 class="font-serif text-4xl md:text-5xl text-slate-900 mt-4 mb-4">Career Accelerator</h1>
+                <p class="text-lg text-slate-600">A hackathon-style co-working group where we get the accountability, space, and support to take real action on our careers.</p>
+                <div class="flex items-center gap-4 mt-6 text-sm text-slate-500">
+                    <div class="flex items-center gap-2">
+                        <iconify-icon icon="solar:clock-circle-linear" class="w-4 h-4"></iconify-icon>
+                        Ongoing
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <iconify-icon icon="solar:users-group-rounded-linear" class="w-4 h-4"></iconify-icon>
+                        Co-working group
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <iconify-icon icon="solar:calendar-linear" class="w-4 h-4"></iconify-icon>
+                        Tuesdays & Thursdays
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Sections -->
+            <div class="space-y-10">
+
+                <!-- How it works -->
+                <div class="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                            <iconify-icon icon="solar:settings-linear" class="w-5 h-5"></iconify-icon>
+                        </div>
+                        <h2 class="font-serif text-2xl text-slate-900">How it works</h2>
+                    </div>
+                    <div class="space-y-4 text-sm text-slate-600 leading-relaxed">
+                        <p>We host open co-working sessions on campus every <strong>Tuesday and Thursday evening, 4 hours each</strong>. Sessions are semi-structured: 1-hour deep work blocks with 20-minute social breaks. Think of it like office hours, come and leave as you please.</p>
+                        <p>You work on whatever you want, though we'll pressure you to make real strides on career planning, internship applications, and skill-building before the quarter is out. We often grab dinner or hang out afterwards.</p>
+                        <p>You'll have <strong>1-on-1 support</strong> to build a personalized plan, and you'll share progress with the group so everyone learns from each other's findings.</p>
+                    </div>
+                </div>
+
+                <!-- What you get -->
+                <div class="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-blue-50 text-eablue flex items-center justify-center">
+                            <iconify-icon icon="solar:gift-linear" class="w-5 h-5"></iconify-icon>
+                        </div>
+                        <h2 class="font-serif text-2xl text-slate-900">What you get</h2>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3 text-sm text-slate-600">
+                            <iconify-icon icon="solar:check-circle-linear" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></iconify-icon>
+                            <span><strong>Dedicated time</strong> carved out for you to accelerate your career.</span>
+                        </div>
+                        <div class="flex items-start gap-3 text-sm text-slate-600">
+                            <iconify-icon icon="solar:check-circle-linear" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></iconify-icon>
+                            <span><strong>Accountability</strong>: we'll push you (kindly) to be more ambitious, to make concrete plans and actually test them.</span>
+                        </div>
+                        <div class="flex items-start gap-3 text-sm text-slate-600">
+                            <iconify-icon icon="solar:check-circle-linear" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></iconify-icon>
+                            <span><strong>A sounding board</strong>: talk things through with peers who are figuring it out alongside you.</span>
+                        </div>
+                        <div class="flex items-start gap-3 text-sm text-slate-600">
+                            <iconify-icon icon="solar:check-circle-linear" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></iconify-icon>
+                            <span><strong>Access to mentorship</strong> from our leadership team and their professional networks.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- What this looks like in practice -->
+                <div class="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center">
+                            <iconify-icon icon="solar:case-round-linear" class="w-5 h-5"></iconify-icon>
+                        </div>
+                        <h2 class="font-serif text-2xl text-slate-900">What this looks like in practice</h2>
+                    </div>
+                    <div class="text-sm text-slate-600 leading-relaxed space-y-4">
+                        <p>Activities will vary widely depending on your specific career focus and interests. As an example:</p>
+                        <div class="bg-slate-50 rounded-xl p-4 border border-slate-100">
+                            <p class="mb-3">Avi came in unsure whether to pursue AI safety or space governance. Over fall quarter, he read deeply in both areas—50+ papers, 3 books, curated information feeds across X and Substack. To test fit in project management for AI safety, he mentored three student research projects on interpretability through <a href="https://sparai.org/" target="_blank" class="text-eablue hover:underline">SPAR</a>.</p>
+                            <p class="mb-3">Along the way, he came to feel that the intersection of space and AI was underappreciated. He wrote two briefs on this, which helped as he applied for and obtained a 6-month fellowship at <a href="https://www.forethought.org/" target="_blank" class="text-eablue hover:underline">Forethought</a>. A side interest in AI consciousness led him and Stepan Los at EA NYU to co-curate a reading list that's now been published.</p>
+                            <p>He applied to 2 positions and got 1 offer, attended 5 conferences, met 2 co-authors, 6 potential future collaborators, and found 17 researchers whose work he's now following. Throughout this time he chatted with the rest of our leadership and some of our members. We gave intros to a few relevant people in the areas he was exploring, gave early feedback on drafts, and helped to red-team some of his plans and ideas.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- This is for you if -->
+                <div class="bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-cardinal/10 text-cardinal flex items-center justify-center">
+                            <iconify-icon icon="solar:user-check-linear" class="w-5 h-5"></iconify-icon>
+                        </div>
+                        <h2 class="font-serif text-2xl text-slate-900">This is for you if</h2>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3 text-sm text-slate-600">
+                            <iconify-icon icon="solar:arrow-right-linear" class="w-5 h-5 text-cardinal shrink-0 mt-0.5"></iconify-icon>
+                            <span>You want dedicated time to think seriously about your career</span>
+                        </div>
+                        <div class="flex items-start gap-3 text-sm text-slate-600">
+                            <iconify-icon icon="solar:arrow-right-linear" class="w-5 h-5 text-cardinal shrink-0 mt-0.5"></iconify-icon>
+                            <span>You'd benefit from accountability and structure of being in a motivated peer group</span>
+                        </div>
+                        <div class="flex items-start gap-3 text-sm text-slate-600">
+                            <iconify-icon icon="solar:arrow-right-linear" class="w-5 h-5 text-cardinal shrink-0 mt-0.5"></iconify-icon>
+                            <span>You're exploring high-impact paths and want to improve the world</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Apply CTA -->
+            <div class="mt-12 text-center">
+                <h3 class="font-serif text-2xl mb-2 text-slate-900">Ready to accelerate?</h3>
+                <p class="text-slate-600 mb-6">Applications are rolling. Questions? Reach out to us.</p>
+                <div class="flex items-center justify-center gap-4">
+                    <a href="https://forms.gle/xvADdLHasnUZutwB9" target="_blank" class="inline-flex items-center gap-2 bg-cardinal text-white px-6 py-3 rounded-xl font-semibold hover:bg-cardinal/90 transition-colors">
+                        <iconify-icon icon="solar:arrow-left-up-linear" class="w-4 h-4"></iconify-icon>
+                        Apply
+                    </a>
+                    <a href="community.html#team" class="inline-flex items-center gap-2 border-2 border-cardinal/40 text-cardinal px-6 py-3 rounded-xl font-semibold hover:bg-cardinal/5 transition-colors">
+                        Reach Out to Us
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</body></html>

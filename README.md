@@ -47,7 +47,7 @@ Media/            # Source copies of media files
 
 The home page pulls live posts from multiple RSS feeds:
 
-- Substack feeds (Avi Parrack, Saheb Gulati)
+- Substack feeds (Avi Parrack)
 - EA Forum user feeds
 
 Feed sources are configured in `index.html` under `RSS_FEEDS`. Deduplication logic filters cross-posts between Substack and EA Forum, preferring Substack when both exist.

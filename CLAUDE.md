@@ -37,7 +37,7 @@ Pages are served directly by filename: `localhost:5173/community.html`, etc.
 
 ## Team Photos (`community.html`)
 
-Photos are in `public/Media/`. The card pattern is a `<div class="group">` wrapping a rounded card with `aspect-square` image, name, role, and bio. See existing Ahmad/Dillon/Kuhan cards for reference.
+Photos are in `public/Media/`. The card pattern is a `<div class="group">` wrapping a rounded card with `aspect-square` image, name, role, and bio. See existing Ahmad/Jackson/Erin cards for reference.
 
 ## Git
 
